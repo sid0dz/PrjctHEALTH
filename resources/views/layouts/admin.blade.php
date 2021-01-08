@@ -1,5 +1,4 @@
- @if (Route::has('login'))
-                    @auth
+ @if (Auth::checK())
 					<!DOCTYPE html>
 <html lang="en">
 
@@ -758,5 +757,8 @@
 
 </body>
 
-</html>@endauth
+</html>
+@else
+					<meta http-equiv="refresh" content="1; URL={{ url('/') }}" />
+
  @endif
