@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+ @if (Route::has('login'))
+                    @auth
+					<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -756,4 +758,5 @@
 
 </body>
 
-</html>
+</html>@endauth
+ @endif
