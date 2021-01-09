@@ -17,7 +17,7 @@ class CreateUsersTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('specialite')->nullable();
-            $table->integer('role');
+            $table->integer('role')->default('0');
             $table->string('email')->unique();
             $table->string('accept')->default('1');
             $table->timestamp('email_verified_at')->nullable();
