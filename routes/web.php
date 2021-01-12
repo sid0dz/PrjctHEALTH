@@ -26,3 +26,12 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/admin', function () {
     return view('layouts.admin');
 });
+Route::get('/medecin',function(){
+
+	return view ('layouts.medecin');
+});
+Route::get('/secretaire',function(){
+
+	return view ('layouts.secretaire');
+});
+
