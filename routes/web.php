@@ -23,15 +23,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/admin', function () {
-    return view('layouts.admin');
-});
-Route::get('/medecin',function(){
+Route::get('/dashboard',function(){
 
-	return view ('layouts.medecin');
+	return view ('layouts.dashboard');
 });
-Route::get('/secretaire',function(){
 
-	return view ('layouts.secretaire');
-});
 
