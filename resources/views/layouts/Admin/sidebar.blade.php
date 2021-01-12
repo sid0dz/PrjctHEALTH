@@ -1,6 +1,3 @@
-@extends('layouts.parentLayout')
-@section('sidebar')
-
         <!-- Sidebar -->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
@@ -17,7 +14,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="/dashboard">
                     
                     <span>Dashboard Admin</span></a>
             </li>
@@ -29,16 +26,16 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
+                <a class="nav-link collapsed" href="/show_users" 
+                    >
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Gerer comptes</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         
-                        <a class="collapse-item" href="buttons.html">medecin</a>
-                        <a class="collapse-item" href="cards.html">secretaire</a>
+                        <a class="collapse-item" href="/show_users">Show Users</a>
+                        <a class="collapse-item" href="cards.html">soon..</a>
                     </div>
                 </div>
             </li>
@@ -78,17 +75,3 @@
 
         </ul>
         <!-- End of Sidebar -->
-@endsection
-@section('content')
-
-        <!-- Content of Admin dashboard -->
-
-				<h2> Yes, Admin Dashboard content here!</h2>
-
-        <!-- End of Admin dashboard-->
-@endsection
-
-
-
-
-

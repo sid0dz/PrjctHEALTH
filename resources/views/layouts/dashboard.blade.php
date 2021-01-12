@@ -1,6 +1,6 @@
 @if (Auth::checK())
 	@if(Auth::user()->role == 0)
-		@include('layouts.admin')
+		@include('layouts.admin.admin')
 
 	@elseif(Auth::user()->role == 1)
 		@include('layouts.medecin')

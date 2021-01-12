@@ -27,5 +27,9 @@ Route::get('/dashboard',function(){
 
 	return view ('layouts.dashboard');
 });
+Route::get('/show_users',function(){
+
+	return view ('layouts.admin.show_users');
+});
 
 
