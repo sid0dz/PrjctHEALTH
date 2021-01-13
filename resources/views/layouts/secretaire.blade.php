@@ -26,11 +26,14 @@
 
             
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" ata-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
-                
-                    <span>Renseigner un nouveau patient </span>
+                <a class="nav-link collapsed" href="/dashbord/show_patients" 
+                    >
+                    <i class="fas fa-fw fa-wrench"></i>
+                    <span>renseigner un nouveau patient</span>
                 </a>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    
+                </div>
             </li>
 
             <!-- Nav Item - Utilities Collapse Menu -->
@@ -51,14 +54,7 @@
         </ul>
         <!-- End of Sidebar -->
 		@endsection
-@section('content')
 
-        <!-- Content of Admin dashboard -->
-
-				<h2> Yes, Secretaire Dashboard content here!</h2>
-
-        <!-- End of Admin dashboard-->
-@endsection
 
 
 

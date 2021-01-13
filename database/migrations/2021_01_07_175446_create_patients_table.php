@@ -19,10 +19,11 @@ class CreatePatientsTable extends Migration
             $table->string('npatient');
             $table->date('patient_birth_date');
             $table->string('phone');
-            $table->mediumText('maladies');
-            $table->mediumText('allergies');
-            $table->mediumText('antecedents');
-            $table->mediumText('commentaires');
+            $table->string('email');
+            $table->mediumText('maladies')->nullable();
+            $table->mediumText('allergies')->nullable();
+            $table->mediumText('antecedents')->nullable();
+            $table->mediumText('commentaires')->nullable();
 
             $table->timestamps();
         });
