@@ -16,8 +16,7 @@
         </tr>
       </thead>
       <tbody>
-       @foreach ($mes  as $patient)
-       {{dd($patient)}}
+      @foreach ($mes  as $patient)
         <tr>
           <td>{{$patient->name}}</td>
           <td>{{$patient->npatient}}</td>
@@ -26,12 +25,14 @@
           <td>{{$patient->email}}</td>
 
           <td class="">
-              <form action="{{url()}}" method="post">
+              
+          <form action="#" method="post">
+
               {{csrf_field()}}
               {{method_field('DELETE')}}
                 
          
-              <a href="{{route()}}"  class="btn btn-warning btn-circle ">
+              <a href="#Define"  class="btn btn-warning btn-circle ">
                 <i class="fas fa-edit"> </i>
               </a> 
                 
@@ -41,8 +42,7 @@
               </form>
           </td>
         </tr>
-        @endforeach
-        
+        @endforeach   
        
       </tbody>
     </table>
