@@ -19,8 +19,8 @@
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="css/util.css">
-	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="css/loginutil.css">
+	<link rel="stylesheet" type="text/css" href="css/loginmain.css">
 <!--===============================================================================================-->
 </head>
 <body>
@@ -37,7 +37,7 @@
 
 					 <font color="red" size =2>
 					@error('email')
-                                        {{ $message }}
+                                        {{ $message }} 
                                    @enderror
 								</font>
 					<div class="wrap-input100 validate-input m-b-16" data-validate = "Valid email is required: ex@abc.xyz">
@@ -73,7 +73,7 @@
 							Not a member?
 						</span>
 
-						<a class="txt1 bo1 hov1" href="#">
+						<a class="txt1 bo1 hov1" href="{{url('register') }}">
 							Sign up now							
 						</a>
 					</div>

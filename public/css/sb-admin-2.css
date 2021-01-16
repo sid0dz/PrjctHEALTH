@@ -209,9 +209,9 @@ svg {
 }
 
 table {
-  border-collapse: collapse;
-}
+  border-radius:10px;
 
+}
 caption {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
@@ -223,6 +223,15 @@ caption {
 th {
   text-align: inherit;
   text-align: -webkit-match-parent;
+}
+
+th:nth-child(1) { -moz-border-radius:10px;
+  -webkit-border-radius:10px;
+  border-radius:10px
+}
+th:nth-child(3) { -moz-border-radius:10px;
+  -webkit-border-radius:10px;
+  border-radius:10px
 }
 
 label {

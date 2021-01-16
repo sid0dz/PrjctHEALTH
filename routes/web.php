@@ -27,23 +27,16 @@ Route::get('/dashboard',function(){
 
 	return view ('layouts.dashboard');
 });
-Route::get('/show_users',function(){
-
-	return view ('layouts.admin.show_users');
-
-});
+Route::resource('show_users','UsersAdminController');
+Route::get('/show_users','UsersAdminController@getUserslist');
 
 // patient routes
 
 Route::get('/dashbord/addpatient',function(){
-	
 	return view ('dashbord.secretary.addpatient');
 });
 
 Route::resource('patients','PatientController');
 Route::get('/dashbord/show_patients','PatientController@index');
-/*Route::get('/dashbord/show_patients',function(){
-	
-	return view ('dashbord.secretary.patients');
-});*/
+
 

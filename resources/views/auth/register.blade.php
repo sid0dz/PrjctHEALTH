@@ -2,169 +2,171 @@
 <html lang="en">
 
 <head>
-    <!-- Required meta tags-->
-    <meta charset="UTF-8">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Colorlib Templates">
-    <meta name="author" content="Colorlib">
-    <meta name="keywords" content="Colorlib Templates">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-    <!-- Title Page-->
-    <title>Register </title>
+    <title>SB Admin 2 - Register</title>
 
-    <!-- Icons font CSS-->
-    <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
-    <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
-    <!-- Font special for pages-->
-    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <!-- Custom fonts for this template-->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
 
-    <!-- Vendor CSS-->
-    <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
-    <link href="vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+    <!-- Custom styles for this template-->
+    <link href="css/sb-admin-2.min2.css" rel="stylesheet">
 
-    <!-- Main CSS-->
-    <link href="css/registerSheet.css" rel="stylesheet" media="all">
 </head>
 
-<body>
-<style>
-            /*css style for IE*/
-            select[disabled='disabled']::-ms-value {
-                color: #000;
-            }
-            /*Specific to chrome and firefox*/
-            select[disabled='disabled'] {
-                color: #0F0;
-            }
-        </style>
-    <div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
-        <div class="wrapper wrapper--w680">
-            <div class="card card-4">
-                <div class="card-body">
-                    
-					<h2 class="title">Registration Form</h2>
-                    <font color =red>                                
+<body class="bg-gradient-primary">
+
+    <div class="container">
+
+        <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+                <!-- Nested Row within Card Body -->
+                
+                    <div class="">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+                                <font color =red>                                
 					@if($errors->any())
     {{ implode('', $errors->all(':message ')) }}
 	
 @endif</font>
-					<form method="POST" action="{{ route('register') }}">
-					@csrf
-					
-                        <div class="row row-space">
-                            <div class="col-2">
-                                <div class="input-group">
-                                    <label class="label">first name</label>
-                                    <input class="input--style-4" type="text" name="fname">
-                                </div>
-                            </div>
-                            <div class="col-2">
-                                <div class="input-group">
-                                    <label class="label">last name</label>
-                                    <input class="input--style-4" type="text" name="lname">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row row-space">
-                            <div class="col-2">
-                                <div class="input-group">
-                                    <label class="label">Email</label>
-                                    <input class="input--style-4" type="email" name="email">
-                                </div>
-                            </div>
-                            <div class="col-2">
-                                <div class="input-group">
-                                    <label class="label">Password</label>
-                                    <input class="input--style-4" type="password" name="password" id="password">
-                                </div>
-                            </div>
-                        </div>
-                        
-						<div class="row row-space">
-                            <div class="col-2">
-                                <div class="input-group">
-                                    <label class="label">Are you a </label>
-                                    <div class="p-t-10">
-                                        <label class="radio-container m-r-45">Doctor
-                                            <input type="radio" checked="checked" name="role" value="1">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                        <label class="radio-container">Secretary
-                                            <input type="radio" name="role" value="2">
-                                            <span class="checkmark"></span>
-                                        </label>
+							</div>
+                            <form class="user" method="POST" action="{{ route('register') }}">
+								@csrf
+                               <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input type="text" class="form-control form-control-user" id="fname" name="fname"
+                                            placeholder="First Name">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control form-control-user" id="lname" name="lname"
+                                            placeholder="Last Name">
                                     </div>
                                 </div>
-                            </div>
-							<div class="col-2">
-                                 <div class="input-group">
-                                    <label class="label">Confirm Password</label>
-                                    <input class="input--style-4" type="password" name="password_confirmation" id="password_confirmation">
+                                
+                                <div class="form-group">
+                                    <input type="email" class="form-control form-control-user" id="email" name="email"
+                                        placeholder="Email Address">
                                 </div>
-                            </div>
-                            
-                        </div>
-                        <div class="input-group">
-                            <label class="label">Domain of speciality</label>
-                            <div class="rs-select2 js-select-simple select--no-search">
-                                <select name="specialite" id="specialite" >
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input type="password" class="form-control form-control-user"
+                                            id="password" name="password" placeholder="Password">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="password" class="form-control form-control-user"
+                                            id="password_confirmation" name="password_confirmation" placeholder="Repeat Password">
+                                    </div>
+                                </div>
+								
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">	
+								<label><font size="4px" style="padding-left:20px;">Doctor
+                                            <input type="radio" checked="checked" name="role" onclick="handleClick(this)" value="1>
+                                            <span class="checkmark"></span>
+                                        </label>		           
+                                        <label style="padding-left:20px;">Secretary
+                                            <input type="radio" name="role" onclick="handleClick(this)" value="2">
+                                            <span class="checkmark"></span>
+                                        </font></label>                                        </div>
+                                    <div class="col-sm-6">
+                                        <select  style="font-size: 0.8rem;border-radius: 50px;padding: 0.8rem 5rem;" id="specialite" name="specialite"
+                                            placeholder="Select an option">
                                     <option disabled="disabled" selected="selected">Choose option</option>
-                                    <option>General</option>   
-									<option>Cardiology</option>
-									<option>Dentist</option>
-                                    <option>Dermatology</option>
-                                    <option>Ophtalmology</option>
-									<option><p aria-hidden="true">Secretary</p></option>
-                                </select>
-                                <div class="select-dropdown"></div>
+											
+												<option>General</option>
+												<option>Cardiology</option>
+												<option>Dentist</option>
+												<option>Dermatology</option>
+												<option>Ophtalmology</option>
+												<option>Secretary</option>
+										</select></div>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-user btn-block">
+                                    Register Account
+                                </button>
+                            </form>
+                            <hr>
+                            <div class="text-center">
+                                <a class="small" href="{{url('login')}}">Already have an account? Login!</a>
                             </div>
                         </div>
-						
-						<script type="text/javascript">
-							$('input[name="role"]').on('change', function() {
-							if (this.value=="2") $('#specialite').val('Secretary');
-	});
-							$('select[name="specialite"]').on('change', function() {
-							if (document.getElementById("role").value == "2" ) $('#specialite').val('Secretary');
-	});
-	
-	
-	
-	var password = document.getElementById("password")
-  , confirm_password = document.getElementById("password_confirmation");
-
-function validatePassword(){
-  if(password.value != confirm_password.value) {
-    confirm_password.setCustomValidity("Passwords Don't Match");
-  } else {
-    confirm_password.setCustomValidity('');
-  }
-}
-
-password.onchange = validatePassword;
-confirm_password.onkeyup = validatePassword;
-    </script>
-                        <div class="p-t-15">
-                            <button class="btn btn--radius-2 btn--blue" type="submit">Submit</button>
-                        </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
+
     </div>
 
-    <!-- Jquery JS-->
+								<script type="text/javascript">
+								
+								
+				var password = document.getElementById("password")
+			, confirm_password = document.getElementById("password_confirmation");
+
+			function validatePassword(){
+			if(password.value != confirm_password.value) {
+					confirm_password.setCustomValidity("Passwords Don't Match");
+					} else {
+				confirm_password.setCustomValidity('');
+				}
+			}
+		
+			password.onchange = validatePassword;
+			confirm_password.onkeyup = validatePassword;
+    
+	
+		
+		
+			var currentValue = 0;
+		function handleClick(myRadio) {
+			
+				var sel = document.getElementById('specialite');
+			var opts = sel.options;			
+			if(myRadio.value=="2"){
+			var val = "Secretary";
+				for (var opt, j = 0; opt = opts[j]; j++) {
+					if (opt.value == val) {
+						sel.selectedIndex = j;
+						break;
+					}
+				}
+			}
+			else {
+				var val = "Choose option";
+				for (var opt, j = 0; opt = opts[j]; j++) {
+					if (opt.value == val) {
+						sel.selectedIndex = j;
+						break;
+					}
+				}
+			}
+	
+	}
+	
+	
+								
+								</script>
+                                       
+    <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
-    <!-- Vendor JS-->
-    <script src="vendor/select2/select2.min.js"></script>
-    <script src="vendor/datepicker/moment.min.js"></script>
-    <script src="vendor/datepicker/daterangepicker.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Main JS-->
-    <script src="js/registerJS.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
+
+</body>
 
 </html>
-<!-- end document-->
