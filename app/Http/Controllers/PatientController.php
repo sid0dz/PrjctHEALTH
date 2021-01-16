@@ -23,7 +23,9 @@ class PatientController extends Controller
        $patient->phone= $request ->input('phone');
        $patient->email = $request->input('email');
        $patient->save();
-       
+       $listpatients = Patient::all();
+       return view('dashbord.secretary.patients',['mes' => $listpatients]);
+
     }
     
     public function edit(){

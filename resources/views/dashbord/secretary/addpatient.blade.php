@@ -56,7 +56,6 @@
             <label class="label">Date de naissance</label>
             <div class="input-group-icon">
                 <input class="input--style-4 js-datepicker" type="date" name="birthday">
-                <i class="zmdi zmdi-calendar-note input-icon "></i>
             </div>
         </div>
 
