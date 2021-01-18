@@ -4,33 +4,34 @@
 @endsection
 @section('content')
 
-	
-<div class="card-body table-responsive p-0">
-    <table id ="usrTable" class="table table-hover text-nowrap" >
-      <thead>
-        <tr>
-          <th onclick="sortTable(0)" style="cursor: pointer;
-		  color: white;
-		  background: #4e73df">ID</th>
-          <th onclick="sortTable(1)" style="cursor: pointer;
-		  color: white;
-		  background: #4e73df">Nom</th>
-          <th onclick="sortTable(2)" style="cursor: pointer;
-		  color: white;
-		  background: #4e73df">Email</th>
-          <th onclick="sortTable(3)" style="cursor: pointer;
-		  color: white;
-		  background: #4e73df">Role</th>
-          <th onclick="sortTable(4)" style="cursor: pointer;
-		  color: white;
-		  background: #4e73df">Specialité</th>
-          <th onclick="sortTable(4)" style="cursor: pointer;
-		  color: white;
-		  background: #4e73df">Actions</th>
-          
-        </tr>
-      </thead>
-      <tbody>
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">List of all users</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Nom</th>
+                                            <th>Email</th>
+                                            <th>Role</th>
+                                            <th>Specialité</th>
+											<th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Nom</th>
+                                            <th>Email</th>
+                                            <th>Role</th>
+                                            <th>Specialité</th>
+											<th>Actions</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
       @foreach ($usersData  as $user)
         <tr>
           <td>{{$user->id}}</td>
@@ -38,13 +39,11 @@
 		  <td>{{$user->email}}</td>
           <td>{{($user->role==0)?"Admin":(($user->role==1)?"Medecin":"Secretary")}}</td>
           <td>{{$user->specialite}}</td>
-
-          <td class="">
+          <td>
               
-          <form action="#" method="post">
+          <form action="/show_users" method="post">
 
               {{csrf_field()}}
-              {{method_field('deleteUser')}}
                 
          
               <a href="#Define"  class="btn btn-warning btn-circle ">
@@ -58,9 +57,13 @@
           </td>
         </tr>
         @endforeach   
-       
-      </tbody>
-	</table>
+          </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
 	<script>function sortTable(n) {
 		var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
 		table = document.getElementById("usrTable");
@@ -117,6 +120,9 @@
 	  }</script>
 
 
+    <!-- Page level plugins -->
+	
 
   </div>
-   @endsection
+  @endsection
+  
