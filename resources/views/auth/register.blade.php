@@ -71,7 +71,7 @@
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">	
 								<label><font size="4px" style="padding-left:20px;">Doctor
-                                            <input type="radio" checked="checked" name="role" onclick="handleClick(this)" value="1>
+                                            <input type="radio" checked="checked" name="role" onclick="handleClick(this)" value="1">
                                             <span class="checkmark"></span>
                                         </label>		           
                                         <label style="padding-left:20px;">Secretary
