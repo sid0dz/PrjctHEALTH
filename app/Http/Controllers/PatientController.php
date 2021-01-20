@@ -35,11 +35,24 @@ class PatientController extends Controller
 
 
 
-    public function edit(){
+    public function edit($id){
+        $patient= Patient::find($id);
+ 
+        return view ('dashbord.secretary.editpatients', ['patient'=> $patient]);
+     }
 
-    }
-    public function update(){
+    public function update(Request $request, $id){
+        $patient= Patient::find($id);
+        $patient->name= $request->input('name');
+        $patient->npatient= $request->input('npatient');
+        $patient->patient_birth_date= $request->input('birthday');
+        $patient->phone= $request->input('phone');
+        $patient->email= $request->input('email');
+        $patient->save();
 
+       return view('dashbord.secretary.showInfo',['patient'=>$patient]);
+        
+        
     }
     public function destroy(){
 

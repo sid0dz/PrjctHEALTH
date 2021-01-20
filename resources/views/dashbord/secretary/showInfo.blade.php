@@ -6,9 +6,9 @@
 <div class="card shadow mb-4">
                                 <div class="card-header py-3"> 
                                     <h6 class="m-0 font-weight-bold text-primary">Informations du patients</h6>
+
 								</div>
-								
-                                <div class="card-body">
+								<div class="card-body">
 									<div class="row">
 										<table class="table table-hover">
 											
@@ -34,9 +34,10 @@
 												<td>{{$patient->phone}}</td>
 											</tr>
 										</table>
-											
                         </div>
 								
+						<a class="btn btn-primary float-right" href="{{ route ('patients.edit',['patient'=>$patient->id])}}"> <i class="fas fa-plus mr-2"></i> Editer informations</a>
+											
 								
 								
 								

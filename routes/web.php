@@ -46,11 +46,12 @@ Route::resource('patients','PatientController');
 Route::get('/dashbord/show_patients','PatientController@index');
 
 
-Route::get('/dashbord/show_infos',function(){
-	return view ('dashbord.secretary.showInfo');
-	});
+Route::get('/dashbord/show_infos','PatientController@index');
 
 
 Route::post('/dashbord/show_infos','PatientController@showInfos');
+
+Route::get('patients/{id}/edit','PatientController@edit');
+Route::put('patients/{id}','PatientController@update');
 
 
