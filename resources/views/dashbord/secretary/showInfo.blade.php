@@ -4,10 +4,12 @@
 
 
 <div class="card shadow mb-4">
-                                <div class="card-header py-3"> 
-                                    <h6 class="m-0 font-weight-bold text-primary">Informations du patients</h6>
 
-								</div>
+	<a href="#persinf" class="d-block card-header py-3 collapsed" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="persinf">
+		<h6 class="m-0 font-weight-bold text-primary">Informations Personelle</h6>
+	</a>
+	<div class="collapse" id="persinf" style="">
+                                 
 								<div class="card-body">
 									<div class="row">
 										<table class="table table-hover">
@@ -36,14 +38,39 @@
 										</table>
                         </div>
 								
-						<a class="btn btn-primary float-right" href="{{ route ('patients.edit',['patient'=>$patient->id])}}"> <i class="fas fa-plus mr-2"></i> Editer informations</a>
+						<a class="btn btn-primary float-right" href="{{ route ('patients.edit',['patient'=>$patient->id])}}"> <i class="fas fa-fw fa-wrench"></i> Editer informations</a>
+								<br>			
+								
+								
+								</div>
+                                </div>
+
+							</div>
+							<div class="card shadow mb-4">
+                                <!-- Card Header - Accordion -->
+                                <a href="#rdvs" class="d-block card-header py-3 collapsed" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="rdvs">
+                                    <h6 class="m-0 font-weight-bold text-primary">Rendez-vous</h6>
+                                </a>
+                                <!-- Card Content - Collapse -->
+                                <div class="collapse" id="rdvs" style="">
+                                    <div class="card-body">
+										<table class="table table-hover">
+											<tr>
+												<th>Date</th><th>Docteur</th> <th>Specialité </th>
+											</tr>
+												<td>21-12-2012</td>
+												<td>Jalma Rachida</td>
 											
-								
-								
-								
+												<td>General</td>
+											
+										</table>
+
+			
+										<a class="btn btn-primary float-right" href="{{ route ('patients.edit',['patient'=>$patient->id])}}"> <i class="fas fa-plus mr-2"></i>Prendre Rendez-vous</a>
+										<br>			
+									</div>
                                 </div>
                             </div>
-
 
 
 @endsection

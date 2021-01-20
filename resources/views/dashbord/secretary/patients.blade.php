@@ -32,13 +32,8 @@
                 <input type="hidden" name="id" value="{{$patient->id}}">
          
               <button  class="btn btn-warning btn-circle ">
-                <i class="fas fa-edit"> </i>
+                <i class="fas fa-info-circle"> </i>
               </button> 
-                
-               <button type="submit" onclick="return confirm('Vous voulez vraiment supprimer?') "class="btn btn-danger btn-circle">
-              
-                <i class="fas fa-trash"> </i>
-              </a>
               </form>
           </td>
         </tr>
