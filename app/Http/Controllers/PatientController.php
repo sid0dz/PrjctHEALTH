@@ -27,7 +27,14 @@ class PatientController extends Controller
        return view('dashbord.secretary.patients',['mes' => $listpatients]);
 
     }
-    
+    public function showInfos(Request $request){
+		$patient = Patient::find($request->input('id'));
+       return view('dashbord.secretary.showInfo',['patient'=>$patient]);
+        
+    }
+
+
+
     public function edit(){
 
     }

@@ -27,16 +27,30 @@ Route::get('/dashboard',function(){
 
 	return view ('layouts.dashboard');
 });
-Route::resource('show_users','UsersAdminController');
-Route::get('/show_users','UsersAdminController@getUserslist');
+
+Route::post('/show_users','UserAdmController@deleteUser');
+
+Route::get('/show_users','UserAdmController@getUserslist');
+Route::resource('useradm','UserAdmController');
+Route::DELETE('/show_users','UserAdmController@deleteUser');
 
 // patient routes
+
 
 Route::get('/dashbord/addpatient',function(){
 	return view ('dashbord.secretary.addpatient');
 });
 
 Route::resource('patients','PatientController');
+
 Route::get('/dashbord/show_patients','PatientController@index');
+
+
+Route::get('/dashbord/show_infos',function(){
+	return view ('dashbord.secretary.showInfo');
+	});
+
+
+Route::post('/dashbord/show_infos','PatientController@showInfos');
 
 
