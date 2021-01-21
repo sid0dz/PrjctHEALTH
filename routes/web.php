@@ -43,15 +43,16 @@ Route::get('/dashbord/addpatient',function(){
 
 Route::resource('patients','PatientController');
 
-Route::get('/dashbord/show_patients','PatientController@index');
+Route::get('/show_patients','PatientController@index');
 
 
-Route::get('/dashbord/show_infos','PatientController@index');
+Route::get('/dashboard/show_infos','PatientController@index');
 
 
-Route::post('/dashbord/show_infos','PatientController@showInfos');
+Route::post('/dashboard/show_infos','PatientController@showInfos');
+Route::post('/show_infos','PatientController@showInfos');
 
-Route::get('patients/{id}/edit','PatientController@edit');
-Route::put('patients/{id}','PatientController@update');
+Route::get('/{id}/edit','PatientController@edit');
+Route::put('/{id}','PatientController@update');
 
 

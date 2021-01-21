@@ -17,7 +17,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="dashboard">
                     
                     <span>Dashboard Secretaire</span></a>
             </li>
@@ -26,7 +26,7 @@
 
             
             <li class="nav-item">
-                <a class="nav-link collapsed" href="/dashbord/show_patients" 
+                <a class="nav-link collapsed" href="/show_patients" 
                     >
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>renseigner un nouveau patient</span>

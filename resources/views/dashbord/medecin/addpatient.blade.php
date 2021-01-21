@@ -1,4 +1,4 @@
-@extends('layouts.secretaire')
+@extends('layouts.medecin')
 @section('content')
 <link href="{{asset('vendor/mdi-font/css/material-design-iconic-font.min.css')}}" rel="stylesheet" media="all">
     <link href="{{asset('vendor/font-awesome-4.7/css/font-awesome.min.css')}}" rel="stylesheet" media="all">
@@ -18,8 +18,7 @@
         <h3 class="card-title">Informations du patient</h3>
       </div>
      
-    <form role="form"  method="POST" action="{{ url('/'.$patient->id )}} " enctype="multipart/form-data">
-      <input type="hidden" name="_method" value="PUT">
+    <form role="form"  method="POST" action="{{route('patients.store')}} " enctype="multipart/form-data">
         @csrf
         <div class="card-body">
 
@@ -28,7 +27,8 @@
           <div class="form-group">
             <label for="exampleInputTitre">Nom</label>
             <div >
-                <input id="title" placeholder="Nom du patient" type="text" class="form-control @error('title') is-invalid @enderror" name="name" value="{{ $patient->name }}" required >
+                
+                <input id="title" placeholder="Nom du patient" type="text" class="form-control @error('title') is-invalid @enderror" name="name"  required >
 
                 @error('title')
                     <span class="invalid-feedback" role="alert">
@@ -43,7 +43,7 @@
             <label for="exampleInputTitre">N° de sécurité sociale</label>
             <div >
                 
-                <input id="npatient" placeholder="N° de sécurité sociale du patient" type="text" class="form-control @error('npatient') is-invalid @enderror" name="npatient"  value="{{ $patient->npatient }}" required >
+                <input id="npatient" placeholder="N° de sécurité sociale du patient" type="text" class="form-control @error('npatient') is-invalid @enderror" name="npatient"  required >
 
                 @error('npatient')
                     <span class="invalid-feedback" role="alert">
@@ -55,7 +55,7 @@
           <div class="form-group">
             <label class="label">Date de naissance</label>
             <div class="input-group-icon">
-                <input class="input--style-4 js-datepicker" type="date" name="birthday"  value="{{ $patient->patient_birth_date }}">
+                <input class="input--style-4 js-datepicker" type="date" name="birthday">
             </div>
         </div>
 
@@ -63,7 +63,7 @@
               <label for="exampleInputTitre">N° de téléphone</label>
               <div >
                   
-                  <input id="phone" placeholder="N° de telephone" type="text" class="form-control @error('spécialité') is-invalid @enderror" name="phone"   value="{{ $patient->phone }}"required >
+                  <input id="phone" placeholder="N° de telephone" type="text" class="form-control @error('spécialité') is-invalid @enderror" name="phone"  required >
 
                   @error('phone')
                       <span class="invalid-feedback" role="alert">
@@ -77,7 +77,7 @@
               <label for="exampleInputTitre">Email</label>
               <div >
                   
-                  <input id="email" placeholder="email" type="text" class="form-control @error('année_universitaire') is-invalid @enderror" name="email"  value="{{ $patient->email }}" required >
+                  <input id="email" placeholder="email" type="text" class="form-control @error('année_universitaire') is-invalid @enderror" name="email"  required >
 
                   @error('email')
                       <span class="invalid-feedback" role="alert">
@@ -97,7 +97,7 @@
           
         
            <div class="card-footer">
-          <button type="submit" class="btn btn-primary pl-4 pr-4">Modifier</button>
+          <button type="submit" class="btn btn-primary pl-4 pr-4">Créer</button>
         </div>
           
         </div>

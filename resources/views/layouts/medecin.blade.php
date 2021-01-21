@@ -5,7 +5,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/dashboard">
                 <div class="sidebar-brand-icon rotate-n-15">
                     </div>
                 <div class="sidebar-brand-text mx-3">Dashboard</div>
@@ -27,10 +27,10 @@
            
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" ata-target="#collapseTwo"
+                <a class="nav-link collapsed" href="/show_patients" ata-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                 
-                    <span>Faire une préscription </span>
+                    <span>Afficher les patients</span>
                 </a>
             </li>
 
@@ -38,7 +38,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">                   
-                    <span>Faire une lettre d'orientation</span>
+                    <span>Afficher mes Rendez-Vous</span>
                 </a>
                
             </li>
@@ -47,7 +47,7 @@
                 <a class="nav-link collapsed" href="#" data-target="#collapsePages"
                     aria-expanded="true" aria-controls="collapsePages">
                     
-                    <span>Prendre un rendez-vous</span>
+                    <span>Rediger une lettre d'orientation</span>
                 </a>
             </li>  
 
@@ -64,8 +64,8 @@
         <!-- End of Sidebar -->
 		@endsection
 @section('content')
-
-        <!-- Content of Admin dashboard -->
+    @yield('content')
+        <!-- Contentof Admin dashboard -->
 
 				<h2> Yes, Medecin Dashboard content here!</h2>
 

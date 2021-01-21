@@ -10,7 +10,7 @@ class PatientController extends Controller
     //
     public function index(){
         $listpatients = Patient::all();
-        return view('dashbord.secretary.patients',['mes' => $listpatients]);
+        return view('layouts.showPatients',['mes' => $listpatients]);
 
     }
 
@@ -29,6 +29,11 @@ class PatientController extends Controller
     }
     public function showInfos(Request $request){
 		$patient = Patient::find($request->input('id'));
+       return view('layouts.showInfos',['patient'=>$patient]);
+        
+    }
+    public function showInfosR($id){
+		$patient = Patient::find($id);
        return view('dashbord.secretary.showInfo',['patient'=>$patient]);
         
     }
@@ -50,9 +55,8 @@ class PatientController extends Controller
         $patient->email= $request->input('email');
         $patient->save();
 
-       return view('dashbord.secretary.showInfo',['patient'=>$patient]);
-        
-        
+        return view('dashbord.secretary.showInfo',['patient'=>$patient]);
+                
     }
     public function destroy(){
 

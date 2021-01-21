@@ -1,13 +1,11 @@
-
 @extends('layouts.medecin')
 @section('content')
 
+
 <div class="card shadow mb-4">
   <div class="card-header py-3">
-      <h6 class="m-0 font-weight-bold text-primary">Liste des patients</h6>
-
-      <a class="btn btn-primary float-right" href="{{url('dashbord/addpatient')}}"> <i class="fas fa-plus mr-2"></i> Nouveau Patient</a>
-    </div>
+      <h6 class="m-0 font-weight-bold text-primary">List of all users</h6>
+  </div>
   <div class="card-body">
       <div class="table-responsive">
           <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
