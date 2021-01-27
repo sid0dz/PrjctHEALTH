@@ -4,13 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Patient;
-
+use Illuminate\Support\Facades\Auth;
 class PatientController extends Controller
 {
     //
     public function index(){
         $listpatients = Patient::all();
-        return view('layouts.showPatients',['mes' => $listpatients]);
+  return view('layouts.showPatients',['mes' => $listpatients]);
 
     }
 

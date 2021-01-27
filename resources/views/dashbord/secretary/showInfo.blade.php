@@ -39,6 +39,13 @@
                         </div>
 								
 						@if(Auth::user()->role == 2)
+							
+						<a href="#" class="btn btn-danger btn-icon-split">
+                                        <span class="icon text-white-50">
+                                            <i class="fas fa-trash"></i>
+                                        </span>
+                                        <span class="text">Supprimer</span>
+                                    </a>
 						<a class="btn btn-primary float-right" href="{{ route ('patients.edit',['patient'=>$patient->id])}}"> <i class="fas fa-fw fa-wrench"></i> Editer informations</a>
 								<br>			
 						@endif		
@@ -67,7 +74,6 @@
 											
 										</table>
 
-			
 										<a class="btn btn-primary float-right" href="{{ route ('patients.edit',['patient'=>$patient->id])}}"> <i class="fas fa-plus mr-2"></i>Prendre Rendez-vous</a>
 										<br>			
 									</div>

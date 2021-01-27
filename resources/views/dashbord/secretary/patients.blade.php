@@ -1,5 +1,5 @@
 
-@extends('layouts.medecin')
+@extends('layouts.secretaire')
 @section('content')
 
 <div class="card shadow mb-4">
@@ -49,9 +49,12 @@
                                  <input type="hidden" name="id" value="{{$patient->id}}">
 
                    
-                        <button class="btn btn-warning btn-circle ">
-                          <i class="fas fa-edit"> </i>
+                                 <button class="btn btn-warning btn-circle ">
+                                  <i class="fas fa-edit"> </i>
                         </button> 
+                        <button alt="Prendre Rendez-vous" class="btn btn-success btn-circle">
+                         <i class="fas fa-table"> </i>
+               </button> 
                           
                         </form>
                     </td>
