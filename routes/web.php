@@ -57,3 +57,4 @@ Route::put('/{id}','PatientController@update');
 Route::DELETE('/{id}','PatientController@destroy');
 
 Route::get('/{id}/orientation','OrientationController@create')->name('orientation');
+Route::get('/{id}/editm','PatientController@editm');

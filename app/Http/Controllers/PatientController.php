@@ -47,6 +47,11 @@ class PatientController extends Controller
  
         return view ('dashbord.secretary.editpatients', ['patient'=> $patient]);
      }
+      public function editm($id){
+        $patient= Patient::find($id);
+ 
+        return view ('dashbord.medecin.editpatients', ['patient'=> $patient]);
+     }
 
     public function update(Request $request, $id){
         $patient= Patient::find($id);
