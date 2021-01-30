@@ -30,12 +30,6 @@
                 
                 <input id="title" placeholder="Nom du patient" type="text" class="form-control @error('title') is-invalid @enderror" name="name"  value="{{ $patient->name }}" required>
 
-                 <div class="form-group">
-            <label class="label">Date de naissance</label>
-            <div class="input-group-icon">
-                <input class="input--style-4 js-datepicker" type="date" name="birthday"  value="{{ $patient->patient_birth_date }}">
-            </div>
-        </div>
 
                 @error('title')
                     <span class="invalid-feedback" role="alert">
