@@ -13,7 +13,7 @@
     <tr></tr>
     <tr><th>Date: </th> <td> {{$data["date"]}}</td> </tr>
     <tr></tr>
-    <tr><th>Heure: </th> <td> {{$data["heure"]}}:00</td> </tr>
+    <tr><th>Heure: </th> <td> {{$data["heure"][0]}}{{($data["heure"][1])==1?":00":":30"}}</td> </tr>
 </table></h3>
 
 

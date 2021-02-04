@@ -35,7 +35,7 @@ class PatientController extends Controller
     }
     public function showInfosR($id){
 		$patient = Patient::find($id);
-       return view('dashbord.secretary.showInfo',['patient'=>$patient]);
+       return view('layouts.showInfos',['patient'=>$patient]);
         
     }
 
@@ -55,10 +55,13 @@ class PatientController extends Controller
         $patient->phone= $request->input('phone');
         $patient->email= $request->input('email');
         $patient->save();
-        return view('dashbord.secretary.showInfo',['patient'=>$patient]);
-                
-    }
-    public function destroy(){
-
+        return redirect()->action('PatientController@showInfosR',['id'=>$id]);
+      }
+    public function destroy(Request $request,$id){
+      $patient =Patient:: find($id);
+      $patient->delete();
+      $listpatients = Patient::all();
+      return redirect()->action('PatientController@index');
+           
     }
 }

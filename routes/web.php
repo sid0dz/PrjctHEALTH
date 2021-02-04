@@ -37,7 +37,7 @@ Route::DELETE('/show_users','UserAdmController@deleteUser');
 // patient routes
 
 
-Route::get('/dashbord/addpatient',function(){
+Route::get('/addpatient',function(){
 	return view ('dashbord.secretary.addpatient');
 });
 
@@ -49,9 +49,8 @@ Route::resource('patients','PatientController');
 
 Route::get('/show_patients','PatientController@index');
 
-Route::get('/dashboard/show_infos','PatientController@index');
-Route::post('/dashboard/show_infos','PatientController@showInfos');
 Route::post('/show_infos','PatientController@showInfos');
+Route::get('/show_infos/{id}','PatientController@showInfosR');
 
 Route::get('/{id}/edit','PatientController@edit');
 Route::put('/{id}','PatientController@update');

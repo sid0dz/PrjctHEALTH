@@ -70,7 +70,7 @@
                                         <span class="text">Prendre RdV</span>
                                     </a></td>
                                     @endif
-                                    @if (count($data["h91"])==2)
+                                    @if (count($data["h91"])>=2)
                                     <td>{{$data["h91"][0]}}</td>
                                     <td>{{$data["h91"][1]}}</td>
                                     @endif
@@ -90,7 +90,7 @@
                                         <span class="text">Prendre RdV</span>
                                     </a></td>
                                     @endif
-                                    @if (count($data["h92"])==2)
+                                    @if (count($data["h92"])>=2)
                                     <td style="border-left: 5px double black">{{$data["h92"][0]}}</td>
                                     <td>{{$data["h92"][1]}}</td>
                                     @endif
@@ -112,7 +112,7 @@
                                         <span class="text">Prendre RdV</span>
                                     </a></td>
                                     @endif
-                                    @if (count($data["h101"])==2)
+                                    @if (count($data["h101"])>=2)
                                     <td>{{$data["h101"][0]}}</td>
                                     <td>{{$data["h101"][1]}}</td>
                                     @endif
@@ -132,7 +132,7 @@
                                         <span class="text">Prendre RdV</span>
                                     </a></td>
                                     @endif
-                                    @if (count($data["h102"])==2)
+                                    @if (count($data["h102"])>=2)
                                     <td style="border-left: 5px double black">{{$data["h102"][0]}}</td>
                                     <td>{{$data["h102"][1]}}</td>
                                     @endif
@@ -154,7 +154,7 @@
                                         <span class="text">Prendre RdV</span>
                                     </a></td>
                                     @endif
-                                    @if (count($data["h111"])==2)
+                                    @if (count($data["h111"])>=2)
                                     <td>{{$data["h111"][0]}}</td>
                                     <td>{{$data["h111"][1]}}</td>
                                     @endif
@@ -174,7 +174,7 @@
                                         <span class="text">Prendre RdV</span>
                                     </a></td>
                                     @endif
-                                    @if (count($data["h112"])==2)
+                                    @if (count($data["h112"])>=2)
                                     <td style="border-left: 5px double black">{{$data["h112"][0]}}</td>
                                     <td>{{$data["h112"][1]}}</td>
                                     @endif
@@ -196,7 +196,7 @@
                                         <span class="text">Prendre RdV</span>
                                     </a></td>
                                     @endif
-                                    @if (count($data["h121"])==2)
+                                    @if (count($data["h121"])>=2)
                                     <td>{{$data["h121"][0]}}</td>
                                     <td>{{$data["h121"][1]}}</td>
                                     @endif
@@ -216,7 +216,7 @@
                                         <span class="text">Prendre RdV</span>
                                     </a></td>
                                     @endif
-                                    @if (count($data["h122"])==2)
+                                    @if (count($data["h122"])>=2)
                                     <td style="border-left: 5px double black">{{$data["h122"][0]}}</td>
                                     <td>{{$data["h122"][1]}}</td>
                                     @endif
@@ -241,7 +241,7 @@
                                         <span class="text">Prendre RdV</span>
                                     </a></td>
                                     @endif
-                                    @if (count($data["h141"])==2)
+                                    @if (count($data["h141"])>=2)
                                     <td>{{$data["h141"][0]}}</td>
                                     <td>{{$data["h141"][1]}}</td>
                                     @endif
@@ -261,7 +261,7 @@
                                         <span class="text">Prendre RdV</span>
                                     </a></td>
                                     @endif
-                                    @if (count($data["h142"])==2)
+                                    @if (count($data["h142"])>=2)
                                     <td style="border-left: 5px double black">{{$data["h142"][0]}}</td>
                                     <td>{{$data["h142"][1]}}</td>
                                     @endif
@@ -283,7 +283,7 @@
                                         <span class="text">Prendre RdV</span>
                                     </a></td>
                                     @endif
-                                    @if (count($data["h151"])==2)
+                                    @if (count($data["h151"])>=2)
                                     <td>{{$data["h151"][0]}}</td>
                                     <td>{{$data["h151"][1]}}</td>
                                     @endif
@@ -303,7 +303,7 @@
                                         <span class="text">Prendre RdV</span>
                                     </a></td>
                                     @endif
-                                    @if (count($data["h152"])==2)
+                                    @if (count($data["h152"])>=2)
                                     <td style="border-left: 5px double black">{{$data["h152"][0]}}</td>
                                     <td>{{$data["h152"][1]}}</td>
                                     @endif
@@ -325,7 +325,7 @@
                                         <span class="text">Prendre RdV</span>
                                     </a></td>
                                     @endif
-                                    @if (count($data["h161"])==2)
+                                    @if (count($data["h161"])>=2)
                                     <td>{{$data["h161"][0]}}</td>
                                     <td>{{$data["h161"][1]}}</td>
                                     @endif
@@ -345,7 +345,7 @@
                                         <span class="text">Prendre RdV</span>
                                     </a></td>
                                     @endif
-                                    @if (count($data["h162"])==2)
+                                    @if (count($data["h162"])>=2)
                                     <td style="border-left: 5px double black">{{$data["h162"][0]}}</td>
                                     <td>{{$data["h162"][1]}}</td>
                                     @endif

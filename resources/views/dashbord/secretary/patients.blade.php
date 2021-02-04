@@ -48,7 +48,10 @@
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primarmy">Listes des patients</h6>
+                        <div class="d-sm-flex align-items-center justify-content-between mb-2">
+                            <h1 class="h3 mb-0 text-gray-800">Listes des patients</h1>
+                            <a href="/addpatient" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i> Ajouter Patients</a>
+                        </div>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -85,13 +88,13 @@
                                     <td>{{$patient->npatient}}</td>
                                     <td>
                                         
-                                    <form action="/show_infos" method="post">
+                                    <form action="#" >
                           
                                       {{csrf_field()}}
                                                <input type="hidden" name="id" value="{{$patient->id}}">
                       
                                  
-                                               <button class="btn btn-warning btn-circle ">
+                                               <a href="/show_infos/{{$patient->id}}" class="btn btn-warning btn-circle ">
                                                 <i class="fas fa-edit"> </i>
                                       </button> 
                                   
