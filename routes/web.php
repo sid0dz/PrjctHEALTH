@@ -41,18 +41,28 @@ Route::get('/dashbord/addpatient',function(){
 	return view ('dashbord.secretary.addpatient');
 });
 
+Route::get('/lol',function(){
+	return view ('layouts.rdv.success');
+});
+
 Route::resource('patients','PatientController');
 
 Route::get('/show_patients','PatientController@index');
 
-
 Route::get('/dashboard/show_infos','PatientController@index');
-
-
 Route::post('/dashboard/show_infos','PatientController@showInfos');
 Route::post('/show_infos','PatientController@showInfos');
 
 Route::get('/{id}/edit','PatientController@edit');
 Route::put('/{id}','PatientController@update');
 
+Route::resource('rdvs','RdvController');
 
+
+   // add a new route:
+   Route::get('/newRDV/{id}','RdvController@newRDV');
+
+   Route::get('/newRDV/{id}/{medid}','RdvController@newRDV2');
+   Route::get('/newRDV/{id}/{medid}/{date}','RdvController@newRDV3');
+   Route::get('/newRDV/{id}/{medid}/{date}/{heure}','RdvController@newRDV4');
+ 

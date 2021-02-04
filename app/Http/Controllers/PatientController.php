@@ -11,6 +11,7 @@ class PatientController extends Controller
     public function index(){
         $listpatients = Patient::all();
   return view('layouts.showPatients',['mes' => $listpatients]);
+  //return view('tables',['mes' => $listpatients]);
 
     }
 
@@ -54,7 +55,6 @@ class PatientController extends Controller
         $patient->phone= $request->input('phone');
         $patient->email= $request->input('email');
         $patient->save();
-
         return view('dashbord.secretary.showInfo',['patient'=>$patient]);
                 
     }
