@@ -64,4 +64,7 @@ Route::resource('rdvs','RdvController');
    Route::get('/newRDV/{id}/{medid}','RdvController@newRDV2');
    Route::get('/newRDV/{id}/{medid}/{date}','RdvController@newRDV3');
    Route::get('/newRDV/{id}/{medid}/{date}/{heure}','RdvController@newRDV4');
+
+   Route::get('/{id}/orientation','OrientationController@create')->name('orientation');
+   Route::post('orientationStore','OrientationController@store')->name('orientationStore');
  

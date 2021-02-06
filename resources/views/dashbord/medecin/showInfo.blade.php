@@ -178,6 +178,33 @@
 										<br>			
 									</div>
                                 </div>
+							</div>
+							<div class="card shadow mb-4">
+                                <!-- Card Header - Accordion -->
+                                <a href="#orientation" class="d-block card-header py-3 collapsed" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="orientation">
+                                    <h6 class="m-0 font-weight-bold text-primary">Lettre d'Orientation</h6>
+                                </a>
+                                <!-- Card Content - Collapse -->
+                                <div class="collapse" id="orientation" style="">
+                                    <div class="card-body">
+										<table class="table table-hover">
+											<tr>
+												<th>Date</th><th>Type</th> <th>Medecin</th>
+											</tr>
+												<td>21-12-2012</td>
+												<td>Thorax avant-gauche</td>
+											
+												<td>Souadji wissem</td>
+											
+										</table>
+
+			
+										<a class="btn btn-primary float-right" href="{{ route('orientation',['id'=>$patient->id])}}"> 
+											<i class="fas fa-plus mr-2"></i>Ajouter Lettre d'Orientation</a>
+										<br>			
+									</div>
+                                </div>
+                                
                             </div>
 					
 					
