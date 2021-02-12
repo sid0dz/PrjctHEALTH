@@ -2,7 +2,7 @@
 @section('sidebar')
 
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion  d-print-none" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/dashboard">
@@ -44,7 +44,7 @@
             </li>
              <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-target="#collapsePages"
+                <a class="nav-link collapsed" href="/newOr" data-target="#collapsePages"
                     aria-expanded="true" aria-controls="collapsePages">
                     
                     <span>Rediger une lettre d'orientation</span>

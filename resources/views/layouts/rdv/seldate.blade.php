@@ -1,5 +1,6 @@
+@extends(Auth::user()->role == 1 ? 'layouts.medecin' : 'layouts.secretaire')
 
-@extends('layouts.secretaire')
+	
 @section('content')
 
 

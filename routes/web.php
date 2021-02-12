@@ -65,6 +65,16 @@ Route::resource('rdvs','RdvController');
    Route::get('/newRDV/{id}/{medid}/{date}','RdvController@newRDV3');
    Route::get('/newRDV/{id}/{medid}/{date}/{heure}','RdvController@newRDV4');
 
+
    Route::get('/{id}/orientation','OrientationController@create')->name('orientation');
    Route::post('orientationStore','OrientationController@store')->name('orientationStore');
  
+
+   Route::get('/newRDVm/{id}','RdvController@newRDVm2');
+   Route::get('/newRDVm/{id}/{date}','RdvController@newRDVm3');
+   Route::get('/newRDVm/{id}/{date}/{heure}','RdvController@newRDVm4');
+  
+   Route::get('/newOr','OrientationController@create');
+   
+   Route::get('/newPrescription','PrescController@new');
+   Route::post('/newPrescription','PrescController@store');

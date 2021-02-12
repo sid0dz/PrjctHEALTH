@@ -80,18 +80,29 @@
                                     <td>{{$patient->email}}</td>
                                     <td>{{$patient->npatient}}</td>
                                     <td>
-                                        
-                                    <form action="/show_infos" method="post">
+                                        <form action="#" >
                           
-                                        {{csrf_field()}}
-                                                 <input type="hidden" name="id" value="{{$patient->id}}">
-                
-                                   
-                                        <button class="btn btn-warning btn-circle ">
-                                          <i class="fas fa-edit"> </i>
-                                        </button> 
-                                          
-                                        </form>
+                                            {{csrf_field()}}
+                                                     <input type="hidden" name="id" value="{{$patient->id}}">
+                            
+                                       
+                                                     <a href="/show_infos/{{$patient->id}}" class="btn btn-warning btn-circle ">
+                                                      <i class="fas fa-edit"> </i>
+                                            </button> 
+                                        
+                                            <form action="/new_rdv" method="post" id="showinf">
+                                
+                                              {{csrf_field()}}
+                                                       <input type="hidden" name="id" value="{{$patient->id}}">
+                            
+                                         
+                                                        
+                                              <a href="/newRDV/{{$patient->id}}/{{Auth::id()}}/" alt="Prendre Rendez-vous" class="btn btn-success btn-circle">
+                                               <i class="fas fa-table"> </i>
+                                              </a>
+                                              
+                                              </form> 
+                              
                                     </td>
                                   </tr>
                                   @endforeach   

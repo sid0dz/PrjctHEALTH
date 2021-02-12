@@ -24,6 +24,7 @@
             
           </div>
         </div>
+
         <table class="table table-success table-striped">
           <tr><td> Nom et prénom : </td> <td>{{$patient->name}}</td> </tr>
           <tr><td> Nom du medecin :</td> <td><input id="title" placeholder="Nom du médecin" type="text" class="form-control @error('title') is-invalid @enderror" name="nom"  required > </td> </tr>
@@ -38,7 +39,7 @@
                     <label for="exampleInputTitre">Patient id</label>
                     <div >
                         
-                        <input id="title" placeholder="Nom de la bourse" type="text" class="form-control @error('title') is-invalid @enderror" name="patient_id" value="{{ $patient->id}}" required >
+                        <input id="title" placeholder="Nom de la bourse" type="text" class="form-control @error('title') is-invalid @enderror" name="patient_id" value="{{ $patient->id ?? ''}}" required >
   
                         @error('title')
                             <span class="invalid-feedback" role="alert">
@@ -108,7 +109,6 @@
           </form>
                 
 
-         
       </div>
      
     </div>

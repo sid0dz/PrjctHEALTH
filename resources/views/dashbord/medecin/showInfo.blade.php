@@ -2,7 +2,64 @@
 @section('content')
 
 
+<div class="row d-flex justify-content-center">
 
+	<!-- Earnings (Monthly) Card Example -->
+	<div class="col-xl-3 col-md-6 mb-4">
+		<div class="card border-left-primary shadow h-100 py-2">
+			<div class="card-body">
+				<div class="row no-gutters align-items-center">
+					<div class="col mr-2">
+						<div class="text-xs font-weight-bold text-primary text-uppercase mb-1"></div>
+						<div class="h5 mb-0 font-weight-bold text-gray-800">Prendre Rendez-vous</div>
+					</div>
+					<div class="col-auto">
+						<i class="fas fa-calendar-alt fa-2x text-gray-300"></i>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Earnings (Monthly) Card Example -->
+	<div class="col-xl-3 col-md-6 mb-4">
+		<div class="card border-left-success shadow h-100 py-2">
+			<div class="card-body"><a href="{{ route('orientation',['id'=>$patient->id])}}">
+				<div class="row no-gutters align-items-center">
+					<div class="col mr-2">
+						<div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+							</div>
+						<div class="h5 mb-0 font-weight-bold text-gray-800">Rediger Lettre d'orientation</div>
+					</div>
+					<div class="col-auto">
+						<i class="fas fa-directions fa-2x text-gray-300"></i>
+					</div>
+				</div></a>
+			</div>
+		</div>
+	</div>
+	<form  id="pressc" action="/newPrescription"  role="form"  method="post" > 
+		<input type="hidden" name="patid" value="{{$patient->id}}"/>
+		@csrf
+	 </form>
+	<!-- Earnings (Monthly) Card Example --><div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-warning shadow h-100 py-2">
+                                <div class="card-body">
+									<a  href="javascript:$('#pressc').submit();" >
+										<div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                            </div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">Rediger Prescriptions</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-pills fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div></a>
+                                </div>
+                            </div>
+                        </div>
+	
+</div>
 <div class="card shadow mb-4">
 
 	<a href="#persinf" class="d-block card-header py-3 collapsed" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="persinf">
@@ -11,6 +68,7 @@
 	<div class="collapse" id="persinf" style="">
                                  
 								<div class="card-body">
+									
 									<div class="row">
 										<table class="table table-hover">
 											
