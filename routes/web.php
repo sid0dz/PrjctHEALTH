@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/ajax', function () {
+    return view('ajax');
+});
 Route::get('/', function () {
     return view('welcome');
 });
@@ -78,3 +81,9 @@ Route::resource('rdvs','RdvController');
    
    Route::get('/newPrescription','PrescController@new');
    Route::post('/newPrescription','PrescController@store');
+
+   Route::get('/set/maladie/{patid}/{medid}/{info}','MedinfoController@newMaladie');
+   Route::get('/set/allergie/{patid}/{medid}/{info}','MedinfoController@newAllergie');
+   Route::get('/set/commentaire/{patid}/{medid}/{info}','MedinfoController@newCommentaire');
+   //Route::get('/set/maladie/{id}/{maladie}','MedinfoController@newImagerie');
+   

@@ -46,7 +46,7 @@ addid++;
 
 var text = document.createElement('tr');
 text.id = 'additem_' + addid;
-text.innerHTML = '<td><input type="text" name="medic[]" class="form-control bg-light border-0 small" placeholder="Medicament" aria-label="Search" aria-describedby="basic-addon2"></td><td><div class="row"><input type="number" name="dose[]" min="1" max="50"   aria-label="Search" aria-describedby="basic-addon2">/ Par jour </td>';
+text.innerHTML = '<td><input type="text" name="medic[]" class="form-control bg-light border-1 small" placeholder="Medicament" aria-label="Search" aria-describedby="basic-addon2"></td><td><div class="row"><input type="number" name="dose[]" min="1" max="50"   aria-label="Search" aria-describedby="basic-addon2">/ Par jour </td>';
 addList.appendChild(text);
 }
 

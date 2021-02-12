@@ -140,7 +140,7 @@
                                 <!-- Card Content - Collapse -->
                                 <div class="collapse" id="maladie" style="">
                                     <div class="card-body">
-										<table class="table table-hover">
+										<table class="table table-hover" id="maladtable">
 											<tr>
 												<th>Date</th><th>Maladie</th> <th>Medecin</th>
 											</tr>
@@ -155,7 +155,7 @@
 										</table>
 
 			
-										<a class="btn btn-primary float-right" href="{{ route ('patients.edit',['patient'=>$patient->id])}}"> <i class="fas fa-plus mr-2"></i>Ajouter une maladie</a>
+										<a class="btn btn-primary float-right" href="#" data-toggle="modal" data-target="#newMaladie"> <i class="fas fa-plus mr-2"></i>Ajouter une maladie</a>
 										<br>			
 									</div>
                                 </div>
@@ -169,7 +169,7 @@
                                 <!-- Card Content - Collapse -->
                                 <div class="collapse" id="allergie" style="">
                                     <div class="card-body">
-										<table class="table table-hover">
+										<table class="table table-hover" id="allergieTable">
 											<tr>
 												<th>Date</th><th>Type d'allergie</th> <th>Medecin</th>
 											</tr>
@@ -181,7 +181,7 @@
 										</table>
 
 			
-										<a class="btn btn-primary float-right" href="{{ route ('patients.edit',['patient'=>$patient->id])}}"> <i class="fas fa-plus mr-2"></i>Ajouter Allergie</a>
+										<a class="btn btn-primary float-right" href="#" data-toggle="modal" data-target="#newAllergie"> <i class="fas fa-plus mr-2"></i>Ajouter Allergie</a>
 										<br>			
 									</div>
                                 </div>
@@ -195,7 +195,7 @@
                                 <!-- Card Content - Collapse -->
                                 <div class="collapse" id="commentaire" style="">
                                     <div class="card-body">
-										<table class="table table-hover">
+										<table class="table table-hover" id="CommentaireTable">
 											<tr>
 												<th>Date</th><th>Note</th> <th>Medecin</th>
 											</tr>
@@ -207,7 +207,7 @@
 										</table>
 
 			
-										<a class="btn btn-primary float-right" href="{{ route ('patients.edit',['patient'=>$patient->id])}}"> <i class="fas fa-plus mr-2"></i>Ajouter Commentaire</a>
+										<a class="btn btn-primary float-right" href="#" data-toggle="modal" data-target="#newCommentaire"> <i class="fas fa-plus mr-2"></i>Ajouter Commentaire</a>
 										<br>			
 									</div>
                                 </div>
@@ -264,7 +264,106 @@
                                 </div>
                                 
                             </div>
-					
+				
+							
+							
+
+<!-- Maladie Model-->
+<div class="modal fade" id="newMaladie" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+aria-hidden="true">
+<div class="modal-dialog" role="document">
+	<div class="modal-content">
+		<div class="modal-header">
+			<h5 class="modal-title" id="exampleModalLabel">Ajouter une nouvelle Maladie : </h5>
+			<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">×</span>
+			</button>
+		</div>
+		<div class="modal-body"><input type="text" class="form-control bg-light border-1 small" placeholder="Maladie..." id="maladText"/> </div>
+		<div class="modal-footer">
+			<button class="btn btn-secondary" type="button" id="dsm" data-dismiss="modal">Annuler</button>
+			<a class="btn btn-primary" onclick="setNew(1)">Ajouter Maladie</a>
+		</div>
+	</div>
+</div>
+</div>
+<!--End of Maladie model --->
+
+<!-- Allergie Model-->
+<div class="modal fade" id="newAllergie" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+aria-hidden="true">
+<div class="modal-dialog" role="document">
+	<div class="modal-content">
+		<div class="modal-header">
+			<h5 class="modal-title" id="exampleModalLabel">Ajouter une nouvelle allergie : </h5>
+			<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">×</span>
+			</button>
+		</div>
+		<div class="modal-body"><input type="text" class="form-control bg-light border-1 small" placeholder="Allergie..." id="allergText"/> </div>
+		<div class="modal-footer">
+			<button class="btn btn-secondary" type="button" id="dsm2" data-dismiss="modal">Annuler</button>
+			<a class="btn btn-primary" onclick="setNew(2)">Ajouter Allergie</a>
+		</div>
+	</div>
+</div>
+</div>
+<!--End of Allergie model --->
+
+<!-- Commentaire Model-->
+<div class="modal fade" id="newCommentaire" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+aria-hidden="true">
+<div class="modal-dialog" role="document">
+	<div class="modal-content">
+		<div class="modal-header">
+			<h5 class="modal-title" id="exampleModalLabel">Ajouter un nouveau commentaire : </h5>
+			<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">×</span>
+			</button>
+		</div>
+		<div class="modal-body"><input type="text" class="form-control bg-light border-1 small" placeholder="Commentaire..." id="commText"/> </div>
+		<div class="modal-footer">
+			<button class="btn btn-secondary" type="button" id="dsm3" data-dismiss="modal">Annuler</button>
+			<a class="btn btn-primary" onclick="setNew(3)">Ajouter Commentaire</a>
+		</div>
+	</div>
+</div>
+</div>
+<!--End of Commentaire model --->
+
+<script>
+	function setNew(op) {
+	  var xhttp = new XMLHttpRequest();
+var tbl;
+var str;
+	  if (op==1) {str = document.getElementById("maladText").value;
+	  			 tbl = document.getElementById("maladtable");}
+
+	  if (op==2){  str = document.getElementById("allergText").value;
+	   tbl = document.getElementById("allergieTable");
+	}
+
+	  if (op==3) { str = document.getElementById("commText").value;
+	  var tbl = document.getElementById("CommentaireTable");
+	  }
+	  xhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			var response= document.createElement('tr');
+			response.innerHTML = this.responseText;
+		   tbl.appendChild(response);
+		   }
+	  };
+	  if (op==1)	  xhttp.open("GET", "/set/maladie/{{$patient->id}}/{{Auth::user()->id}}/"+str, true);
+	  if (op==2)	  xhttp.open("GET", "/set/allergie/{{$patient->id}}/{{Auth::user()->id}}/"+str, true);
+	  if (op==3)	  xhttp.open("GET", "/set/commentaire/{{$patient->id}}/{{Auth::user()->id}}/"+str, true);
+	  xhttp.send();
+	  document.getElementById("dsm").click();
+	  document.getElementById("dsm2").click();
+	  document.getElementById("dsm3").click();
+	
+	}
+	
+	</script>
 					
 				
 							@endif
