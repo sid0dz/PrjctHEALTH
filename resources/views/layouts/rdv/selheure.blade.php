@@ -52,313 +52,9 @@
                         <h6 class="m-0 font-weight-bold text-primarmy">Choisir Heure</h6>
                     </div>
                     <div class="card-body">
-                        <div class="table">
+                        <div class="table" id="tabledata">
                            
 
-                            <table class="table table-bordered table-hover"  width="100%" cellspacing="0">
-
-                                <tr>
-                                <td>    </td><th colspan="2">:00</td> <th colspan="2" style="border-left: 5px double black">:30 </td>
-                                </tr>
-                                <tr><th >9h</td> 
-                                    @if (count($data["h91"])==1)
-                                    <td>{{$data["h91"][0]}}</td>                          
-                                    <td> <a href="{{URL::current()}}/91" class="btn btn-secondary btn-icon-split">
-                                        <span class="icon text-white-50">
-                                            <i class="fas fa-arrow-right"></i>
-                                        </span>
-                                        <span class="text">Prendre RdV</span>
-                                    </a></td>
-                                    @endif
-                                    @if (count($data["h91"])>=2)
-                                    <td>{{$data["h91"][0]}}</td>
-                                    <td>{{$data["h91"][1]}}</td>
-                                    @endif
-                                    @if (count($data["h91"])==0)<td> <a href="{{URL::current()}}/91" class="btn btn-secondary btn-icon-split">
-                                        <span class="icon text-white-50">
-                                            <i class="fas fa-arrow-right"></i>
-                                        </span>
-                                        <span class="text">Prendre RdV</span>
-                                    </a></td><td></td>
-                                    @endif
-                                    @if (count($data["h92"])==1)
-                                    <td style="border-left: 5px double black">{{$data["h92"][0]}}</td>                          
-                                    <td> <a href="{{URL::current()}}/92" class="btn btn-secondary btn-icon-split">
-                                        <span class="icon text-white-50">
-                                            <i class="fas fa-arrow-right"></i>
-                                        </span>
-                                        <span class="text">Prendre RdV</span>
-                                    </a></td>
-                                    @endif
-                                    @if (count($data["h92"])>=2)
-                                    <td style="border-left: 5px double black">{{$data["h92"][0]}}</td>
-                                    <td>{{$data["h92"][1]}}</td>
-                                    @endif
-                                    @if (count($data["h92"])==0)<td style="border-left: 5px double black"> <a href="{{URL::current()}}/92" class="btn btn-secondary btn-icon-split">
-                                        <span class="icon text-white-50">
-                                            <i class="fas fa-arrow-right"></i>
-                                        </span>
-                                        <span class="text">Prendre RdV</span>
-                                    </a></td><td></td>
-                                    @endif
-                                </tr>
-                                <tr><th >10h</td> 
-                                    @if (count($data["h101"])==1)
-                                    <td>{{$data["h101"][0]}}</td>                          
-                                    <td> <a href="{{URL::current()}}/101" class="btn btn-secondary btn-icon-split">
-                                        <span class="icon text-white-50">
-                                            <i class="fas fa-arrow-right"></i>
-                                        </span>
-                                        <span class="text">Prendre RdV</span>
-                                    </a></td>
-                                    @endif
-                                    @if (count($data["h101"])>=2)
-                                    <td>{{$data["h101"][0]}}</td>
-                                    <td>{{$data["h101"][1]}}</td>
-                                    @endif
-                                    @if (count($data["h101"])==0)<td> <a href="{{URL::current()}}/101" class="btn btn-secondary btn-icon-split">
-                                        <span class="icon text-white-50">
-                                            <i class="fas fa-arrow-right"></i>
-                                        </span>
-                                        <span class="text">Prendre RdV</span>
-                                    </a></td><td></td>
-                                    @endif
-                                    @if (count($data["h102"])==1)
-                                    <td style="border-left: 5px double black">{{$data["h102"][0]}}</td>                          
-                                    <td> <a href="{{URL::current()}}/102" class="btn btn-secondary btn-icon-split">
-                                        <span class="icon text-white-50">
-                                            <i class="fas fa-arrow-right"></i>
-                                        </span>
-                                        <span class="text">Prendre RdV</span>
-                                    </a></td>
-                                    @endif
-                                    @if (count($data["h102"])>=2)
-                                    <td style="border-left: 5px double black">{{$data["h102"][0]}}</td>
-                                    <td>{{$data["h102"][1]}}</td>
-                                    @endif
-                                    @if (count($data["h102"])==0)<td style="border-left: 5px double black"> <a href="{{URL::current()}}/102" class="btn btn-secondary btn-icon-split">
-                                        <span class="icon text-white-50">
-                                            <i class="fas fa-arrow-right"></i>
-                                        </span>
-                                        <span class="text">Prendre RdV</span>
-                                    </a></td><td></td>
-                                    @endif
-                                </tr>
-                                <tr><th >11h</td> 
-                                    @if (count($data["h111"])==1)
-                                    <td>{{$data["h111"][0]}}</td>                          
-                                    <td> <a href="{{URL::current()}}/111" class="btn btn-secondary btn-icon-split">
-                                        <span class="icon text-white-50">
-                                            <i class="fas fa-arrow-right"></i>
-                                        </span>
-                                        <span class="text">Prendre RdV</span>
-                                    </a></td>
-                                    @endif
-                                    @if (count($data["h111"])>=2)
-                                    <td>{{$data["h111"][0]}}</td>
-                                    <td>{{$data["h111"][1]}}</td>
-                                    @endif
-                                    @if (count($data["h111"])==0)<td> <a href="{{URL::current()}}/111" class="btn btn-secondary btn-icon-split">
-                                        <span class="icon text-white-50">
-                                            <i class="fas fa-arrow-right"></i>
-                                        </span>
-                                        <span class="text">Prendre RdV</span>
-                                    </a></td><td></td>
-                                    @endif
-                                    @if (count($data["h112"])==1)
-                                    <td style="border-left: 5px double black">{{$data["h112"][0]}}</td>                          
-                                    <td> <a href="{{URL::current()}}/112" class="btn btn-secondary btn-icon-split">
-                                        <span class="icon text-white-50">
-                                            <i class="fas fa-arrow-right"></i>
-                                        </span>
-                                        <span class="text">Prendre RdV</span>
-                                    </a></td>
-                                    @endif
-                                    @if (count($data["h112"])>=2)
-                                    <td style="border-left: 5px double black">{{$data["h112"][0]}}</td>
-                                    <td>{{$data["h112"][1]}}</td>
-                                    @endif
-                                    @if (count($data["h112"])==0)<td style="border-left: 5px double black"> <a href="{{URL::current()}}/112" class="btn btn-secondary btn-icon-split">
-                                        <span class="icon text-white-50">
-                                            <i class="fas fa-arrow-right"></i>
-                                        </span>
-                                        <span class="text">Prendre RdV</span>
-                                    </a></td><td></td>
-                                    @endif
-                                </tr>
-                                <tr><th >12h</td> 
-                                    @if (count($data["h121"])==1)
-                                    <td>{{$data["h121"][0]}}</td>                          
-                                    <td> <a href="{{URL::current()}}/121" class="btn btn-secondary btn-icon-split">
-                                        <span class="icon text-white-50">
-                                            <i class="fas fa-arrow-right"></i>
-                                        </span>
-                                        <span class="text">Prendre RdV</span>
-                                    </a></td>
-                                    @endif
-                                    @if (count($data["h121"])>=2)
-                                    <td>{{$data["h121"][0]}}</td>
-                                    <td>{{$data["h121"][1]}}</td>
-                                    @endif
-                                    @if (count($data["h121"])==0)<td> <a href="{{URL::current()}}/121" class="btn btn-secondary btn-icon-split">
-                                        <span class="icon text-white-50">
-                                            <i class="fas fa-arrow-right"></i>
-                                        </span>
-                                        <span class="text">Prendre RdV</span>
-                                    </a></td><td></td>
-                                    @endif
-                                    @if (count($data["h122"])==1)
-                                    <td style="border-left: 5px double black">{{$data["h122"][0]}}</td>                          
-                                    <td> <a href="{{URL::current()}}/122" class="btn btn-secondary btn-icon-split">
-                                        <span class="icon text-white-50">
-                                            <i class="fas fa-arrow-right"></i>
-                                        </span>
-                                        <span class="text">Prendre RdV</span>
-                                    </a></td>
-                                    @endif
-                                    @if (count($data["h122"])>=2)
-                                    <td style="border-left: 5px double black">{{$data["h122"][0]}}</td>
-                                    <td>{{$data["h122"][1]}}</td>
-                                    @endif
-                                    @if (count($data["h122"])==0)<td style="border-left: 5px double black"> <a href="{{URL::current()}}/122" class="btn btn-secondary btn-icon-split">
-                                        <span class="icon text-white-50">
-                                            <i class="fas fa-arrow-right"></i>
-                                        </span>
-                                        <span class="text">Prendre RdV</span>
-                                    </a></td><td></td>
-                                    @endif
-                                </tr>
-                                
-                                <tr><td colspan="5" align="center">Pause dejeuner </td></tr>
-                                
-                                <tr><th >14h</td> 
-                                    @if (count($data["h141"])==1)
-                                    <td>{{$data["h141"][0]}}</td>                          
-                                    <td> <a href="{{URL::current()}}/141" class="btn btn-secondary btn-icon-split">
-                                        <span class="icon text-white-50">
-                                            <i class="fas fa-arrow-right"></i>
-                                        </span>
-                                        <span class="text">Prendre RdV</span>
-                                    </a></td>
-                                    @endif
-                                    @if (count($data["h141"])>=2)
-                                    <td>{{$data["h141"][0]}}</td>
-                                    <td>{{$data["h141"][1]}}</td>
-                                    @endif
-                                    @if (count($data["h141"])==0)<td> <a href="{{URL::current()}}/141" class="btn btn-secondary btn-icon-split">
-                                        <span class="icon text-white-50">
-                                            <i class="fas fa-arrow-right"></i>
-                                        </span>
-                                        <span class="text">Prendre RdV</span>
-                                    </a></td><td></td>
-                                    @endif
-                                    @if (count($data["h142"])==1)
-                                    <td style="border-left: 5px double black">{{$data["h142"][0]}}</td>                          
-                                    <td> <a href="{{URL::current()}}/142" class="btn btn-secondary btn-icon-split">
-                                        <span class="icon text-white-50">
-                                            <i class="fas fa-arrow-right"></i>
-                                        </span>
-                                        <span class="text">Prendre RdV</span>
-                                    </a></td>
-                                    @endif
-                                    @if (count($data["h142"])>=2)
-                                    <td style="border-left: 5px double black">{{$data["h142"][0]}}</td>
-                                    <td>{{$data["h142"][1]}}</td>
-                                    @endif
-                                    @if (count($data["h142"])==0)<td style="border-left: 5px double black"> <a href="{{URL::current()}}/142" class="btn btn-secondary btn-icon-split">
-                                        <span class="icon text-white-50">
-                                            <i class="fas fa-arrow-right"></i>
-                                        </span>
-                                        <span class="text">Prendre RdV</span>
-                                    </a></td><td></td>
-                                    @endif
-                                </tr>
-                                <tr><th >15h</td> 
-                                    @if (count($data["h151"])==1)
-                                    <td>{{$data["h151"][0]}}</td>                          
-                                    <td> <a href="{{URL::current()}}/151" class="btn btn-secondary btn-icon-split">
-                                        <span class="icon text-white-50">
-                                            <i class="fas fa-arrow-right"></i>
-                                        </span>
-                                        <span class="text">Prendre RdV</span>
-                                    </a></td>
-                                    @endif
-                                    @if (count($data["h151"])>=2)
-                                    <td>{{$data["h151"][0]}}</td>
-                                    <td>{{$data["h151"][1]}}</td>
-                                    @endif
-                                    @if (count($data["h151"])==0)<td> <a href="{{URL::current()}}/151" class="btn btn-secondary btn-icon-split">
-                                        <span class="icon text-white-50">
-                                            <i class="fas fa-arrow-right"></i>
-                                        </span>
-                                        <span class="text">Prendre RdV</span>
-                                    </a></td><td></td>
-                                    @endif
-                                    @if (count($data["h152"])==1)
-                                    <td style="border-left: 5px double black">{{$data["h152"][0]}}</td>                          
-                                    <td> <a href="{{URL::current()}}/152" class="btn btn-secondary btn-icon-split">
-                                        <span class="icon text-white-50">
-                                            <i class="fas fa-arrow-right"></i>
-                                        </span>
-                                        <span class="text">Prendre RdV</span>
-                                    </a></td>
-                                    @endif
-                                    @if (count($data["h152"])>=2)
-                                    <td style="border-left: 5px double black">{{$data["h152"][0]}}</td>
-                                    <td>{{$data["h152"][1]}}</td>
-                                    @endif
-                                    @if (count($data["h152"])==0)<td style="border-left: 5px double black"> <a href="{{URL::current()}}/152" class="btn btn-secondary btn-icon-split">
-                                        <span class="icon text-white-50">
-                                            <i class="fas fa-arrow-right"></i>
-                                        </span>
-                                        <span class="text">Prendre RdV</span>
-                                    </a></td><td></td>
-                                    @endif
-                                </tr>
-                                <tr><th >16h</td> 
-                                    @if (count($data["h161"])==1)
-                                    <td>{{$data["h161"][0]}}</td>                          
-                                    <td> <a href="{{URL::current()}}/161" class="btn btn-secondary btn-icon-split">
-                                        <span class="icon text-white-50">
-                                            <i class="fas fa-arrow-right"></i>
-                                        </span>
-                                        <span class="text">Prendre RdV</span>
-                                    </a></td>
-                                    @endif
-                                    @if (count($data["h161"])>=2)
-                                    <td>{{$data["h161"][0]}}</td>
-                                    <td>{{$data["h161"][1]}}</td>
-                                    @endif
-                                    @if (count($data["h161"])==0)<td> <a href="{{URL::current()}}/161" class="btn btn-secondary btn-icon-split">
-                                        <span class="icon text-white-50">
-                                            <i class="fas fa-arrow-right"></i>
-                                        </span>
-                                        <span class="text">Prendre RdV</span>
-                                    </a></td><td></td>
-                                    @endif
-                                    @if (count($data["h162"])==1)
-                                    <td style="border-left: 5px double black">{{$data["h162"][0]}}</td>                          
-                                    <td> <a href="{{URL::current()}}/162" class="btn btn-secondary btn-icon-split">
-                                        <span class="icon text-white-50">
-                                            <i class="fas fa-arrow-right"></i>
-                                        </span>
-                                        <span class="text">Prendre RdV</span>
-                                    </a></td>
-                                    @endif
-                                    @if (count($data["h162"])>=2)
-                                    <td style="border-left: 5px double black">{{$data["h162"][0]}}</td>
-                                    <td>{{$data["h162"][1]}}</td>
-                                    @endif
-                                    @if (count($data["h162"])==0)<td style="border-left: 5px double black"> <a href="{{URL::current()}}/162" class="btn btn-secondary btn-icon-split">
-                                        <span class="icon text-white-50">
-                                            <i class="fas fa-arrow-right"></i>
-                                        </span>
-                                        <span class="text">Prendre RdV</span>
-                                    </a></td><td></td>
-                                    @endif
-                                </tr>
-        
-                                </table>
                         </div>
                     </div>
                 </div>
@@ -379,7 +75,89 @@
     <i class="fas fa-angle-up"></i>
 </a>
 
-<!-- Logout Modal-->
+<div class="toast" role="alert" style="position: absolute; top: 0; right: 0;" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header" style="background-color:rgb(219, 255, 190)">
+        
+
+      <strong class="mr-auto">Confirmé</strong>
+      <small class="text-muted"></small>
+      <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
+    <div class="toast-body">
+      Rendez-vous a été supprimé
+    </div>
+  </div>
+
+<!-- confirm Modal-->
+<div class="modal fade" id="confirmDeleteModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+aria-hidden="true">
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Veuillez confirmer : </h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>
+        </div>
+        <div class="modal-body">Voulez vous vraiment supprimer ce rendez-vous ? </div>
+        <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" id="dsm" data-dismiss="modal">Annuler</button>
+            <a class="btn btn-danger" id="confirmdeletebutton" onclick="confirm(1)">Supprimer</a>
+        </div>
+    </div>
+</div>
+</div>
+
+
+<script>
+    function loadTable(){
+
+        var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        document.getElementById('tabledata').innerHTML=this.responseText;
+        
+    }
+  };
+  xhttp.open("GET", "{{ url('tabledata', [$data['id'],$data['medid'],$data['date']]) }}", true);
+  xhttp.send();
+
+
+    }
+    loadTable();
+
+
+    function changemodel (rdvid){
+        var confr = document.getElementById("confirmdeletebutton");
+        confr.setAttribute('onclick',"confirmdelete("+rdvid+")");        
+
+    }
+
+
+    function confirmdelete(rdvid){
+        var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        $('.toast').toast({
+    'autohide': true,
+    'delay':  5000
+  });
+
+  $('.toast').toast('show');
+    loadTable();
+    }
+  };
+  xhttp.open("GET", "/deleteRdv/"+rdvid, true);
+  xhttp.send();
+  document.getElementById("dsm").click();
+
+
+    }
+    
+    
+    </script>
 
 <!-- Bootstrap core JavaScript-->
 </body>
