@@ -93,18 +93,11 @@
                                 <!-- Card Content - Collapse -->
                                 <div class="collapse" id="maladie" style="">
                                     <div class="card-body">
-										<table class="table table-hover">
+										<table class="table table-hover" id="maladies">
 											<tr>
 												<th>Date</th><th>Maladie</th> <th>Medecin</th>
 											</tr>
-											<tr>	<td>21-12-2020</td>
-												<td>Hypertension</td>
-												<td>Medrar ouassini</td>
-											</tr>
-											<tr>	<td>02-04-2018</td>
-												<td>Grippe virale</td>
-												<td>Souadji wissem</td>
-											</tr>
+										
 										</table>
 
 			

@@ -5,7 +5,20 @@
 @section('content')
 
 	
-<div class="card-body table-responsive p-0">
+            <!-- Begin Page Content -->
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+                <!-- DataTales Example -->
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <div class="d-sm-flex align-items-center justify-content-between mb-2">
+                            <h1 class="h3 mb-0 text-gray-800">Listes des patidddents</h1>
+                            <a href="/addpatient" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i> Ajouter Patients</a>
+                        </div>
+                    </div>
+
+<div class="card-body table-responsive table-hover p-0">
     <table id ="usrTable" class="table table-hover text-nowrap" >
       <thead>
         <tr>
@@ -26,7 +39,7 @@
 		  background: #4e73df">Specialité</th>
           <th onclick="sortTable(4)" style="cursor: pointer;
 		  color: white;
-		  background: #4e73df">Actions</th>
+		  background: #4e73df">Acstions</th>
           
         </tr>
       </thead>
@@ -39,7 +52,7 @@
           <td>{{($user->role==0)?"Admin":(($user->role==1)?"Medecin":"Secretary")}}</td>
           <td>{{$user->specialite}}</td>
 
-          <td class="">
+          <td >
               
           <form action="/show_users" method="post">
 
@@ -61,6 +74,9 @@
        
       </tbody>
 	</table>
+			</div>
+
+
 	<script>function sortTable(n) {
 		var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
 		table = document.getElementById("usrTable");
@@ -118,5 +134,4 @@
 
 
 
-  </div>
    @endsection

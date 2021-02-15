@@ -44,7 +44,7 @@ public function newRDV4($id,$medid,$date,$heure){
 $nom = Patient::find($id)->name;
 $fnom = User::find($medid)->fname;
 $lnom = User::find($medid)->lname;
-return view('layouts.rdv.success')->with('data',['nomp'=>$nom,'nomMed'=>$fnom." ".$lnom,'date'=>$date,'heure'=>$heure]);
+return view('layouts.rdv.success')->with('data',['idp'=>$id,'nomp'=>$nom,'nomMed'=>$fnom." ".$lnom,'date'=>$date,'heure'=>$heure]);
 }
 
 

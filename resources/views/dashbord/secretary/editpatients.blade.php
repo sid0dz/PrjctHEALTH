@@ -1,4 +1,4 @@
-@extends('layouts.secretaire')
+@extends(Auth::user()->role == 1 ? 'layouts.medecin' : 'layouts.secretaire')
 @section('content')
 <link href="{{asset('vendor/mdi-font/css/material-design-iconic-font.min.css')}}" rel="stylesheet" media="all">
     <link href="{{asset('vendor/font-awesome-4.7/css/font-awesome.min.css')}}" rel="stylesheet" media="all">

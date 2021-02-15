@@ -71,44 +71,6 @@
 <!-- End of Page Wrapper -->
 
 <!-- Scroll to Top Button-->
-<a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-</a>
-
-<div class="toast" role="alert" style="position: absolute; top: 0; right: 0;" aria-live="assertive" aria-atomic="true">
-    <div class="toast-header" style="background-color:rgb(219, 255, 190)">
-        
-
-      <strong class="mr-auto">Confirmé</strong>
-      <small class="text-muted"></small>
-      <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
-    </div>
-    <div class="toast-body">
-      Rendez-vous a été supprimé
-    </div>
-  </div>
-
-<!-- confirm Modal-->
-<div class="modal fade" id="confirmDeleteModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-aria-hidden="true">
-<div class="modal-dialog" role="document">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Veuillez confirmer : </h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">×</span>
-            </button>
-        </div>
-        <div class="modal-body">Voulez vous vraiment supprimer ce rendez-vous ? </div>
-        <div class="modal-footer">
-            <button class="btn btn-secondary" type="button" id="dsm" data-dismiss="modal">Annuler</button>
-            <a class="btn btn-danger" id="confirmdeletebutton" onclick="confirm(1)">Supprimer</a>
-        </div>
-    </div>
-</div>
-</div>
 
 
 <script>

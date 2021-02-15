@@ -1,9 +1,19 @@
 
 @extends('layouts.secretaire')
 @section('content')
-    <center> <h1>Rendez-vous a été pris!</h1></center>
-    <a class="btn btn-primary float-right" onclick="printDiv('printableArea')">  <i class="fas fa-print mr-2"></i>Imprimer Rendez-vous</a>
+<div class="container-fluid">
 
+    <!-- Page Heading -->
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Rendez-vous Pris!</h6>
+        </div>
+        <div class="card-body">
+    <a class="btn btn-primary float-right" onclick="printDiv('printableArea')">  <i class="fas fa-print mr-2"></i>Imprimer Rendez-vous</a>
+    <a class="btn btn-secondary float-left" href="/show_infos/{{$data['idp']}}">  <i class="fas fa-arrow-left mr-2"></i>Retourner a la pages d'infos</a>
+
+ 
 <div id="printableArea"><center>
 <img height="200"  src="{{asset('/logo.png')}}" style="display:none;"/>
 <h3><table class="table">

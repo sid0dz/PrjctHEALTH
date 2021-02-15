@@ -60,9 +60,9 @@
                         </div>
 	
 </div>
-<div class="card shadow mb-4">
+<div class="card shadow mb-4 mr-2 ml-2">
 
-	<a href="#persinf" class="d-block card-header py-3 collapsed" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="persinf">
+	<a href="#persinf" class="d-block card-header py-3 p-10 collapsed" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="persinf">
 		<h6 class="m-0 font-weight-bold text-primary">Informations Personelle</h6>
 	</a>
 	<div class="collapse" id="persinf" style="">
@@ -83,7 +83,7 @@
 											
 											<tr>
 												<th scope="row">Date de naissance</th>
-												<td>{{$patient->patient_birth_date}}</td>
+												<td id="birth">{{$patient->patient_birth_date}}</td>
 											</tr>
 											<tr>
 												<th scope="row">Email</th>
@@ -96,10 +96,10 @@
 										</table>
                         </div>
 								
-						@if(Auth::user()->role == 2)
+					
 						<a class="btn btn-primary float-right" href="{{ route ('patients.edit',['patient'=>$patient->id])}}"> <i class="fas fa-fw fa-wrench"></i> Editer informations</a>
 								<br>			
-						@endif		
+					
 								
 								</div>
                                 </div>
@@ -132,13 +132,13 @@
                                 </div>
                             </div>
 							@elseif(Auth::user()->role == 1)
-							<div class="card shadow mb-4">
+							<div class="card shadow mb-4  mr-2 ml-2" >
                                 <!-- Card Header - Accordion -->
                                 <a href="#maladie" class="d-block card-header py-3 collapsed" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="maladie">
                                     <h6 class="m-0 font-weight-bold text-primary">Maladie</h6>
                                 </a>
                                 <!-- Card Content - Collapse -->
-                                <div class="collapse" id="maladie" style="">
+                                <div class="collapse" style="" id="maladie">
                                     <div class="card-body">
 										<table class="table table-hover" id="maladtable">
 											<tr>
@@ -161,7 +161,7 @@
                                 </div>
                             </div>		
 					
-							<div class="card shadow mb-4">
+							<div class="card shadow mb-4  mr-2 ml-2">
                                 <!-- Card Header - Accordion -->
                                 <a href="#allergie" class="d-block card-header py-3 collapsed" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="allergie">
                                     <h6 class="m-0 font-weight-bold text-primary">Allergie</h6>
@@ -187,7 +187,7 @@
                                 </div>
                             </div>			
 					
-							<div class="card shadow mb-4">
+							<div class="card shadow mb-4  mr-2 ml-2">
                                 <!-- Card Header - Accordion -->
                                 <a href="#commentaire" class="d-block card-header py-3 collapsed" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="commentaire">
                                     <h6 class="m-0 font-weight-bold text-primary">Commentaires</h6>
@@ -212,7 +212,7 @@
 									</div>
                                 </div>
                             </div>		
-							<div class="card shadow mb-4">
+							<div class="card shadow mb-4 mr-2 ml-2">
                                 <!-- Card Header - Accordion -->
                                 <a href="#imgr" class="d-block card-header py-3 collapsed" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="imgr">
                                     <h6 class="m-0 font-weight-bold text-primary">Imagerie</h6>
@@ -237,7 +237,7 @@
 									</div>
                                 </div>
 							</div>
-							<div class="card shadow mb-4">
+							<div class="card shadow mb-4 mr-2 ml-2">
                                 <!-- Card Header - Accordion -->
                                 <a href="#orientation" class="d-block card-header py-3 collapsed" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="orientation">
                                     <h6 class="m-0 font-weight-bold text-primary">Lettre d'Orientation</h6>
@@ -362,7 +362,34 @@ var str;
 	  document.getElementById("dsm3").click();
 	
 	}
+	function getInf(op){
+		var xhttp = new XMLHttpRequest();
+
+	  if (op==1)  tbl = document.getElementById("maladtable");
+	  if (op==2)   tbl = document.getElementById("allergieTable");
+	  if (op==3)   var tbl = document.getElementById("CommentaireTable");
+	  
+	  xhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			
+			tbl.innerHTML = this.responseText;
+		   }
+	  };
+	  if (op==1)	  xhttp.open("GET", "/ajax/getInf/0/{{$patient->id}}", true);
+	  if (op==2)	  xhttp.open("GET", "/ajax/getInf/1/{{$patient->id}}", true);
+	  if (op==3)	  xhttp.open("GET", "/ajax/getInf/2/{{$patient->id}}", true);
+	  xhttp.send();
+	}
+	getInf(1);
+	getInf(2);
+	getInf(3);
 	
+	var birth = document.getElementById('birth');
+	var diff_ms = Date.now() - Date.parse(birth.innerText);
+	var age_dt = new Date(diff_ms); 
+
+	birth.innerText = birth.innerText +"  ("+ Math.abs(age_dt.getUTCFullYear() - 1970)+" ans)";
+
 	</script>
 					
 				

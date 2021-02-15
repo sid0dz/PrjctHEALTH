@@ -50,7 +50,7 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
                                 <thead>
                                     <tr>
                                         <th>Nom</th>
@@ -73,35 +73,28 @@
                                 </tfoot>
                                 <tbody>
                                   @foreach ($mes  as $patient)
-                                  <tr>
+                                  <tr style="cursor: pointer;" onClick="window.location.href='/show_infos/{{$patient->id}}'">
+                                               
                                     <td>{{$patient->name}}</td>
                                 <td>{{$patient->patient_birth_date}}</td> 
                                 <td>{{$patient->phone}}</td>
                                     <td>{{$patient->email}}</td>
-                                    <td>{{$patient->npatient}}</td>
+                                    <td>{{$patient->npatient}}</td> </a>
                                     <td>
-                                        <form action="#" >
-                          
-                                            {{csrf_field()}}
-                                                     <input type="hidden" name="id" value="{{$patient->id}}">
+                                      
                             
-                                       
-                                                     <a href="/show_infos/{{$patient->id}}" class="btn btn-warning btn-circle ">
-                                                      <i class="fas fa-edit"> </i>
-                                            </button> 
                                         
-                                            <form action="/new_rdv" method="post" id="showinf">
-                                
-                                              {{csrf_field()}}
-                                                       <input type="hidden" name="id" value="{{$patient->id}}">
+                                                     <a   data-toggle="tooltip" title="Prendre rendez-vous" href="/newRDV/{{$patient->id}}/{{Auth::id()}}/" alt="Prendre Rendez-vous" class="btn btn-success btn-circle">
+                                               <i class="fas fa-table"> </i>
+                                              </a>
+                                              <a href="/show_infos/{{$patient->id}}" title="Voir les informations" class="btn btn-primary btn-circle ">
+                                                      <i class="fas fa-arrow-right"> </i>
                             
                                          
                                                         
-                                              <a href="/newRDV/{{$patient->id}}/{{Auth::id()}}/" alt="Prendre Rendez-vous" class="btn btn-success btn-circle">
-                                               <i class="fas fa-table"> </i>
-                                              </a>
                                               
-                                              </form> 
+                                              
+                                              
                               
                                     </td>
                                   </tr>

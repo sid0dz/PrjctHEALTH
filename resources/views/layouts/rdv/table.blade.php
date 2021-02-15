@@ -39,12 +39,15 @@
                                         </td>
                                 @else 
                                 
-                                <td> <a href="{{URL::current()}}/91" class="btn btn-secondary btn-icon-split">
+                                <td>                                     @if($data['patid']!=0)
+<a href="{{URL::current()}}/91" class="btn btn-secondary btn-icon-split">
+
                                     <span class="icon text-white-50">
                                         <i class="fas fa-arrow-right"></i>
                                     </span>
                                     <span class="text">Prendre RdV</span>
-                                </a></td>
+                                </a>                                    @endif
+</td>
                                 @if(count($data["h91"])==0) <td></td>
                                 @endif 
                                 @endif
@@ -85,13 +88,15 @@
                             
 								@if (count($data["h102"])>=2) 
 								<td>
-								@endif
+								@endif                  @if($data['patid']!=0)
+
                              <a href="{{URL::current()}}/92" class="btn btn-secondary btn-icon-split">
                                 <span class="icon text-white-50">
                                     <i class="fas fa-arrow-right"></i>
                                 </span>
                                 <span class="text">Prendre RdV</span>
-                            </a></td>
+                               
+                            </a> @endif</td>
                             @if(count($data["h92"])==0) <td></td>
                             @endif 
                         @endif
@@ -132,12 +137,14 @@
                                         </td>
                                 @else 
                                 
-                                <td> <a href="{{URL::current()}}/101" class="btn btn-secondary btn-icon-split">
+                                <td>                                    @if($data['patid']!=0)
+ <a href="{{URL::current()}}/101" class="btn btn-secondary btn-icon-split">
                                     <span class="icon text-white-50">
                                         <i class="fas fa-arrow-right"></i>
                                     </span>
                                     <span class="text">Prendre RdV</span>
-                                </a></td>
+                                </a>                                    @endif
+</td>
                                 @if(count($data["h101"])==0) <td></td>
                                 @endif 
                             @endif
@@ -179,12 +186,15 @@
 								@if (count($data["h102"])>=2) 
 								<td>
 								@endif
+                                @if($data['patid']!=0)
                              <a href="{{URL::current()}}/102" class="btn btn-secondary btn-icon-split">
                                 <span class="icon text-white-50">
                                     <i class="fas fa-arrow-right"></i>
                                 </span>
                                 <span class="text">Prendre RdV</span>
-                            </a></td>
+                            </a>
+                        @endif
+                    </td>
                             @if(count($data["h102"])==0) <td></td>
                             @endif 
                         @endif
@@ -224,12 +234,13 @@
                                     </td>
                             @else 
                             
-                            <td> <a href="{{URL::current()}}/111" class="btn btn-secondary btn-icon-split">
+                            <td>@if($data['patid']!=0) <a href="{{URL::current()}}/111" class="btn btn-secondary btn-icon-split">
                                 <span class="icon text-white-50">
                                     <i class="fas fa-arrow-right"></i>
                                 </span>
                                 <span class="text">Prendre RdV</span>
-                            </a></td>
+                            </a>@endif
+                        </td>
                                 @if(count($data["h111"])==0) <td></td>
                                 @endif 
                             @endif
@@ -270,12 +281,15 @@
                             @if (count($data["h112"])>=2) 
                             <td>
                             @endif
-                         <a href="{{URL::current()}}/112" class="btn btn-secondary btn-icon-split">
+                            @if($data['patid']!=0)
+                              <a href="{{URL::current()}}/112" class="btn btn-secondary btn-icon-split">
                             <span class="icon text-white-50">
                                 <i class="fas fa-arrow-right"></i>
                             </span>
                             <span class="text">Prendre RdV</span>
-                        </a></td>
+                        </a>
+                    @endif
+                    </td>
                         @if(count($data["h112"])==0) <td></td>
                          
                     @endif
@@ -317,12 +331,13 @@
                                     </td>
                             @else 
                             
-                            <td> <a href="{{URL::current()}}/121" class="btn btn-secondary btn-icon-split">
+                            <td>@if($data['patid']!=0) <a href="{{URL::current()}}/121" class="btn btn-secondary btn-icon-split">
                                 <span class="icon text-white-50">
                                     <i class="fas fa-arrow-right"></i>
                                 </span>
                                 <span class="text">Prendre RdV</span>
-                            </a></td>
+                            </a>
+                        @endif</td>
                                @if(count($data["h121"])==0) <td></td>
                             @endif 
                         @endif
@@ -364,12 +379,13 @@
                             @if (count($data["h122"])>=2) 
                             <td>
                             @endif
-                         <a href="{{URL::current()}}/122" class="btn btn-secondary btn-icon-split">
+                            @if($data['patid']!=0)   <a href="{{URL::current()}}/122" class="btn btn-secondary btn-icon-split">
                             <span class="icon text-white-50">
                                 <i class="fas fa-arrow-right"></i>
                             </span>
                             <span class="text">Prendre RdV</span>
-                        </a></td>
+                        </a>
+                    @endif</td>
                            @if(count($data["h122"])==0) <td></td>
                             @endif 
                         @endif
@@ -413,12 +429,12 @@
                                             </td>
                                     @else 
                                     
-                                    <td> <a href="{{URL::current()}}/141" class="btn btn-secondary btn-icon-split">
+                                    <td> @if($data['patid']!=0)<a href="{{URL::current()}}/141" class="btn btn-secondary btn-icon-split">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-arrow-right"></i>
                                         </span>
                                         <span class="text">Prendre RdV</span>
-                                    </a></td>
+                                    </a>@endif</td>
                                        @if(count($data["h141"])==0) <td></td>
                                     @endif 
                                 @endif
@@ -460,12 +476,14 @@
                                     @if (count($data["h142"])>=2) 
                                     <td>
                                     @endif
-                                 <a href="{{URL::current()}}/142" class="btn btn-secondary btn-icon-split">
+                                                                    @if($data['patid']!=0)
+ <a href="{{URL::current()}}/142" class="btn btn-secondary btn-icon-split">
                                     <span class="icon text-white-50">
                                         <i class="fas fa-arrow-right"></i>
                                     </span>
                                     <span class="text">Prendre RdV</span>
-                                </a></td>
+                                </a>                                    @endif
+</td>
                                    @if(count($data["h142"])==0) <td></td>
                                     @endif 
                                 @endif
@@ -506,12 +524,13 @@
                                             </td>
                                     @else 
                                     
-                                    <td> <a href="{{URL::current()}}/151" class="btn btn-secondary btn-icon-split">
+                                    <td>@if($data['patid']!=0)<a href="{{URL::current()}}/151" class="btn btn-secondary btn-icon-split">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-arrow-right"></i>
                                         </span>
                                         <span class="text">Prendre RdV</span>
-                                    </a></td>
+                                    </a>
+                                @endif</td>
                                        @if(count($data["h151"])==0) <td></td>
                                     @endif 
                                 @endif
@@ -553,12 +572,14 @@
                                     @if (count($data["h152"])>=2) 
                                     <td>
                                     @endif
-                                 <a href="{{URL::current()}}/152" class="btn btn-secondary btn-icon-split">
+                                                                    @if($data['patid']!=0)
+ <a href="{{URL::current()}}/152" class="btn btn-secondary btn-icon-split">
                                     <span class="icon text-white-50">
                                         <i class="fas fa-arrow-right"></i>
                                     </span>
                                     <span class="text">Prendre RdV</span>
-                                </a></td>
+                                </a>                                    @endif
+</td>
                                    @if(count($data["h152"])==0) <td></td>
                                     @endif 
                                 @endif
@@ -599,12 +620,12 @@
                                             </td>
                                     @else 
                                     
-                                    <td> <a href="{{URL::current()}}/161" class="btn btn-secondary btn-icon-split">
+                                    <td> @if($data['patid']!=0)<a href="{{URL::current()}}/161" class="btn btn-secondary btn-icon-split">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-arrow-right"></i>
                                         </span>
                                         <span class="text">Prendre RdV</span>
-                                    </a></td>
+                                    </a>@endif</td>
                                        @if(count($data["h161"])==0) <td></td>
                                     @endif 
                                 @endif
@@ -646,12 +667,14 @@
                                     @if (count($data["h162"])>=2) 
                                     <td>
                                     @endif
-                                 <a href="{{URL::current()}}/162" class="btn btn-secondary btn-icon-split">
+                                                                    @if($data['patid']!=0)
+ <a href="{{URL::current()}}/162" class="btn btn-secondary btn-icon-split">
                                     <span class="icon text-white-50">
                                         <i class="fas fa-arrow-right"></i>
                                     </span>
                                     <span class="text">Prendre RdV</span>
-                                </a></td>
+                                </a>                                @endif
+</td>
                                    @if(count($data["h162"])==0) <td></td>
                                     @endif 
                                 @endif

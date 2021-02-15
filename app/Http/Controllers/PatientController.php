@@ -1,9 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
+use DB;
 
 use Illuminate\Http\Request;
 use App\Patient;
+use App\Maladie;
+use App\Allergie;
+use App\Commentaire;
+use App\User;
 use Illuminate\Support\Facades\Auth;
 class PatientController extends Controller
 {
@@ -35,6 +40,10 @@ class PatientController extends Controller
     }
     public function showInfosR($id){
 		$patient = Patient::find($id);
+/*    $allergies = 
+    $maladies = 
+    $commentaire =
+  */
        return view('layouts.showInfos',['patient'=>$patient]);
         
     }
@@ -64,4 +73,16 @@ class PatientController extends Controller
       return redirect()->action('PatientController@index');
            
     }
+public function getMal($op,$patid){
+ if($op==0) $maladies= Maladie::where('patient_id',$patid)->get();
+else if ($op==1)$maladies= Allergie::where('patient_id',$patid)->get();
+else if ($op==2)$maladies= Commentaire::where('patient_id',$patid)->get(); 
+  for($i=0; $i<count($maladies) ;$i++){
+    $nomMed = User::find($maladies[$i]['medid'])->fname." ".User::find($maladies[$i]['medid'])->lname;
+    $maladies[$i]['medid'] = $nomMed;
+  }
+  return view('dashbord.medecin.ajaxcomp.getMal',['maladies'=>$maladies]);
+
+}
+
 }
