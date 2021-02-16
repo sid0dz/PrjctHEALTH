@@ -9,77 +9,31 @@
 
    
 
+  <div class="container-fluid">
 
-
-    <div>
-      <div class="min-height-200px">
-        <div class="page-header">
-          <div class="row">
-            <div class="col-md-6 col-sm-12">
-              <div class="title">
-                <h4>Lettre d'orientation</h4>
-              </div>
-             
-            </div>
-            
-          </div>
+    <!-- Page Heading -->
+    <!-- My Work here !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Lettre d'Orientation</h6>
         </div>
+        <div class="card-body">
+        
 
-        <table class="table table-success table-striped">
-          <tr><td> Nom et prénom : </td> <td>{{$patient->name}}</td> </tr>
-          <tr><td> Nom du medecin :</td> <td><input id="title" placeholder="Nom du médecin" type="text" class="form-control @error('title') is-invalid @enderror" name="nom"  required > </td> </tr>
+            <form action="{{route('orientationStore')}}" method="POST">
+                @csrf
+                <input type="hidden" name="patient_id" value="{{$patient->id ?? '13'}}"/>
+                <input type="hidden" name="date" value="{{date('d-m-Y')}}"/>
+                
+                <table class="table table-bordered " id="inft">
+<tr class="text-center"><th colspan=2>{{Auth::user()->fname }} {{Auth::user()->lname }} </th></tr>
+<tr  class="text-center"><td>Specialité:</td><td>{{Auth::user()->specialite }}</td></tr>
+<tr><td colspan="2" class="text-center"><div></div></td></tr>
+<tr><td>Date : </td><td>{{date('d-m-Y')}}</td></tr>
+<div><tr><td> Nom et prénom : </td> <td>{{$patient->name ?? 'define'}}</td> </tr></div>
 
-          </table>
-        <form role="form"  method="POST" action="{{route('orientationStore')}} " enctype="multipart/form-data">
-            @csrf
-            <div class="card-body">
-
-
-                <div class="form-group">
-                    <label for="exampleInputTitre">Patient id</label>
-                    <div >
-                        
-                        <input id="title" placeholder="Nom de la bourse" type="text" class="form-control @error('title') is-invalid @enderror" name="patient_id" value="{{ $patient->id ?? ''}}" required >
-  
-                        @error('title')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputTitre">Medecin id</label>
-                    <div >
-                        
-                        <input id="title" placeholder="Nom de la bourse" type="text" class="form-control @error('title') is-invalid @enderror" name="medecin_id" value="{{Auth::user()->id}}" required >
-  
-                        @error('title')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                  </div>
-  
-  
-              
-                  <div class="form-group">
-                    <label class="label">Date </label>
-                    <div class="input-group-icon">
-                        <input class="input--style-4 js-datepicker" type="date" name="date">
-                    </div>
-                </div>
-              
-
-             
-             
-               
-             
-
-
-              
-                <div class="col-12">
+ <div class="col-12">
               <div class="form-group">
                 <label for="exampleInputTitre">Lettre</label>
                 <div >
@@ -95,23 +49,38 @@
               </div>
                 </div>
 
+</table>
+<button type ="submit" class="btn btn-success btn-icon-split float-left">
+    <span class="icon text-white-50">
+        <i class="fas fa-check"></i>
+    </span>
+    <span class="text">Confirmer Orientation</span>
+</a></form>
+
+
+
+
+
+
+
+
+
+</div>
+</div>
+</div>
+
+
+               
+             
+
+
+              
+               
+
               
               
             
-               <div class="card-footer">
-              <button type="submit" class="btn btn-primary float-right pl-4 pr-4">Ajouter</button>
-            </div>
-              
-            </div>
-            <!-- /.card-body -->
-
-           
-          </form>
-                
-
-      </div>
-     
-    </div>
+             
  
 
    <script src="{{asset('cal-table/vendors/scripts/core.js')}}"></script>
