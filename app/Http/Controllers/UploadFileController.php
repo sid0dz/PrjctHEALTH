@@ -12,12 +12,17 @@ class UploadFileController extends Controller {
    }
    
    public function showUploadFile(Request $request) {
+      //dd($request);
       $file = $request->file('file');
 	 
   if(str_contains($file->getMimeType(), 'image')||str_contains($file->getMimeType(), 'pdf')){
 
 
       //Display File Name
+      echo 'useR: '. $request->user;
+      echo '<br>';
+      echo 'patient '. $request->patient;
+      echo '<br>';
       echo 'File Name: '.$file->getClientOriginalName()." ".phpversion();
       echo '<br>';
   

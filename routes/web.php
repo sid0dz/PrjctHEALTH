@@ -94,6 +94,7 @@ Route::resource('rdvs','RdvController');
    Route::get('/set/maladie/{patid}/{medid}/{info}','MedinfoController@newMaladie');
    Route::get('/set/allergie/{patid}/{medid}/{info}','MedinfoController@newAllergie');
    Route::get('/set/commentaire/{patid}/{medid}/{info}','MedinfoController@newCommentaire');
+   Route::post('/set/imagerie','MedinfoController@newImg');
 
     Route::get('/unset/orientation/{id}','MedinfoController@delOrientation');
 
@@ -104,8 +105,10 @@ Route::resource('rdvs','RdvController');
    Route::get('/tabledata/{id}/{medid}/{date}/{heure}','RdvController@newRDV4')->name('table.assign');;
    
    Route::get('/ajax/getInf/{op}/{id}','PatientController@getMal');
+   Route::get('/ajax/getImg/{id}','PatientController@getImg');
+   
    Route::post('/ajax',function(Request $request){ 
-       return dd($request);
+       return "success";
    });
    Route::get('/newUser',function(){ return view('layouts.Admin.newUser');});
 

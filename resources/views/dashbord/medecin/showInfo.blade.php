@@ -197,20 +197,20 @@
 							<div class="card shadow mb-4 mr-2 ml-2">
                                 <!-- Card Header - Accordion -->
                                 <a href="#imgr" class="d-block card-header py-3 collapsed" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="imgr">
-                                    <h6 class="m-0 font-weight-bold text-primary">Imagerie</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Documents</h6>
                                 </a>
                                 <!-- Card Content - Collapse -->
                                 <div class="collapse" id="imgr" style="">
                                     <div class="card-body">
-										<table class="table table-hover">
+										<table class="table table-hover" id="imgTable">
 											<tr>
-												<th>Date</th><th>Type</th> <th>Medecin</th>
+												<th>Date</th><th>Medecin</th><th>Description</th> <th>Action</th> 
 											</tr>
 	
 										</table>
 
 			
-										<a class="btn btn-primary float-right" href="{{ route ('patients.edit',['patient'=>$patient->id])}}"> <i class="fas fa-plus mr-2"></i>Ajouter une Imagerie</a>
+										<a class="btn btn-primary float-right" href="#" data-toggle="modal" data-target="#newImag"> <i class="fas fa-plus mr-2"></i>Ajouter Documents</a>
 										<br>			
 									</div>
                                 </div>
@@ -392,10 +392,64 @@ aria-hidden="true">
   </div>
   </div>    
 
+<div class="modal fade" id="newImag" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+aria-hidden="true">
+<div class="modal-dialog" role="document">
+	<div class="modal-content">
+		<div class="modal-header">
+			<h5 class="modal-title" id="exampleModalLabel">Ajouter un document : </h5>
+			<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">×</span>
+			</button>
+		</div>
+		<div class="modal-body">
+			<div class="text">Format accepté sont tout type d'image ou documents PDF </div>
+			<input type="text" class="form-control bg-light border-1 small" placeholder="Description..." id="descImg"/> 
+			<input type="file" accept=".pdf ,image/*" class="form-control mt-3 bg-light border-1 small" placeholder="Commentaire..." name="file" id="file"/> 
+
+		</div>
+			<div class="modal-footer">
+			<button class="btn btn-secondary" type="button" id="dsmimg" data-dismiss="modal">Annuler</button>
+			<a class="btn btn-primary" onclick="upl()">Ajouter Commentaire</a>
+		</div>
+	</div>
+</div>
+</div>
 
 
 
 <script> 
+    function upl(){
+		var url = "/set/imagerie";
+		const files = document.querySelector('[name=file]').files;
+		const formData = new FormData();
+		formData.append('file', files[0]);
+	    formData.append('desc',document.getElementById('descImg').value);
+		formData.append('user',{{Auth::user()->id}});
+		formData.append('patient',{{ $patient->id}});
+		
+// post form data
+const xhr = new XMLHttpRequest();
+// log response
+xhr.onload = () => {
+	var tbl = document.getElementById('imgTable');
+	var response= document.createElement('tr');
+	response.innerHTML = xhr.responseText;
+	
+	console.log("this:"+xhr.responseText);
+console.log("response:"+response.innerHTML);
+	tbl.appendChild(response);
+		   
+
+	document.getElementById("dsmimg").click();
+
+};
+
+// create and send the reqeust
+xhr.open('POST', url);
+xhr.send(formData);
+}
+
 function deleteor(id){
 
 	var btn = 	document.getElementById('confirmdeletebutton');
@@ -460,6 +514,7 @@ function confirmdelete(id){
 	  if (op==2)  var tbl = document.getElementById("allergieTable");
 	  if (op==3)   var tbl = document.getElementById("CommentaireTable");
 	  if (op==4)	var tbl = document.getElementById("presc");
+	  if (op==5)	var tbl = document.getElementById("imgTable");
 	  xhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
 console.log(this.responseText);
@@ -469,7 +524,8 @@ console.log(this.responseText);
 	  if (op==1)	  xhttp.open("GET", "/ajax/getInf/0/{{$patient->id}}", true);
 	  if (op==2)	  xhttp.open("GET", "/ajax/getInf/1/{{$patient->id}}", true);
 	  if (op==3)	  xhttp.open("GET", "/ajax/getInf/2/{{$patient->id}}", true);
-	  if (op==4)	  xhttp.open("GET", "/ajax/getInf/2/{{$patient->id}}", true);
+	  if (op==4)	  xhttp.open("GET", "/ajax/getInf/3/{{$patient->id}}", true);
+	  if (op==5)	  xhttp.open("GET", "/ajax/getImg/{{$patient->id}}", true);
 	  
 	  xhttp.send();
 	}
@@ -477,6 +533,7 @@ console.log(this.responseText);
 	getInf(2);
 	getInf(3);
 	getInf(4);
+	getInf(5);
 	
 	var birth = document.getElementById('birth');
 	var diff_ms = Date.now() - Date.parse(birth.innerText);

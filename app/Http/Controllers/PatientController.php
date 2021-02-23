@@ -9,7 +9,9 @@ use App\Maladie;
 use App\Rdv;
 use App\Allergie;
 use App\Commentaire;
+use App\Media;
 use App\Orientation;
+use App\Prescription;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 class PatientController extends Controller
@@ -86,11 +88,36 @@ public function getMal($op,$patid){
  if($op==0) $maladies= Maladie::where('patient_id',$patid)->get();
 else if ($op==1)$maladies= Allergie::where('patient_id',$patid)->get();
 else if ($op==2)$maladies= Commentaire::where('patient_id',$patid)->get(); 
-  for($i=0; $i<count($maladies) ;$i++){
-    $nomMed = User::find($maladies[$i]['medid'])->fname." ".User::find($maladies[$i]['medid'])->lname;
-    $maladies[$i]['medid'] = $nomMed;
-  }
+else if ($op==3) $maladies= Prescription::where('patient_id',$patid)->get();
+for($i=0; $i<count($maladies)&&$op!=3 ;$i++){
+  $nomMed = User::find($maladies[$i]['medid'])->fname." ".User::find($maladies[$i]['medid'])->lname;
+  $maladies[$i]['medid'] = $nomMed;
+}
+  for($i=0; $i<count($maladies)&&$op==3 ;$i++){
+  $nomMed = User::find($maladies[$i]['medecin_id'])->fname." ".User::find($maladies[$i]['medecin_id'])->lname;
+  $maladies[$i]['medid'] = $nomMed;
+  $maladies[$i]['type'] = $maladies[$i]['medics'];
+  
+}
   return view('dashbord.medecin.ajaxcomp.getMal',['maladies'=>$maladies]);
+
+}
+
+public function getImg($id){
+  
+$imgs = Media::where('patient_id','=',$id)->get();
+echo "<tr><th>Date</th> <th>Medecin</th> <th>Description</th> <th>Action</th></tr>";
+foreach($imgs as $img){
+  $mednom =  User::find($img->user_id)->fname." ".User::find($img->user_id)->lname; 
+
+ echo "<tr><td>".date('d-m-Y')."</td>";
+  echo "<td>".$mednom."</td>";
+ echo "<td>".$img->name."</td>";
+ echo "<td><a href='";
+ echo asset($img->link);
+ echo "' target='_blank' class='btn btn-primary btn-circle'  ><i class='fas fa-file-import'> </i></a></td></tr>";
+}
+
 
 }
 

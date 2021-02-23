@@ -5,11 +5,16 @@
 <h1>The XMLHttpRequest Object</h1>
 <button type="button" onclick="loadDoc()">Change Content</button>
 <br><br><br><br><br><br><br>
- <form action='/upload' enctype="multipart/form-data" method="post"><
-                @csrf
-	  <label> Select : </label>
-	  <input type="file" name="file">
-	  <button type="submit">submit </button>
+<form method="GET" action="/upload" enctype="multipart/form-data">
+    
+  <input type="file" name="file">
+  
+  <a href="#" onclick="upl()">Upload File</button>
+
+    <button type="submit" >Upload File</button>
+    </form>
+
+
 </div>
 
 <script>
@@ -28,7 +33,30 @@ function maladie() {
 }
 
 </script>
+<script>
+const url = "/upload";
+const form = document.querySelector('form');
 
+// add event listener
+    // collect files
+    function upl(){
+
+    const files = document.querySelector('[name=file]').files;
+    const formData = new FormData();
+    formData.append('file', files[0]);
+      formData.append('_token',document.getElementsByName('_token'.value));
+    // post form data
+    const xhr = new XMLHttpRequest();
+    // log response
+    xhr.onload = () => {
+        console.log(xhr.responseText);
+    };
+
+    // create and send the reqeust
+    xhr.open('POST', url);
+    xhr.send(formData);
+    }
+</script>
 
 <!-- Maladie Model-->
     <div class="modal fade" id="newMaladie" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
