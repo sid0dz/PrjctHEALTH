@@ -34,19 +34,42 @@ public function newRDV3($id,$medid,$date){
 
 
 }
-public function newRDV4($id,$medid,$date,$heure){
+public function newRDV5($id,$medid,$date,$heure){
    $rdv = new Rdv();
    $rdv->medecin_id = $medid;
    $rdv->patient_id = $id;
    $rdv->date = $date;
    $rdv->heure = $heure;
+   $rdv->motif = "Non renseigné";
    $rdv->save();
 $nom = Patient::find($id)->name;
 $fnom = User::find($medid)->fname;
 $lnom = User::find($medid)->lname;
 return view('layouts.rdv.success')->with('data',['idp'=>$id,'nomp'=>$nom,'nomMed'=>$fnom." ".$lnom,'date'=>$date,'heure'=>$heure]);
 }
+public function newRDV4($id,$medid,$date,$heure,$motif){
+   $rdv = new Rdv();
+   $rdv->medecin_id = $medid;
+   $rdv->patient_id = $id;
+   $rdv->date = $date;
 
+   $rdv->heure = $heure;
+   $rdv->motif = $motif;
+   $rdv->save();
+$nom = Patient::find($id)->name;
+$fnom = User::find($medid)->fname;
+$lnom = User::find($medid)->lname;
+return view('layouts.rdv.success')->with('data',['idp'=>$id,'nomp'=>$nom,'nomMed'=>$fnom." ".$lnom,'date'=>$date,'heure'=>$heure,'motif'=>$motif]);
+}
+
+
+public function req($date,$heure,$departement,$medecin,$name,$birthday,$phone,$email,$dejap,$motif)
+{
+return "success";
+}public function req2(Request $request)
+{
+return dd($request);
+}
 
 
 

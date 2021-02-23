@@ -55,7 +55,7 @@
                                     <tr>
                                         <th>Nom</th>
                                         <th>Date de naissance</th>
-                                        <th>TelephoneO</th>
+                                        <th>Telephone</th>
                                         <th>Email</th>
                                         <th>№ Securité Social</th>
                                         <th>Actions</th>
@@ -65,7 +65,7 @@
                                     <tr>
                                       <th>Nom</th>
                                       <th>Date de naissance</th>
-                                      <th>TelephoneO</th>
+                                      <th>Telephone</th>
                                       <th>Email</th>
                                       <th>№ Securité Social</th>
                                       <th>Actions</th>

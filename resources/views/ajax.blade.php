@@ -4,6 +4,12 @@
 <div id="demo">
 <h1>The XMLHttpRequest Object</h1>
 <button type="button" onclick="loadDoc()">Change Content</button>
+<br><br><br><br><br><br><br>
+ <form action='/upload' enctype="multipart/form-data" method="post"><
+                @csrf
+	  <label> Select : </label>
+	  <input type="file" name="file">
+	  <button type="submit">submit </button>
 </div>
 
 <script>

@@ -1,14 +1,114 @@
 @extends('layouts.parentLayout')
 @section('sidebar')
-@include('layouts.admin.sidebar')
-@endsection
+
+        <!-- Sidebar -->
+        <ul  id="sidbr"
+        class="navbar-nav sidebar sidebar-dark accordion  d-print-none"
+        style="background-image: linear-gradient(180deg, {{App\Clconfig::first()->debDegr}} 10%, {{App\Clconfig::first()->finDegr}} 100%);"
+
+        id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{url('dashboard')}}">
+                <div class="sidebar-brand-icon ml-2">
+				<img src="{{asset('logoAlt.png')}}" width="60">	
+				
+					</div>
+                <div class="sidebar-brand-text mx-2 mr-1">{{App\Clconfig::first()->sitename}}
+                </div>
+            </a>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item active">
+                <a class="nav-link" href="{{url('dashboard')}}">
+                    
+                    <span>Accueil</span></a>
+            </li>
+
+            
+
+            <!-- Nav Item - Pages Collapse Menu -->
+           
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="/show_users" ata-target="#collapseTwo"
+                    aria-expanded="true" aria-controls="collapseTwo">
+                
+                    <span>Afficher les utilisateur</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="/admconfig" ata-target="#collapseTwo"
+                    aria-expanded="true" aria-controls="collapseTwo">
+                
+                    <span>Configurer site</span>
+                </a>
+            </li>
+            
+
+            <!-- Nav Item - Utilities Collapse Menu -->
+            
+             <!-- Nav Item - Pages Collapse Menu -->
+
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+      
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+                    aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-fw fa-info"></i>
+                    <span>Infos</span>
+                </a>
+                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">{{App\Clconfig::first()->sitename}}</h6>
+                        <a class="collapse-item" >{{App\Clconfig::first()->siteadress}}</a>
+                        <a class="collapse-item">{{App\Clconfig::first()->siteemail}}</a>
+                        <a class="collapse-item">{{App\Clconfig::first()->sitenumber}}</a>    
+                        <a class="collapse-item" >{{App\Clconfig::first()->siteadress2}}</a>
+
+                    </div>
+                </div>
+            </li>
+
+
+        </ul>
+        <!-- End of Sidebar -->
+		@endsection
 @section('content')
+    @yield('content')
+        <!-- Contentof Admin dashboard -->
 
-        <!-- Content of Admin dashboard -->
+        <div class="card shadow mb-4 mr-2 ml-2">
+            <div class="card-header">
+                <font class="m-0 font-weight-bold text-primary">Bonjour {{Auth::User()->lname}}</font>
+       </div>
+            <div class="card-body">
+                <div class="table-responsive">
+				<h2 class="ml-2"> </h2>
+                <div class="card-body">
+                    <div class="table" id="tabledata">
+                       
 
-<h1> this is the Dashboard
+                    </div>
+                </div>
+
+
+
+
+
         <!-- End of Admin dashboard-->
 @endsection
+
+
 
 
 

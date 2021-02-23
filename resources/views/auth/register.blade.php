@@ -79,7 +79,7 @@
                                             <span class="checkmark"></span>
                                         </font></label>                                        </div>
                                     <div class="col-sm-6">
-                                        <select  style="font-size: 0.8rem;border-radius: 50px;padding: 0.8rem 5rem;" id="specialite" name="specialite"
+                                        <select class="form-control chosen-select" style="border-radius: 50px;" id="specialite" name="specialite"
                                             placeholder="Select an option">
                                     <option disabled="disabled" selected="selected">Choose option</option>
 											

@@ -6,6 +6,7 @@ use DB;
 use Illuminate\Http\Request;
 use App\Patient;
 use App\Maladie;
+use App\Rdv;
 use App\Allergie;
 use App\Commentaire;
 use App\Orientation;
@@ -43,14 +44,18 @@ class PatientController extends Controller
     }
     public function showInfosR($id){
 		$patient = Patient::find($id);
-/*    $allergies = 
+    $rdvs = Rdv::where('patient_id','=',$id)->get();
+    for( $x=0; $x < count($rdvs) ; $x++){
+      $rdvs[$x]->medecin = User::find($rdvs[$x]->medecin_id)->fname." ".User::find($rdvs[$x]->medecin_id)->lname;
+
+    }
+    /*    $allergies = 
     $maladies = 
     $commentaire =
   */
   $orientation = Orientation::where('patient_id','=',$id)->get();
-return view('layouts.showInfos',['patient'=>$patient , 'orientations'=>$orientation]);
+return view('layouts.showInfos',['patient'=>$patient , 'orientations'=>$orientation,'rdvs'=>$rdvs]);
 
-        
     }
 
 

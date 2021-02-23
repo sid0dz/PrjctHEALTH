@@ -259,10 +259,7 @@
                                       
                             
                                         
-													
-													<form action="{{route('orientationdestroy',['orientation'=>$orientation->id])}}" method="POST">
-														{{csrf_field()}}
-														{{method_field('DELETE')}}
+								
 
                                                         <a href="{{ route('editorientation',['id'=>$orientation->id])}}" title="editer" class="btn btn-primary btn-circle ">
 															<i class="fas fa-edit"> </i>

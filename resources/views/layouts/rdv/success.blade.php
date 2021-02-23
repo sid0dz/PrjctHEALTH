@@ -1,5 +1,5 @@
 
-@extends('layouts.secretaire')
+@extends(Auth::user()->role == 1 ? 'layouts.medecin' : 'layouts.secretaire')
 @section('content')
 <div class="container-fluid">
 
@@ -15,18 +15,42 @@
 
  
 <div id="printableArea"><center>
-<img height="200"  src="{{asset('/logo.png')}}" style="display:none;"/>
+    <!-- moved "vertical-align:middle" style from span to img -->
+<div>
+    <img class="d-none d-print-block" style="vertical-align:middle" width="120" src="{{asset('/img/logo.png')}}">
+    <span class="d-none d-print-block"><font size="10">{{App\Clconfig::first()->sitename}}</font></span>
+  </div>
+
 <h3><table class="table">
+    <tr><th colspan="2"><div class="text-center">Rendez-vous</th></tr>
+
     <tr><th>Nom: </th> <td> {{$data["nomp"]}}</td> </tr>
         <tr>­</tr>
     <tr><th>Medecin: </th> <td> {{$data["nomMed"]}}</td> </tr>
     <tr></tr>
     <tr><th>Date: </th> <td> {{$data["date"]}}</td> </tr>
     <tr></tr>
-    <tr><th>Heure: </th> <td> {{$data["heure"][0]}}{{($data["heure"][1])==1?":00":":30"}}</td> </tr>
+    <tr><th>Heure: </th> <td>
+    @php 
+    echo $data["heure"][0];
+    if(strlen($data["heure"]) <3 )
+    echo $data["heure"][1]==1?":00":":30";
+
+    else 
+    echo $data["heure"][1].($data["heure"][2]==1?":00":":30");
+@endphp
+        </td> </tr>
+        <tr> <th> Motif </th><td> {{$data["motif"]}}
 </table></h3>
 
-
+<div class="float-right d-none d-print-block">
+    <br><br>
+<br>
+{{App\Clconfig::first()->siteadress}}<br>
+{{App\Clconfig::first()->siteemail}}<br>
+{{App\Clconfig::first()->sitenumber}}<br>
+{{App\Clconfig::first()->siteadress2}}<br>
+</div>
 
 </center>
 

@@ -1,7 +1,5 @@
-
 @extends('layouts.secretaire')
 @section('content')
-
 
 <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 <link
@@ -48,19 +46,16 @@
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <div class="d-sm-flex align-items-center justify-content-between mb-2">
-                            <h1 class="h3 mb-0 text-gray-800">Listes des patients</h1>
-                            <a href="/addpatient" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i> Ajouter Patients</a>
-                        </div>
+                        <h6 class="m-0 font-weight-bold text-primary">Listes des patients</h6>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
                                 <thead>
                                     <tr>
                                         <th>Nom</th>
                                         <th>Date de naissance</th>
-                                        <th>TelephoneO</th>
+                                        <th>Telephone</th>
                                         <th>Email</th>
                                         <th>№ Securité Social</th>
                                         <th>Actions</th>
@@ -70,52 +65,41 @@
                                     <tr>
                                       <th>Nom</th>
                                       <th>Date de naissance</th>
-                                      <th>TelephoneO</th>
+                                      <th>Telephone</th>
                                       <th>Email</th>
                                       <th>№ Securité Social</th>
                                       <th>Actions</th>
                                     </tr>
                                 </tfoot>
                                 <tbody>
- 
-
                                   @foreach ($mes  as $patient)
-                                  <tr>
+                                  <tr style="cursor: pointer;" onClick="window.location.href='/show_infos/{{$patient->id}}'">
+                                               
                                     <td>{{$patient->name}}</td>
                                 <td>{{$patient->patient_birth_date}}</td> 
                                 <td>{{$patient->phone}}</td>
                                     <td>{{$patient->email}}</td>
-                                    <td>{{$patient->npatient}}</td>
+                                    <td>{{$patient->npatient}}</td> </a>
                                     <td>
+                                      
+                            
                                         
-                                    <form action="#" >
-                          
-                                      {{csrf_field()}}
-                                               <input type="hidden" name="id" value="{{$patient->id}}">
-                      
-                                 
-                                               <a href="/show_infos/{{$patient->id}}" class="btn btn-warning btn-circle ">
-                                                <i class="fas fa-edit"> </i>
-                                      </button> 
-                                  
-                                      <form action="/new_rdv" method="post" id="showinf">
-                          
-                                        {{csrf_field()}}
-                                                 <input type="hidden" name="id" value="{{$patient->id}}">
-                      
-                                   
-                                                  
-                                        <a href="/newRDV/{{$patient->id}}" alt="Prendre Rendez-vous" class="btn btn-success btn-circle">
-                                         <i class="fas fa-table"> </i>
-                                        </a>
-                                        
-                                        </form> 
-                        
-                        
-                                    </form>
+                                                     <a   data-toggle="tooltip" title="Prendre rendez-vous" href="/newRDV/{{$patient->id}}/" alt="Prendre Rendez-vous" class="btn btn-success btn-circle">
+                                               <i class="fas fa-table"> </i>
+                                              </a>
+                                              <a href="/show_infos/{{$patient->id}}" title="Voir les informations" class="btn btn-primary btn-circle ">
+                                                      <i class="fas fa-arrow-right"> </i>
+                            
+                                         
+                                                        
+                                              
+                                              
+                                              
+                              
                                     </td>
                                   </tr>
                                   @endforeach   
+                   
                                 </tbody>
                             </table>
                         </div>
@@ -148,5 +132,4 @@
 
 
             @endsection
-
-
+            

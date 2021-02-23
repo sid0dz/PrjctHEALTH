@@ -19,8 +19,7 @@ class PrescController extends Controller
     public function store(Request $request){
      //   ($medid,$patid,$medics,$dose,$date
         $medics = $request->input("medic");
-if($medics==null) {
-    
+    if($medics==null) {
     $patient = Patient::find($request->input("patid"));
     return view('dashbord.medecin.nvpresc',['patient' => $patient]);
       
@@ -35,14 +34,18 @@ if($medics==null) {
          
         
         $prescription = new Prescription;
-
         $prescription->medecin_id =Auth::user()->id;
         $prescription ->patient_id =$request->input("patid");
         $prescription ->date = date('Y-m-d');
         $prescription ->medics =  $medicament;
         $prescription->save();
 
-        return "success";
+        $nomp=Patient::find($request->input("patid"))->name;
+        $nomMed=Auth::user()->fname." ".Auth::user()->lname;
+        
+
+
+        return view('dashbord.medecin.prsuccess')->with('data',['idp'=>$request->input("patid"),'nomp'=>$nomp,'nomMed'=>$nomMed,'medics'=>$medics,'doses'=>$doses]);
 
     }}
 

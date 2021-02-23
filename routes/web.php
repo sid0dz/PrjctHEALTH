@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,11 @@ Route::get('/ajax', function () {
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/index.html', function () {
+    return view('welcome');
+});
+
+
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 
@@ -66,7 +72,7 @@ Route::resource('rdvs','RdvController');
 
    Route::get('/newRDV/{id}/{medid}','RdvController@newRDV2');
    Route::get('/newRDV/{id}/{medid}/{date}','RdvController@newRDV3');
-   Route::get('/newRDV/{id}/{medid}/{date}/{heure}','RdvController@newRDV4');
+   Route::get('/newRDV/{id}/{medid}/{date}/{heure}/{motif}','RdvController@newRDV4');
 
    // orientation controllers
    Route::get('/{id}/orientation','OrientationController@create')->name('orientation');
@@ -94,3 +100,20 @@ Route::resource('rdvs','RdvController');
    Route::get('/tabledata/{id}/{medid}/{date}/{heure}','RdvController@newRDV4')->name('table.assign');;
    
    Route::get('/ajax/getInf/{op}/{id}','PatientController@getMal');
+   Route::post('/ajax',function(Request $request){ 
+       return dd($request);
+   });
+   Route::get('/newUser',function(){ return view('layouts.Admin.newUser');});
+
+   Route::post('/newUser','UserAdmController@addUser');
+   Route::get('/admconfig',function(){  return view('layouts.Admin.configsite');});
+   
+Route::post('/admconfig','UserAdmController@siteconf');
+Route::get('/upload','UploadFileController@index');
+Route::post('/upload','UploadFileController@showUploadFile');
+Route::get('/profil',function(){
+return view('layouts.profil');
+});
+Route::get('/rdv/{date?}/{heure?}/{departement?}/{medecin?}/{name?}/{birthday?}/{phone?}/{email?}/{dejap?}/{motif?}','RdvController@req');
+Route::post('/rdvp','RdvController@req2');
+Route::post('/profil','UserAdmController@profilupd');
