@@ -270,7 +270,7 @@
 														<a herf="#" title="supprimer" class="btn btn-danger btn-circle "  >
 															<i class="fas fa-trash"> </i>
 														</a>
-													</form>
+													
 
 													
 													  
