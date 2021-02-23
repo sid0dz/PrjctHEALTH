@@ -21,6 +21,15 @@ class Clconfigs extends Migration
 		$table->string('sitenumber');
 		$table->string('siteemail');
 	});		
+	    DB::table('clconfigs')->insert(array(
+		'sitename'=>'Clinique Chifaa',
+		'siteadress'=>'29 Rue colonel lotfi',
+		'siteadress2'=>'29 Rue colonel lotfi',
+		'sitenumber'=>'049 43 85 25',
+		'siteemail'=>'something@mail.com'
+		
+		));
+
     }
 
     /**
