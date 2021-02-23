@@ -259,17 +259,17 @@
                                       
                             
                                         
-								
-
+													
+													
                                                         <a href="{{ route('editorientation',['id'=>$orientation->id])}}" title="editer" class="btn btn-primary btn-circle ">
 															<i class="fas fa-edit"> </i>
 														   </a>
 												 <a href="#" title="imprimer" class="btn btn-success btn-circle ">
 														 <i class="fas fa-print"> </i>
 														</a>
-														<button type="submit" title="supprimer" class="btn btn-danger btn-circle " onclick="return confirm('Vous voulez vraiment supprimer?')">
+														<a herf="#" title="supprimer" class="btn btn-danger btn-circle "  >
 															<i class="fas fa-trash"> </i>
-														</button>
+														</a>
 													</form>
 
 													
