@@ -32,7 +32,8 @@ class OrientationController extends Controller
        $orientation->save();
        $patient= Patient::where('id','=',$orientation->patient_id)->first();
        $orientationlist = Orientation::where('patient_id','=',$patient->id)->get();
-       return view('dashbord.medecin.showInfo',['patient'=>$patient,'orientations'=>$orientationlist]); 
+       
+       return redirect()->action('PatientController@showInfosR',['id'=>$request->input('patient_id')]);
       
 
     }
@@ -57,7 +58,7 @@ class OrientationController extends Controller
        $orientation->save();
        $patient= Patient::where('id','=',$orientation->patient_id)->first();
        $orientationlist = Orientation::where('patient_id','=',$patient->id)->get();
-       return view('dashbord.medecin.showInfo',['patient'=>$patient,'orientations'=>$orientationlist]); 
+       return redirect()->action('PatientController@showInfosR',['id'=>$patient->id]);
       
  }
  public function destroy($id){

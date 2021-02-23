@@ -94,6 +94,10 @@ Route::resource('rdvs','RdvController');
    Route::get('/set/maladie/{patid}/{medid}/{info}','MedinfoController@newMaladie');
    Route::get('/set/allergie/{patid}/{medid}/{info}','MedinfoController@newAllergie');
    Route::get('/set/commentaire/{patid}/{medid}/{info}','MedinfoController@newCommentaire');
+
+    Route::get('/unset/orientation/{id}','MedinfoController@delOrientation');
+
+
    //Route::get('/set/maladie/{id}/{maladie}','MedinfoController@newImagerie');
    Route::get('/deleteRdv/{id}','RdvController@deleterdv');
    Route::get('/tabledata/{id}/{medid}/{date}','RdvController@showTable')->name('table.show');

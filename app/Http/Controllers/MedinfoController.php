@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Maladie;
 use App\Allergie;
+use App\Orientation;
 use App\Commentaire;
 use App\User;
 
@@ -40,6 +41,15 @@ class MedinfoController extends Controller
         $topic->date = date('Y-m-d');
         $topic->save();
         return "<td>".date('d-m-Y')."</td><td>".$info."</td><td>".$mednom."</td>";        }
+
+        public function delOrientation($id){
+            $orient = Orientation::find($id);
+          // dd($orient);
+            $orient->delete();
+            return "success";                   
+
+
+        }
 
 
 

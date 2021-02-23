@@ -254,23 +254,22 @@
 											 <td>{{$orientation->date}} </td>
 												<td>{{$orientation->contenu}}</td>
 											
-												<td>Souadji wissem</td>
+												<td>{{$orientation->medecin}}</td>
 												<td>
                                       
                             
                                         
 													
 													
-                                                        <a href="{{ route('editorientation',['id'=>$orientation->id])}}" title="editer" class="btn btn-primary btn-circle ">
-															<i class="fas fa-edit"> </i>
+                                    <a href="{{ route('editorientation',['id'=>$orientation->id])}}" title="editer" class="btn btn-primary btn-circle ">
+												<i class="fas fa-edit"> </i>
 														   </a>
-												 <a href="#" title="imprimer" class="btn btn-success btn-circle ">
+									 <a href="#" title="imprimer" class="btn btn-success btn-circle ">
 														 <i class="fas fa-print"> </i>
 														</a>
-														<a herf="#" title="supprimer" class="btn btn-danger btn-circle "  >
+										<a herf="#" data-toggle="modal" onclick="deleteor({{$orientation->id}})" data-target="#confirmDeleteModel" title="supprimer" class="btn btn-danger btn-circle "  >
 															<i class="fas fa-trash"> </i>
-														</a>
-													</form>
+										</a>
 
 													
 													  
@@ -360,11 +359,73 @@ aria-hidden="true">
 </div>
 <!--End of Commentaire model --->
 
-<script>
+<div class="toast" role="alert" style="position: absolute; top: 0; right: 0;" aria-live="assertive" aria-atomic="true">
+	<div class="toast-header" style="background-color:rgb(219, 255, 190)">
+		
+
+	  <strong class="mr-auto">Confirmé</strong>
+	  <small class="text-muted"></small>
+	  <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+	  <span aria-hidden="true">&times;</span>
+	</button>
+	</div>
+	<div class="toast-body">
+	  Suppression confirmé!
+	</div>
+  </div>
+  <div class="modal fade" id="confirmDeleteModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+	  <div class="modal-content">
+		  <div class="modal-header">
+			  <h5 class="modal-title" id="exampleModalLabel">Veuillez confirmer : </h5>
+			  <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+				  <span aria-hidden="true">×</span>
+			  </button>
+		  </div>
+		  <div class="modal-body">Voulez vous vraiment supprimer ? </div>
+		  <div class="modal-footer">
+			  <button class="btn btn-secondary" type="button" id="dssm" data-dismiss="modal">Annuler</button>
+			  <a class="btn btn-danger" id="confirmdeletebutton" onclick="confirm(1)">Supprimer</a>
+		  </div>
+	  </div>
+  </div>
+  </div>    
+
+
+
+
+<script> 
+function deleteor(id){
+
+	var btn = 	document.getElementById('confirmdeletebutton');
+	btn.setAttribute('onclick','confirmdelete("'+id+'")');
+
+}
+
+function confirmdelete(id){
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+	
+				document.getElementById("dssm").click();
+ //show toast
+			$('.toast').toast({
+				'autohide': true,
+				'delay':  5000});
+			$('.toast').toast('show');
+				}		
+		}
+	xhttp.open("GET", "/unset/orientation/"+id, true);
+	xhttp.send();
+		
+	}
+
+
 	function setNew(op) {
 	  var xhttp = new XMLHttpRequest();
-var tbl;
-var str;
+     var tbl;
+     var str;
 	  if (op==1) {str = document.getElementById("maladText").value;
 	  			 tbl = document.getElementById("maladtable");}
 

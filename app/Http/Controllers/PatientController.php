@@ -47,14 +47,13 @@ class PatientController extends Controller
     $rdvs = Rdv::where('patient_id','=',$id)->get();
     for( $x=0; $x < count($rdvs) ; $x++){
       $rdvs[$x]->medecin = User::find($rdvs[$x]->medecin_id)->fname." ".User::find($rdvs[$x]->medecin_id)->lname;
-
     }
-    /*    $allergies = 
-    $maladies = 
-    $commentaire =
-  */
-  $orientation = Orientation::where('patient_id','=',$id)->get();
-return view('layouts.showInfos',['patient'=>$patient , 'orientations'=>$orientation,'rdvs'=>$rdvs]);
+
+  $orientations = Orientation::where('patient_id','=',$id)->get();
+    for( $x=0; $x < count($orientations) ; $x++){
+        $orientations[$x]->medecin = User::find($orientations[$x]->medecin_id)->fname." ".User::find($orientations[$x]->medecin_id)->lname;
+    }
+return view('layouts.showInfos',['patient'=>$patient , 'orientations'=>$orientations,'rdvs'=>$rdvs]);
 
     }
 

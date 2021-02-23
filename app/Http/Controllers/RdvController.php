@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Rdv;
 use App\Patient;
+use App\Dmrdv;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use URL;
@@ -65,8 +66,23 @@ return view('layouts.rdv.success')->with('data',['idp'=>$id,'nomp'=>$nom,'nomMed
 
 public function req($date,$heure,$departement,$medecin,$name,$birthday,$phone,$email,$dejap,$motif)
 {
-return "success";
-}public function req2(Request $request)
+   $dm= new Dmrdv();
+   $dm->date = $date;
+   $dm->heure = $heure;
+   $dm->departement = $departement;
+   $dm->medecin = $medecin;
+   $dm->birthday = $birthday;
+   $dm->phone = $phone;
+   $dm->email = $email;
+   $dm->dejap = $dejap;
+   $dm->motif = $motif;
+   $dm->name = $name;
+   $dm->save();
+   return "success";
+
+}
+
+public function req2(Request $request)
 {
 return dd($request);
 }

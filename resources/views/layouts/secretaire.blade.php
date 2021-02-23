@@ -172,8 +172,7 @@
                                     <div class="col mr-2">
                                         <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                             Rendez-vous en attente</div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{count(DB::table('dmrdvs')->where('date','=',date('Y-m-d'))
-                                            ->get())}}</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{count(DB::table('dmrdvs')->get())}}</div>
                                     </div>
                                     <div class="col-auto">
                                         <i class="fas fa-user-clock fa-2x text-gray-300"></i>

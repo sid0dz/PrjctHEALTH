@@ -36,7 +36,11 @@
     
     <td>
     <table>
-        <tr><td><img src="{{asset('uploads/avatar/'.Auth::user()->avatar)}}" height="50" alt=""></td><td>    <input type="file" name="avatar" class="form-control bg-light border-1 small"
+        <tr><td><img src="   @if(Auth::user()->avatar==null)
+            {{asset('/img/undraw_profile.svg')}}
+        @else {{asset('uploads/avatar/'.Auth::user()->avatar)}}
+            @endif 
+            " height="50" alt=""></td><td>    <input type="file" name="avatar" class="form-control bg-light border-1 small"
          placeholder="Nom du site" value="#"></td></tr>
     </table>
     </td></tr>
