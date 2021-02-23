@@ -269,7 +269,9 @@
 														</a>
 										<a herf="#" data-toggle="modal" onclick="deleteor({{$orientation->id}})" data-target="#confirmDeleteModel" title="supprimer" class="btn btn-danger btn-circle "  >
 															<i class="fas fa-trash"> </i>
+
 										</a>
+
 
 													
 													  
