@@ -247,13 +247,45 @@
                                     <div class="card-body">
 										<table class="table table-hover">
 											<tr>
-												<th>Date</th><th>Type</th> <th>Medecin</th>
+												<th>Date</th><th>Type</th> <th>Medecin</th> <th>Actions</th>
 											</tr>
-												<td>21-12-2012</td>
-												<td>Thorax avant-gauche</td>
+											 @foreach( $orientations as $orientation)
+											 <tr>
+											 <td>{{$orientation->date}} </td>
+												<td>{{$orientation->contenu}}</td>
 											
 												<td>Souadji wissem</td>
-											
+												<td>
+                                      
+                            
+                                        
+													
+													<form action="{{route('orientationdestroy',['orientation'=>$orientation->id])}}" method="POST">
+														{{csrf_field()}}
+														{{method_field('DELETE')}}
+
+                                                        <a href="{{ route('editorientation',['id'=>$orientation->id])}}" title="editer" class="btn btn-primary btn-circle ">
+															<i class="fas fa-edit"> </i>
+														   </a>
+												 <a href="#" title="imprimer" class="btn btn-success btn-circle ">
+														 <i class="fas fa-print"> </i>
+														</a>
+														<button type="submit" title="supprimer" class="btn btn-danger btn-circle " onclick="return confirm('Vous voulez vraiment supprimer?')">
+															<i class="fas fa-trash"> </i>
+														</button>
+													</form>
+
+													
+													  
+										
+													   
+											 
+											 
+											 
+							 
+								   </td>
+											</tr>
+											@endforeach
 										</table>
 
 			

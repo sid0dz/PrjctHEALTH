@@ -8,6 +8,7 @@ use App\Patient;
 use App\Maladie;
 use App\Allergie;
 use App\Commentaire;
+use App\Orientation;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 class PatientController extends Controller
@@ -35,7 +36,9 @@ class PatientController extends Controller
     }
     public function showInfos(Request $request){
 		$patient = Patient::find($request->input('id'));
-       return view('layouts.showInfos',['patient'=>$patient]);
+    $orientation = Orientation::where(['patient_id','=',$id],
+          ['medecin_id','=',Auth::user()->id])->get;
+       return view('layouts.showInfos',['patient'=>$patient , 'orientations'=>$orientation]);
         
     }
     public function showInfosR($id){
@@ -44,7 +47,9 @@ class PatientController extends Controller
     $maladies = 
     $commentaire =
   */
-       return view('layouts.showInfos',['patient'=>$patient]);
+  $orientation = Orientation::where('patient_id','=',$id)->get();
+return view('layouts.showInfos',['patient'=>$patient , 'orientations'=>$orientation]);
+
         
     }
 

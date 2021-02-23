@@ -68,9 +68,12 @@ Route::resource('rdvs','RdvController');
    Route::get('/newRDV/{id}/{medid}/{date}','RdvController@newRDV3');
    Route::get('/newRDV/{id}/{medid}/{date}/{heure}','RdvController@newRDV4');
 
-
+   // orientation controllers
    Route::get('/{id}/orientation','OrientationController@create')->name('orientation');
    Route::post('orientationStore','OrientationController@store')->name('orientationStore');
+   Route::get('/{id}/editorientation','OrientationController@edit')->name('editorientation');
+   Route::put('/{id}/up','OrientationController@update')->name('orientationupdate');
+   Route::delete('/{id}/destroy','OrientationController@destroy')->name('orientationdestroy');
  
 
    Route::get('/newRDVm/{id}','RdvController@newRDVm2');
