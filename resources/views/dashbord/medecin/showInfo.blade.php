@@ -118,11 +118,7 @@
 											<tr>
 												<th>Date</th><th>Docteur</th> <th>Specialité </th>
 											</tr>
-												<td>21-12-2012</td>
-												<td>Jalma Rachida</td>
-											
-												<td>General</td>
-											
+
 										</table>
 
 			
@@ -144,14 +140,7 @@
 											<tr>
 												<th>Date</th><th>Maladie</th> <th>Medecin</th>
 											</tr>
-											<tr>	<td>21-12-2020</td>
-												<td>Hypertension</td>
-												<td>Medrar ouassini</td>
-											</tr>
-											<tr>	<td>02-04-2018</td>
-												<td>Grippe virale</td>
-												<td>Souadji wissem</td>
-											</tr>
+
 										</table>
 
 			
@@ -173,10 +162,7 @@
 											<tr>
 												<th>Date</th><th>Type d'allergie</th> <th>Medecin</th>
 											</tr>
-												<td>24-04-2017</td>
-												<td>Allergie au Pollen</td>
-											
-												<td>Harrar hichem</td>
+
 											
 										</table>
 
@@ -199,11 +185,7 @@
 											<tr>
 												<th>Date</th><th>Note</th> <th>Medecin</th>
 											</tr>
-												<td>24-04-2017</td>
-												<td>Risque d'essouflement en reaction allergique</td>
-											
-												<td>Harrar Hichem</td>
-											
+
 										</table>
 
 			
@@ -224,11 +206,7 @@
 											<tr>
 												<th>Date</th><th>Type</th> <th>Medecin</th>
 											</tr>
-												<td>21-12-2012</td>
-												<td>Thorax avant-gauche</td>
-											
-												<td>Souadji wissem</td>
-											
+	
 										</table>
 
 			
@@ -237,8 +215,9 @@
 									</div>
                                 </div>
 							</div>
-							<div class="card shadow mb-4 mr-2 ml-2">
                                 <!-- Card Header - Accordion -->
+															<div class="card shadow mb-4 mr-2 ml-2">
+
                                 <a href="#orientation" class="d-block card-header py-3 collapsed" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="orientation">
                                     <h6 class="m-0 font-weight-bold text-primary">Lettre d'Orientation</h6>
                                 </a>
@@ -257,9 +236,6 @@
 												<td>{{$orientation->medecin}}</td>
 												<td>
                                       
-                            
-                                        
-													
 													
                                     <a href="{{ route('editorientation',['id'=>$orientation->id])}}" title="editer" class="btn btn-primary btn-circle ">
 												<i class="fas fa-edit"> </i>
@@ -294,7 +270,29 @@
                                 </div>
                                 
                             </div>
-				
+						
+							<div class="card shadow mb-4 mr-2 ml-2">
+                                <!-- Card Header - Accordion -->
+                                <a href="#prsc" class="d-block card-header py-3 collapsed" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="imgr">
+                                    <h6 class="m-0 font-weight-bold text-primary">Prescriptions</h6>
+                                </a>
+                                <!-- Card Content - Collapse -->
+                                <div class="collapse" id="prsc" style="">
+                                    <div class="card-body">
+										<table  id="presc" class="table table-hover">
+											<tr>
+												<th>Date</th><th>Type</th> <th>Medecin</th>
+											</tr>
+
+										</table>
+
+			
+										<a class="btn btn-primary float-right" href="{{ route ('patients.edit',['patient'=>$patient->id])}}"> <i class="fas fa-plus mr-2"></i>Ajouter une Imagerie</a>
+										<br>			
+									</div>
+                                </div>
+							</div>
+
 							
 							
 
@@ -425,15 +423,14 @@ function confirmdelete(id){
 
 
 	function setNew(op) {
-	  var xhttp = new XMLHttpRequest();
-     var tbl;
-     var str;
+	var xhttp = new XMLHttpRequest();
+
 	  if (op==1) {str = document.getElementById("maladText").value;
 	  			 tbl = document.getElementById("maladtable");}
 
 	  if (op==2){  str = document.getElementById("allergText").value;
 	   tbl = document.getElementById("allergieTable");
-	}
+					}
 
 	  if (op==3) { str = document.getElementById("commText").value;
 	  var tbl = document.getElementById("CommentaireTable");
@@ -454,27 +451,32 @@ function confirmdelete(id){
 	  document.getElementById("dsm3").click();
 	
 	}
+
+
 	function getInf(op){
 		var xhttp = new XMLHttpRequest();
-
-	  if (op==1)  tbl = document.getElementById("maladtable");
-	  if (op==2)   tbl = document.getElementById("allergieTable");
+	
+	  if (op==1) var tbl = document.getElementById("maladtable");
+	  if (op==2)  var tbl = document.getElementById("allergieTable");
 	  if (op==3)   var tbl = document.getElementById("CommentaireTable");
-	  
+	  if (op==4)	var tbl = document.getElementById("presc");
 	  xhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
-			
+console.log(this.responseText);
 			tbl.innerHTML = this.responseText;
 		   }
 	  };
 	  if (op==1)	  xhttp.open("GET", "/ajax/getInf/0/{{$patient->id}}", true);
 	  if (op==2)	  xhttp.open("GET", "/ajax/getInf/1/{{$patient->id}}", true);
 	  if (op==3)	  xhttp.open("GET", "/ajax/getInf/2/{{$patient->id}}", true);
+	  if (op==4)	  xhttp.open("GET", "/ajax/getInf/2/{{$patient->id}}", true);
+	  
 	  xhttp.send();
 	}
 	getInf(1);
 	getInf(2);
 	getInf(3);
+	getInf(4);
 	
 	var birth = document.getElementById('birth');
 	var diff_ms = Date.now() - Date.parse(birth.innerText);
