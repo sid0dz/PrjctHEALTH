@@ -23,7 +23,7 @@
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
                 <a class="nav-link" href="{{url('dashboard')}}">
-                    
+                    <i class="fas fa-fw fa-columns"></i>
                     <span>Accueil</span></a>
             </li>
 
@@ -35,7 +35,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="/show_patients" ata-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
-                
+                     <i class="fas fa-fw fa-hospital-user"></i>
                     <span>Afficher les patients</span>
                 </a>
             </li>
