@@ -59,7 +59,7 @@
                 <input class="input--style-4 js-datepicker" type="date" name="birthday" min="1920-01-01" max="{{date('d-m-Y')}}" required>
                  @error('birthday')
                       <span class="invalid-feedback" role="alert">
-                          <strong>rensegner la date de naissance</strong>
+                          <strong>{{ $message }}</strong>
                       </span>
                   @enderror
             </div>
