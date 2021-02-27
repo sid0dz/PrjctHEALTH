@@ -33,8 +33,11 @@ class OrientationController extends Controller
        $patient= Patient::where('id','=',$orientation->patient_id)->first();
        $orientationlist = Orientation::where('patient_id','=',$patient->id)->get();
        
-       return redirect()->action('PatientController@showInfosR',['id'=>$request->input('patient_id')]);
-      
+      // return redirect()->action('PatientController@showInfosR',['id'=>$request->input('patient_id')]);
+      return view('dashbord.medecin.orsuccess',
+      ['or'=>$orientation,
+      'pname'=>Patient::find($request->input('patient_id'))->name
+      ]);
 
     }
 

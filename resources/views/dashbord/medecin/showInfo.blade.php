@@ -234,42 +234,17 @@
                                 <!-- Card Content - Collapse -->
                                 <div class="collapse" id="orientation" style="">
                                     <div class="card-body">
-										<table class="table table-hover">
+										<table id="orTable" class="table table-hover">
 											<tr>
-												<th>Date</th><th>Type</th> <th>Medecin</th> <th>Actions</th>
+												<th>Date</th><th>info</th> <th>Medecin</th> <th>Actions</th>
 											</tr>
-											 @foreach( $orientations as $orientation)
-											 <tr>
-											 <td>{{$orientation->date}} </td>
-												<td>{{$orientation->contenu}}</td>
-											
-												<td>{{$orientation->medecin}}</td>
-												<td>
-                                      
-													
-                                    <a href="{{ route('editorientation',['id'=>$orientation->id])}}" title="editer" class="btn btn-primary btn-circle ">
-												<i class="fas fa-edit"> </i>
-														   </a>
-									 <a href="#" title="imprimer" class="btn btn-success btn-circle ">
-														 <i class="fas fa-print"> </i>
-														</a>
-										<a herf="#" data-toggle="modal" onclick="deleteor({{$orientation->id}})" data-target="#confirmDeleteModel" title="supprimer" class="btn btn-danger btn-circle "  >
-															<i class="fas fa-trash"> </i>
-
-										</a>
-
-
-													
-													  
+				  
 										
 													   
 											 
 											 
 											 
 							 
-								   </td>
-											</tr>
-											@endforeach
 										</table>
 
 			
@@ -297,7 +272,6 @@
 										</table>
 
 			
-										<a class="btn btn-primary float-right" href="javascript:$('#pressc').submit();"> <i class="fas fa-plus mr-2"></i>Ajouter prescription</a>
 										<br>			
 									</div>
                                 </div>
@@ -525,6 +499,8 @@ function confirmdelete(id){
 	  if (op==3)   var tbl = document.getElementById("CommentaireTable");
 	  if (op==4)	var tbl = document.getElementById("presc");
 	  if (op==5)	var tbl = document.getElementById("imgTable");
+	  if (op==6)	var tbl = document.getElementById("orTable");
+	  
 	  xhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
 console.log(this.responseText);
@@ -536,7 +512,8 @@ console.log(this.responseText);
 	  if (op==3)	  xhttp.open("GET", "/ajax/getInf/2/{{$patient->id}}", true);
 	  if (op==4)	  xhttp.open("GET", "/ajax/getInf/3/{{$patient->id}}", true);
 	  if (op==5)	  xhttp.open("GET", "/ajax/getImg/{{$patient->id}}", true);
-	  
+	  if (op==6)	  xhttp.open("GET", "/ajax/getInf/4/{{$patient->id}}", true);
+
 	  xhttp.send();
 	}
 	getInf(1);
@@ -544,7 +521,8 @@ console.log(this.responseText);
 	getInf(3);
 	getInf(4);
 	getInf(5);
-	
+	getInf(6);
+
 	var birth = document.getElementById('birth');
 	var diff_ms = Date.now() - Date.parse(birth.innerText);
 	var age_dt = new Date(diff_ms); 

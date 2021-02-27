@@ -97,6 +97,21 @@ public function getMal($op,$patid){
 else if ($op==1)$maladies= Allergie::where('patient_id',$patid)->get();
 else if ($op==2)$maladies= Commentaire::where('patient_id',$patid)->get(); 
 else if ($op==3) $maladies= Prescription::where('patient_id',$patid)->get();
+else if ($op==4){
+  $maladies =  Orientation::where('patient_id','=',$patid)->get();
+
+  for($i=0; $i<count($maladies) ;$i++){
+    $nomMed = User::find($maladies[$i]['medecin_id'])->fname." ".User::find($maladies[$i]['medecin_id'])->lname;
+    $maladies[$i]['medid'] = $nomMed;
+    $maladies[$i]['type'] = $maladies[$i]['contenu'];
+    
+  }
+    return view('dashbord.medecin.ajaxcomp.result',['maladies'=>$maladies,'p'=>'true']);
+  
+
+}
+if($op!=3)$p='false';
+else $p='true';
 for($i=0; $i<count($maladies)&&$op!=3 ;$i++){
   $nomMed = User::find($maladies[$i]['medid'])->fname." ".User::find($maladies[$i]['medid'])->lname;
   $maladies[$i]['medid'] = $nomMed;
@@ -107,7 +122,7 @@ for($i=0; $i<count($maladies)&&$op!=3 ;$i++){
   $maladies[$i]['type'] = $maladies[$i]['medics'];
   
 }
-  return view('dashbord.medecin.ajaxcomp.getMal',['maladies'=>$maladies]);
+  return view('dashbord.medecin.ajaxcomp.result',['maladies'=>$maladies,'p'=>$p]);
 
 }
 
@@ -123,7 +138,11 @@ foreach($imgs as $img){
  echo "<td>".$img->name."</td>";
  echo "<td><a href='";
  echo asset($img->link);
- echo "' target='_blank' class='btn btn-primary btn-circle'  ><i class='fas fa-file-import'> </i></a></td></tr>";
+ echo "' target='_blank' class='btn btn-primary btn-circle'  ><i class='fas fa-file-import'> </i></a>
+    <a data-toggle='modal' onclick='deleteor(2)' class='btn btn-danger btn-circle'  data-target='#confirmDeleteModel' title='supprimer' > <i class='fas fa-trash'> </i></a>
+ 
+ </td></tr>";
+
 }
 
 

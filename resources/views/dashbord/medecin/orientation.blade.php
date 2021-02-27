@@ -17,7 +17,6 @@
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">Lettre d'Orientation</h6>
-            <a class="btn btn-primary float-right" onclick="printDiv('printableArea')">  <i class="fas fa-print mr-2"></i>Imprimer Orientation</a>
         </div>
         <div class="card-body" >
             
@@ -36,7 +35,7 @@
 
  <div class="col-12">
               <div class="form-group">
-                <label for="exampleInputTitre">Lettre</label>
+                <label for="exampleInputTitre">Contenu</label>
                 <div >
                     
                     <textarea id="description" placeholder="Saisir lettre ... "  class="form-control @error('description') is-invalid @enderror" name="contenu"  required></textarea>

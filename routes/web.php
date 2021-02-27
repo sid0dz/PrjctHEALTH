@@ -123,6 +123,13 @@ Route::post('/upload','UploadFileController@showUploadFile');
 Route::get('/profil',function(){
 return view('layouts.profil');
 });
-Route::get('/rdv/{date?}/{heure?}/{departement?}/{medecin?}/{name?}/{birthday?}/{phone?}/{email?}/{dejap?}/{motif?}','RdvController@req');
+Route::get('/rdv/{date?}/{heure?}/{departement?}/{medecin?}/{name?}/{birthday?}/{phone?}/{email?}/{dejap?}/{motif?}','DmController@req');
 Route::post('/rdvp','RdvController@req2');
 Route::post('/profil','UserAdmController@profilupd');
+
+Route::get('/genrap',function(){
+return view ('dashbord.secretary.genrap');
+});
+
+
+Route::get('/dmrdv','DmController@indrd');

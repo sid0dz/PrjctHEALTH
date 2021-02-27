@@ -43,7 +43,7 @@
                          <form action="{{route('patients.destroy',['patient'=>$patient->id])}}" method="post">
                          	{{csrf_field()}}
                          	{{method_field('DELETE')}}
-                         	<button type="submit" class="btn btn-danger btn-icon-split">
+                         	<button type="submit" class="btn btn-warning btn-icon-split">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-trash"></i>
                                         </span>

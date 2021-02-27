@@ -488,7 +488,7 @@ reasonable projecting expression.
 <img src="img/experts/1.png" alt="">
 </div>
 <div class="experts_name text-center">
-<h3>Mirazul Alom</h3>
+<h3 >Mirazul Alom</h3>
 <span>Neurologist</span>
 </div>
 </div>
@@ -644,6 +644,7 @@ Copyright &copy;<script data-cfasync="false"></script><script>document.write(new
 <h3>Demander un Rendez-vous</h3>
 
 <div class="row">
+  <div class="col-xl-12" id="dispon"></div>
 <div class="col-xl-6">
 <input type="text" id="date"  min='{{date('Y-m-d')}}'  onfocus="(this.type='date')"
 onblur="(this.type='text')" placeholder="Choisir date" required>
@@ -674,7 +675,7 @@ onblur="(this.type='text')" placeholder="Choisir date" required>
 </select></div>
 <div class="col-xl-6">
 <select class="form-select wide" id="dep" class="" required>
-<option data-display="Select Department" disabled="disabled">Department</option>
+<option data-display="Select Department" disabled="disabled" selected="selected">Department</option>
 <option >Ophtalmologie </option>
 <option >Dermathologie </option>
 <option >Dentiste     </option>
@@ -684,13 +685,15 @@ onblur="(this.type='text')" placeholder="Choisir date" required>
 </select>
 </div>
 <div class="col-xl-6">
-<select class="form-select wide" id="docteur" class="">
-<option data-display="Doctors" disabled="disabled" required>Doctors</option>
-<option value="1">Mirazul Alom</option>
-<option value="2">Monzul Alom</option>
-<option value="3">Azizul Isalm</option>
+
+<select class="form-select wide" onchange="disponCheck();"  id="docteur" class="" required>
+<option data-display="Doctors" disabled="disabled" selected="selected">Doctors</option>
+<option value="1">Dr. Ahmed Yassine</option>
+<option value="2">Dr. Ali Wissem </option>
+<option value="3">Dr. Riad Aymen</option>
 </select>
 </div>
+
 <div class="col-xl-6">
   <form id="myform">
 <input type="text" placeholder="Nom complet" id="nom" required>
@@ -728,7 +731,18 @@ onblur="(this.type='text')" max={{date('Y-m-d')}} id="birthday" placeholder="Dat
 </div>
 
 <script>
-function sbtrdv(){
+function disponCheck(){
+  if(document.getElementById('docteur').value==1)
+  document.getElementById('dispon').innerText ="Il existe deja un Rendez-vous a l'heure choisi"
+  else document.getElementById('dispon').innerText =""
+  
+}
+
+function sbtrdv(element){
+ 
+var dirrr=  document.getElementsByClassName("mfp-close");
+
+
   let allAreFilled = true;
   document.getElementById("test-form").querySelectorAll("[required]").forEach(function(i) {
     if (!allAreFilled) return;
@@ -737,6 +751,7 @@ function sbtrdv(){
   if (!allAreFilled) {
     alert('Veuillez renseigner tout les champs');
   }
+  else {
 
 var data = new FormData();
 var e = document.getElementById("heure");
@@ -774,6 +789,9 @@ xhr.onload = function () {
   if(this.responseText=="success") alert("Rendez-vous demandé, il vous sera confirmé par Telephone ou email")
 };
 xhr.send();
+dirrr[0].click();
+
+}
 }
 
 
