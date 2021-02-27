@@ -17,6 +17,7 @@
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">Lettre d'Orientation</h6>
+            <a class="btn btn-primary float-right" onclick="printDiv('printableArea')">  <i class="fas fa-print mr-2"></i>Imprimer Orientation</a>
         </div>
         <div class="card-body">
         
@@ -27,7 +28,7 @@
                 @csrf
                 <input type="hidden" name="patient_id" value="{{$patient->id ?? '13'}}"/>
                 <input type="hidden" name="date" value="{{date('d-m-Y')}}"/>
-                
+                <div id='printableArea'>
                 <table class="table table-bordered " id="inft">
 <tr class="text-center"><th colspan=2>{{Auth::user()->fname }} {{Auth::user()->lname }} </th></tr>
 <tr  class="text-center"><td>Specialité:</td><td>{{Auth::user()->specialite }}</td></tr>
@@ -52,6 +53,7 @@
                 </div>
 
 </table>
+ </div>
 <button type ="submit" class="btn btn-success btn-icon-split float-left">
     <span class="icon text-white-50">
         <i class="fas fa-check"></i>
@@ -74,7 +76,18 @@
 
                
              
+<script>
+    function printDiv(divName) {
+     var printContents = document.getElementById(divName).innerHTML;
+     var originalContents = document.body.innerHTML;
 
+     document.body.innerHTML = printContents;
+
+     window.print();
+
+     document.body.innerHTML = originalContents;
+}
+</script>
 
               
                
