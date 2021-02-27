@@ -34,7 +34,15 @@ class PatientController extends Controller
        $patient->email = $request->input('email');
        $patient->save();
        $listpatients = Patient::all();
-       return view('dashbord.secretary.patients',['mes' => $listpatients]);
+        if( Auth::user()->role ==2)
+       {
+        return view('dashbord.secretary.patients',['mes' => $listpatients]);
+      }
+     else if( Auth::user()->role ==1)
+       {
+        return view('dashbord.medecin.patients',['mes' => $listpatients]);
+      }
+
 
     }
     public function showInfos(Request $request){
