@@ -297,7 +297,7 @@
 										</table>
 
 			
-										<a class="btn btn-primary float-right" href="{{ route ('patients.edit',['patient'=>$patient->id])}}"> <i class="fas fa-plus mr-2"></i>Ajouter une Imagerie</a>
+										<a class="btn btn-primary float-right" href="javascript:$('#pressc').submit();"> <i class="fas fa-plus mr-2"></i>Ajouter prescription</a>
 										<br>			
 									</div>
                                 </div>
