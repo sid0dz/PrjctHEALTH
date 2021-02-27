@@ -49,7 +49,9 @@ Route::DELETE('/show_users','UserAdmController@deleteUser');
 Route::get('/addpatient',function(){
 	return view ('dashbord.secretary.addpatient');
 });
-
+Route::get('/addpatientM',function(){
+  return view ('dashbord.medecin.addpatientM');
+});
 Route::get('/lol',function(){
 	return view ('layouts.rdv.success');
 });
