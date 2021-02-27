@@ -86,31 +86,481 @@
         </ul>
         <!-- End of Sidebar -->
 		@endsection
-@section('content')
-    @yield('content')
-        <!-- Contentof Admin dashboard -->
+        @section('content')
+        @yield('content')
+            <!-- Contentof Secretaire dashboard -->
+            <div class="container-fluid">
 
-        <div class="card shadow mb-4 mr-2 ml-2">
-            <div class="card-header">
-                <font class="m-0 font-weight-bold text-primary">Bonjour {{Auth::User()->lname}}</font>
-       </div>
-            <div class="card-body">
-                <div class="table-responsive">
-				<h2 class="ml-2"> </h2>
-                <div class="card-body">
-                    <div class="table" id="tabledata">
-                       
+                <!-- Page Heading -->
+                <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                    <h1 class="h3 mb-0 text-gray-800">Bonjour {{Auth::user()->lname}}</h1>
+                    <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                            class="fas fa-download fa-sm text-white-50"></i> Generer rapport</a>
+                </div>
 
+                <!-- Content Row -->
+                <div class="row">
+
+                    <!-- Earnings (Monthly) Card Example -->
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card border-left-primary shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                            Medecin disponible</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{count(DB::table('users')->where('role', '=',"1")
+                                            ->get())}}</div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-user-md fa-2x text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Earnings (Monthly) Card Example -->
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card border-left-success shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                            Patient enregistré</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{count(DB::table('patients')
+                                            ->get())}}</div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-users fa-2x text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Earnings (Monthly) Card Example -->
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card border-left-info shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                           Rendez-vous aujourd'hui</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{count(DB::table('rdvs')->where('date','=',date('Y-m-d'))
+                                            ->get())}}</div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-calendar-alt fa-2x text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pending Requests Card Example -->
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card border-left-warning shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                            Rendez-vous en attente</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{count(DB::table('dmrdvs')->get())}}</div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-user-clock fa-2x text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Content Row -->
+
+            <div class="row">
+
+                <!-- Area Chart -->
+                <div class="col-xl-8 col-lg-7">
+                    <div class="card shadow mb-4">
+                        <!-- Card Header - Dropdown -->
+                        <div
+                            class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                            <h6 class="m-0 font-weight-bold text-primary">Rapport de la semaine</h6>
+                            <div class="dropdown no-arrow">
+                               
+                            </div>
+                        </div>
+                        <!-- Card Body -->
+                        <div class="card-body">
+                            <div class="chart-area">
+                                <canvas id="myChart"></canvas>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
 
 
 
+                
 
-        <!-- End of Admin dashboard-->
-@endsection
+                <!-- Pie Chart -->
+                <div class="col-xl-4 col-lg-5">
+                    <div class="card shadow mb-4">
+                        <!-- Card Header - Dropdown -->
+                        <div
+                            class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                            <h6 class="m-0 font-weight-bold text-primary">Patient par departement</h6>
+                            <div class="dropdown no-arrow">
+                               
+                               
+                            </div>
+                        </div>
+                        <!-- Card Body -->
+                        <div class="tab">
+                            <button class="tablinks" id="char1" onclick="openCity(event, 'London')">Par jour</button>
+                            <button class="tablinks" onclick="openCity(event, 'Paris')">Par mois</button>
+                            <button class="tablinks" onclick="openCity(event, 'Tokyo')">Par année</button>
+                          </div>
+                          
+                          <!-- Tab content -->
+                          <div id="London" class="tabcontent">
+                            <canvas id="myChart2" width="610" height="520" style="display: block; width: 305px; height: 245px;"></canvas>
+                        </div>
+                          
+                          <div id="Paris" class="tabcontent">       
+                        <canvas id="myChart3" width="610" height="520" style="display: block; width: 305px; height: 245px;"></canvas>
 
+                          </div>
+                          
+                          <div id="Tokyo" class="tabcontent">
+
+                            <canvas id="myChart4" width="610" height="520" style="display: block; width: 305px; height: 245px;"></canvas>
+
+                          </div>
+                            <div class="mt-4 mb-2 text-center small">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Bar Chart -->
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Prescriptions</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-bar">
+                            <canvas id="myBarChart7"></canvas>
+                        </div>
+                        <hr>
+                        Styling for the bar chart can be found in the
+                        
+                    </div>
+                </div>
+
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Rendez-vous</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-bar">
+                            <canvas id="myBarChart8"></canvas>
+                        </div>
+                        <hr>
+                        Styling for the bar chart can be found in the
+                        
+                    </div>
+                </div>
+            </div>
+
+           
+
+
+            <script>
+
+var ctx = document.getElementById('myChart').getContext('2d');
+var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'line',
+
+    // The data for our dataset
+    data: {
+        labels: ['{{date('d',strtotime("-6 days"))}}', '{{date('d',strtotime("-5 days"))}}', '{{date('d',strtotime("-4 days"))}}', '{{date('d',strtotime("-3 days"))}}', '{{date('d',strtotime("-2 days"))}}', '{{date('d',strtotime("-1 days"))}}', '{{date('d')}}'],
+        datasets: [{
+            label: 'Rendez-vous cette journée ',
+            borderColor: '{{App\Clconfig::first()->debDegr}}',
+            data: [5, 10, 5, 0, 20, 30, 10]
+        }]
+    },
+
+    // Configuration options go here
+    options: {}
+});
+
+ctx = document.getElementById('myChart2').getContext('2d');
+ new Chart(ctx, {
+    type: 'pie',
+    data: {
+      labels: ["General", "Dermathologie", "Cardiologie", "Dentiste", "Gynecologie"],
+      datasets: [{
+        label: "Population (millions)",
+        backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+        data: [12,1,5,10,5]
+      }]
+    },
+    options: {
+
+    }
+});
+
+ctx = document.getElementById('myChart3').getContext('2d');
+ new Chart(ctx, {
+    type: 'pie',
+    data: {
+      labels: ["General", "Dermathologie", "Cardiologie", "Dentiste", "Gynecologie"],
+      datasets: [{
+        label: "Population (millions)",
+        backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+        data: [120,38,57,43,69]
+      }]
+    },
+    options: {
+
+    }
+});
+
+ctx = document.getElementById('myChart4').getContext('2d');
+ new Chart(ctx, {
+    type: 'pie',
+    data: {
+      labels: ["General", "Dermathologie", "Cardiologie", "Dentiste", "Gynecologie"],
+      datasets: [{
+        label: "Population (millions)",
+        backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+        data: [1340,470,680,1000,680]
+      }]
+    },
+    options: {
+
+    }
+});
+
+
+var ctx = document.getElementById("myBarChart7");
+var myBarChart = new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: ["Janvier", "Fevrier", "Mars", "Avril", "Mai", "Juin" , "Juillet", "Aout", "Septembre", "Octobre", "Novembre", "Decembre"],
+    datasets: [{
+      label: "nbr",
+      backgroundColor: "#4e73df",
+      hoverBackgroundColor: "#2e59d9",
+      borderColor: "#4e73df",
+      data: [{{App\Prescription::whereBetween('date',['2021-01-01','2021-01-31'])->count()}}, {{App\Prescription::whereBetween('date',['2021-02-01','2021-02-29'])->count()}}, {{App\Prescription::whereBetween('date',['2021-03-01','2021-03-31'])->count()}}, {{App\Prescription::whereBetween('date',['2021-04-01','2021-04-31'])->count()}}, {{App\Prescription::whereBetween('date',['2021-05-01','2021-05-31'])->count()}}, {{App\Prescription::whereBetween('date',['2021-06-01','2021-06-31'])->count()}}, {{App\Prescription::whereBetween('date',['2021-07-01','2021-07-31'])->count()}} , {{App\Prescription::whereBetween('date',['2021-08-01','2021-08-31'])->count()}} , {{App\Prescription::whereBetween('date',['2021-09-01','2021-09-31'])->count()}} , {{App\Prescription::whereBetween('date',['2021-10-01','2021-10-31'])->count()}}, {{App\Prescription::whereBetween('date',['2021-11-01','2021-11-31'])->count()}} , {{App\Prescription::whereBetween('date',['2021-12-01','2021-12-31'])->count()}}],
+    }],
+  },
+  options: {
+    maintainAspectRatio: false,
+    layout: {
+      padding: {
+        left: 10,
+        right: 25,
+        top: 25,
+        bottom: 0
+      }
+    },
+    scales: {
+      xAxes: [{
+        time: {
+          unit: 'month'
+        },
+        gridLines: {
+          display: false,
+          drawBorder: false
+        },
+        ticks: {
+          maxTicksLimit: 6
+        },
+        maxBarThickness: 25,
+      }],
+      yAxes: [{
+        ticks: {
+          min: 0,
+          max: 50,
+          maxTicksLimit: 5,
+          padding: 10,
+          // Include a dollar sign in the ticks
+          callback: function(value, index, values) {
+            return 'prescriptions' + number_format(value);
+          }
+        },
+        gridLines: {
+          color: "rgb(234, 236, 244)",
+          zeroLineColor: "rgb(234, 236, 244)",
+          drawBorder: false,
+          borderDash: [2],
+          zeroLineBorderDash: [2]
+        }
+      }],
+    },
+    legend: {
+      display: false
+    },
+    tooltips: {
+      titleMarginBottom: 10,
+      titleFontColor: '#6e707e',
+      titleFontSize: 14,
+      backgroundColor: "rgb(255,255,255)",
+      bodyFontColor: "#858796",
+      borderColor: '#dddfeb',
+      borderWidth: 1,
+      xPadding: 15,
+      yPadding: 15,
+      displayColors: false,
+      caretPadding: 10,
+      callbacks: {
+        label: function(tooltipItem, chart) {
+          var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
+          return datasetLabel  + number_format(tooltipItem.yLabel) + ': Prescriptions';
+        }
+      }
+    },
+  }
+});
+
+var ctx = document.getElementById("myBarChart8");
+var myBarChart = new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: ["Janvier", "Fevrier", "Mars", "Avril", "Mai", "Juin" , "Juillet", "Aout", "Septembre", "Octobre", "Novembre", "Decembre"],
+    datasets: [{
+      label: "nbr",
+      backgroundColor: "#4e73df",
+      hoverBackgroundColor: "#2e59d9",
+      borderColor: "#4e73df",
+      data: [{{App\Rdv::whereBetween('date',['2021-01-01','2021-01-31'])->count()}}, {{App\Rdv::whereBetween('date',['2021-02-01','2021-02-29'])->count()}}, {{App\Rdv::whereBetween('date',['2021-03-01','2021-03-31'])->count()}}, {{App\Rdv::whereBetween('date',['2021-04-01','2021-04-31'])->count()}}, {{App\Rdv::whereBetween('date',['2021-05-01','2021-05-31'])->count()}}, {{App\Rdv::whereBetween('date',['2021-06-01','2021-06-31'])->count()}}, {{App\Rdv::whereBetween('date',['2021-07-01','2021-07-31'])->count()}} , {{App\Rdv::whereBetween('date',['2021-08-01','2021-08-31'])->count()}} , {{App\Rdv::whereBetween('date',['2021-09-01','2021-09-31'])->count()}} , {{App\Rdv::whereBetween('date',['2021-10-01','2021-10-31'])->count()}}, {{App\Rdv::whereBetween('date',['2021-11-01','2021-11-31'])->count()}} , {{App\Rdv::whereBetween('date',['2021-12-01','2021-12-31'])->count()}}],
+    }],
+  },
+  options: {
+    maintainAspectRatio: false,
+    layout: {
+      padding: {
+        left: 10,
+        right: 25,
+        top: 25,
+        bottom: 0
+      }
+    },
+    scales: {
+      xAxes: [{
+        time: {
+          unit: 'month'
+        },
+        gridLines: {
+          display: false,
+          drawBorder: false
+        },
+        ticks: {
+          maxTicksLimit: 6
+        },
+        maxBarThickness: 25,
+      }],
+      yAxes: [{
+        ticks: {
+          min: 0,
+          max: 50,
+          maxTicksLimit: 5,
+          padding: 10,
+          // Include a dollar sign in the ticks
+          callback: function(value, index, values) {
+            return 'RDV' + number_format(value);
+          }
+        },
+        gridLines: {
+          color: "rgb(234, 236, 244)",
+          zeroLineColor: "rgb(234, 236, 244)",
+          drawBorder: false,
+          borderDash: [2],
+          zeroLineBorderDash: [2]
+        }
+      }],
+    },
+    legend: {
+      display: false
+    },
+    tooltips: {
+      titleMarginBottom: 10,
+      titleFontColor: '#6e707e',
+      titleFontSize: 14,
+      backgroundColor: "rgb(255,255,255)",
+      bodyFontColor: "#858796",
+      borderColor: '#dddfeb',
+      borderWidth: 1,
+      xPadding: 15,
+      yPadding: 15,
+      displayColors: false,
+      caretPadding: 10,
+      callbacks: {
+        label: function(tooltipItem, chart) {
+          var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
+          return datasetLabel  + number_format(tooltipItem.yLabel) + ': RDV';
+        }
+      }
+    },
+  }
+});
+
+
+
+
+
+function openCity(evt, cityName) {
+  // Declare all variables
+  var i, tabcontent, tablinks;
+
+  // Get all elements with class="tabcontent" and hide them
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+
+  // Get all elements with class="tablinks" and remove the class "active"
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+
+  // Show the current tab, and add an "active" class to the button that opened the tab
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+document.getElementById("char1").click();
+
+            </script>
+            <!-- Page level custom scripts -->
+    
+            <script src="js/demo/chart-area-demo.js"></script>
+            <script src="js/demo/chart-pie-demo.js"></script>
+            <script src="vendor/chart.js/Chart.min.js"></script>
+        
+    
+            <!-- End of Admin dashboard-->
+    @endsection
+    
+    
+    
+    
+    <script src="js/demo/chart-area-demo.js"></script>
+    <script src="js/demo/chart-pie-demo.js"></script>
+    <script src="vendor/chart.js/Chart.min.js"></script>
+
+    
+    
+    
+    
 
 
 
