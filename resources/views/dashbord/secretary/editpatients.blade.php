@@ -28,7 +28,7 @@
           <div class="form-group">
             <label for="exampleInputTitre">Nom</label>
             <div >
-                <input id="title" placeholder="Nom du patient" type="text" class="form-control @error('title') is-invalid @enderror" name="name" value="{{ $patient->name }}" required >
+                <input id="title" placeholder="Nom du patient" type="text" class="form-control @error('title') is-invalid @enderror" name="name" value="{{ $patient->name }}" pattern="[a-zA-Z ]{5,40}" required >
 
                 @error('title')
                     <span class="invalid-feedback" role="alert">
@@ -43,7 +43,7 @@
             <label for="exampleInputTitre">N° de sécurité sociale</label>
             <div >
                 
-                <input id="npatient" placeholder="N° de sécurité sociale du patient" type="text" class="form-control @error('npatient') is-invalid @enderror" name="npatient"  value="{{ $patient->npatient }}" required >
+                <input id="npatient" placeholder="N° de sécurité sociale du patient" type="text" class="form-control @error('npatient') is-invalid @enderror" name="npatient" pattern="[0-9]{8,12}"  value="{{ $patient->npatient }}" required >
 
                 @error('npatient')
                     <span class="invalid-feedback" role="alert">
@@ -55,7 +55,12 @@
           <div class="form-group">
             <label class="label">Date de naissance</label>
             <div class="input-group-icon">
-                <input class="input--style-4 js-datepicker" type="date" name="birthday"  value="{{ $patient->patient_birth_date }}">
+                <input class="input--style-4 js-datepicker" type="date" name="birthday"  value="{{ $patient->patient_birth_date }}" min="1920-01-01" max="{{date('d-m-Y')}}" required>
+                  @error('birthday')
+                      <span class="invalid-feedback" role="alert">
+                          <strong>{{ $message }}</strong>
+                      </span>
+                  @enderror
             </div>
         </div>
 
@@ -63,7 +68,7 @@
               <label for="exampleInputTitre">N° de téléphone</label>
               <div >
                   
-                  <input id="phone" placeholder="N° de telephone" type="text" class="form-control @error('spécialité') is-invalid @enderror" name="phone"   value="{{ $patient->phone }}"required >
+                  <input id="phone" placeholder="N° de telephone" type="text" class="form-control @error('spécialité') is-invalid @enderror" name="phone"   value="{{ $patient->phone }}" pattern="0(5|6|7)[0-9]{8}" required >
 
                   @error('phone')
                       <span class="invalid-feedback" role="alert">
@@ -77,7 +82,7 @@
               <label for="exampleInputTitre">Email</label>
               <div >
                   
-                  <input id="email" placeholder="email" type="text" class="form-control @error('année_universitaire') is-invalid @enderror" name="email"  value="{{ $patient->email }}" required >
+                  <input id="email" placeholder="email" type="email" class="form-control @error('année_universitaire') is-invalid @enderror" name="email"  value="{{ $patient->email }}" required >
 
                   @error('email')
                       <span class="invalid-feedback" role="alert">
