@@ -98,6 +98,16 @@
 								
 					
 						<a class="btn btn-primary float-right" href="{{ route ('patients.edit',['patient'=>$patient->id])}}"> <i class="fas fa-fw fa-wrench"></i> Editer informations</a>
+                        <form action="{{route('patients.destroy',['patient'=>$patient->id])}}" method="post">
+                         	{{csrf_field()}}
+                         	{{method_field('DELETE')}}
+                         	<button type="submit" class="btn btn-danger btn-icon-split">
+                                        <span class="icon text-white-50">
+                                            <i class="fas fa-trash"></i>
+                                        </span>
+                                        <span class="text">Archiver</span>
+                                    </button>
+                         </form>
 								<br>			
 					
 								
