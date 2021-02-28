@@ -146,9 +146,7 @@
 						  <span aria-hidden="true">&times;</span>
 						</button>
 						</div>
-						<div class="toast-body">
-						  Rendez-vous a été supprimé
-						</div>
+						
 					  </div>
 					
 					<div class="modal fade" id="confirmDeleteModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
