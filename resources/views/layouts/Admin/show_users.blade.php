@@ -57,20 +57,20 @@
           <td>{{($user->role==0)?"Admin":(($user->role==1)?"Medecin":"Secretary")}}</td>
           <td>{{$user->specialite}}</td>
           <td>
-              
-          <form action="/show_users" method="post">
+             
+          <form action="{{route('deleteUser',['id'=>$user->id])}}" method="post">
 
               {{csrf_field()}}
-				               {{method_field('DELETE')}}
+				       {{method_field('DELETE')}}
 
-         
-              <a href="#Define"  class="btn btn-warning btn-circle ">
+               <a href="{{route('editUser',['id'=>$user->id])}}"  class="btn btn-warning btn-circle ">
                 <i class="fas fa-edit"> </i>
-              </a> 
-                
-               <button type="submit" onclick="return confirm('Vous voulez vraiment supprimer?') "class="btn btn-danger btn-circle">
-                <i class="fas fa-trash"> </i>
               </a>
+               
+
+                <button  data-toggle="modal"  data-target="#confirmDeleteModel" title="supprimer" class="btn btn-danger btn-circle " type="submit"  >
+                 <i class="fas fa-trash"> </i>
+              </button>
               </form>
           </td>
         </tr>

@@ -34,12 +34,15 @@ class UserAdmController extends Controller
     }
 
 
-    public function deleteUser(Request $request){
-        //Define Later
-        $usersdata = User::all();
+    public function destroy(Request $request, $id){
+        
+        $usersdata = User::find($id);
+        $usersdata->delete();
+        $usersdata=User::all();
         return view('layouts.admin.show_users',['usersData' => $usersdata]);
 
     }
+
     public function siteconf(Request $request){
             $conf = Clconfig::first();
         //    dd($conf);
@@ -89,4 +92,22 @@ class UserAdmController extends Controller
         return view('layouts.profil',['data'=>"success"]);
     }   
 
+    public function edit($id){
+        $user=User::find($id);
+        return view ('layouts.admin.editerUser',['user'=>$user]);
+    }
+
+       public function update(Request $request,$id){
+      //  dd($request);
+        $newUser= User::find($id);
+        $newUser->fname = $request->input('fname');
+        $newUser->lname =$request->input('lname');
+        $newUser->specialite =$request->input('specialite');
+        $newUser->role =$request->input('role');
+        $newUser->email =$request->input('email');
+        $newUser->password = Hash::make($request->input('password'));
+        $newUser->save();
+        return view('layouts.admin.newUserSuc',['data'=>$request]);
+
+    }
 }
