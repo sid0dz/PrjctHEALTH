@@ -37,11 +37,13 @@ Route::get('/dashboard',function(){
 	return view ('layouts.dashboard');
 });
 
-Route::post('/show_users','UserAdmController@deleteUser');
+//Route::post('/show_users','UserAdmController@deleteUser');
 
 Route::get('/show_users','UserAdmController@getUserslist');
 Route::resource('useradm','UserAdmController');
-Route::DELETE('/show_users','UserAdmController@deleteUser');
+Route::DELETE('deleteUser/{id}','UserAdmController@destroy')->name('deleteUser');
+Route::get('/{id}/editUser','UserAdmController@edit')->name('editUser');
+Route::put('/{id}/updateUser','UserAdmController@update')->name('updateUser');
 
 // patient routes
 
