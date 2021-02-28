@@ -98,16 +98,7 @@
 								
 					
 						<a class="btn btn-primary float-right" href="{{ route ('patients.edit',['patient'=>$patient->id])}}"> <i class="fas fa-fw fa-wrench"></i> Editer informations</a>
-                        <form action="{{route('patients.destroy',['patient'=>$patient->id])}}" method="post">
-                         	{{csrf_field()}}
-                         	{{method_field('DELETE')}}
-                         	<button type="submit" class="btn btn-danger btn-icon-split">
-                                        <span class="icon text-white-50">
-                                            <i class="fas fa-trash"></i>
-                                        </span>
-                                        <span class="text">Archiver</span>
-                                    </button>
-                         </form>
+                      
 								<br>			
 					
 								
@@ -271,12 +262,69 @@
 
 										</table>
 
-			
+			<a class="btn btn-primary float-right" href="javascript:$('#pressc').submit();"> 
+											<i class="fas fa-plus mr-2"></i>Ajouter Prescription</a>
 										<br>			
 									</div>
                                 </div>
 							</div>
+							<div class="card shadow mb-4  mr-2 ml-2" >
 
+								<a href="#rdv" class="d-block card-header py-3 " data-toggle="collapse" role="button" aria-expanded="true" aria-controls="rdv">
+									<h6 class="m-0 font-weight-bold text-primary">Rendez-vous</h6>
+								</a>
+							   <div class="collapse collapsed" style="" id="rdv">
+								<div class="card-body">
+									<table class="table table-hover" id="rdv">
+										<tr>
+											<th>Date</th><th>Heure</th><th>Medecin</th> <th>Motif</th> <th> action </th>
+										</tr>
+									@foreach ($rdvs as $rdv)
+										
+								
+										<tr>
+											<td>{{$rdv->date}}</td>
+											<td> 
+												@if (strlen($rdv->heure) < 3) {{//this is love
+												substr($rdv->heure,0,1)}}
+												{{	(substr($rdv->heure,1,2)=='1')?":00":":30"
+											}}
+											@else
+											{{substr($rdv->heure,0,2)}}
+											{{(substr($rdv->heure,2,3)=='1')?":00":":30"
+										}} 
+											@endif
+											
+
+
+											</td>
+											<td>{{$rdv->medecin??''}}</td>
+											<td>{{$rdv->motif}}</td>
+										<td>
+											<div class="dropdown no-arrow ">
+												<a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+													Gerer <i class="fas fa-edit "></i>
+												</a>
+												<div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink" style="">
+													<div class="dropdown-header">Voulez vous :</div>
+													<a class="dropdown-item" href="#">Modifer</a>
+													
+													<div class="dropdown-divider"></div>
+													<a class="dropdown-item" href="#" data-toggle="modal" onclick="deleteRdv({{$rdv->id}})" data-target="#confirmDeleteModel" >Supprimer</a>
+												</div>
+											</div>
+										</td>
+										
+										</tr>	@endforeach
+									</table>
+
+		
+									<a class="btn btn-primary float-right" href="/newRDV/{{$patient->id}}/{{Auth::id()}}/"> 
+										<i class="fas fa-plus mr-2"></i>Prendre rendez-vous</a>
+									<br>			
+								</div>
+							</div>
+						</div>		<!-- Card Header - Accordion -->
 							
 							
 
@@ -394,7 +442,7 @@ aria-hidden="true">
 		</div>
 			<div class="modal-footer">
 			<button class="btn btn-secondary" type="button" id="dsmimg" data-dismiss="modal">Annuler</button>
-			<a class="btn btn-primary" onclick="upl()">Ajouter Commentaire</a>
+			<a class="btn btn-primary" onclick="upl()">Ajouter Document</a>
 		</div>
 	</div>
 </div>
@@ -415,15 +463,7 @@ aria-hidden="true">
 // post form data
 const xhr = new XMLHttpRequest();
 // log response
-xhr.onload = () => {
-	var tbl = document.getElementById('imgTable');
-	var response= document.createElement('tr');
-	response.innerHTML = xhr.responseText;
-	
-	console.log("this:"+xhr.responseText);
-console.log("response:"+response.innerHTML);
-	tbl.appendChild(response);
-		   
+xhr.onload = () => {getInf(5);
 
 	document.getElementById("dsmimg").click();
 
@@ -436,9 +476,66 @@ xhr.send(formData);
 
 function deleteor(id){
 
-	var btn = 	document.getElementById('confirmdeletebutton');
-	btn.setAttribute('onclick','confirmdelete("'+id+'")');
+var btn = 	document.getElementById('confirmdeletebutton');
+btn.setAttribute('onclick','confirmdelete("'+id+'")');
 
+
+}
+
+function deleteMal(id){
+
+var btn = 	document.getElementById('confirmdeletebutton');
+btn.setAttribute('onclick','confirmdeletemal("'+id+'","1")');
+
+}
+
+function deleteAlr(id){
+
+var btn = 	document.getElementById('confirmdeletebutton');
+btn.setAttribute('onclick','confirmdeletemal("'+id+'","2")');
+
+}
+
+
+function deleteCom(id){
+
+var btn = 	document.getElementById('confirmdeletebutton');
+btn.setAttribute('onclick','confirmdeletemal("'+id+'","3")');
+
+}
+function deleteImg(id){
+
+var btn = 	document.getElementById('confirmdeletebutton');
+btn.setAttribute('onclick','confirmdeletemal("'+id+'","4")');
+
+}
+function deletePr(id){
+
+var btn = 	document.getElementById('confirmdeletebutton');
+btn.setAttribute('onclick','confirmdeletemal("'+id+'","5")');
+
+}
+function deleteRdv(id){
+var btn = 	document.getElementById('confirmdeletebutton');
+btn.setAttribute('onclick','confirmdeleterdv("'+id+'")');
+
+}
+function confirmdeleterdv(rdvid){
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+if (this.readyState == 4 && this.status == 200) {
+$('.toast').toast({
+'autohide': true,
+'delay':  5000
+});
+
+$('.toast').toast('show');
+loadTable();
+}
+};
+xhttp.open("GET", "/deleteRdv/"+rdvid, true);
+xhttp.send();
+document.getElementById("dssm").click();
 }
 
 function confirmdelete(id){
@@ -447,14 +544,34 @@ function confirmdelete(id){
 		if (this.readyState == 4 && this.status == 200) {
 	
 				document.getElementById("dssm").click();
- //show toast
 			$('.toast').toast({
 				'autohide': true,
 				'delay':  5000});
 			$('.toast').toast('show');
+			getInf(6);
+
 				}		
 		}
 	xhttp.open("GET", "/unset/orientation/"+id, true);
+	xhttp.send();
+		
+	}
+function confirmdeletemal(id,op){
+
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+	
+				document.getElementById("dssm").click();
+			$('.toast').toast({
+				'autohide': true,
+				'delay':  5000});
+			$('.toast').toast('show');
+			getInf(op);getInf(5);	getInf(4);
+
+				}		
+		}
+	xhttp.open("GET", "/unset/"+op+"/"+id, true);
 	xhttp.send();
 		
 	}
@@ -475,9 +592,8 @@ function confirmdelete(id){
 	  }
 	  xhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
-			var response= document.createElement('tr');
-			response.innerHTML = this.responseText;
-		   tbl.appendChild(response);
+
+				getInf(op);
 		   }
 	  };
 	  if (op==1)	  xhttp.open("GET", "/set/maladie/{{$patient->id}}/{{Auth::user()->id}}/"+str, true);

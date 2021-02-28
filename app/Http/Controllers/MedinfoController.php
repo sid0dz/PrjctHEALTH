@@ -8,7 +8,7 @@ use App\Orientation;
 use App\Media;
 use App\Commentaire;
 use App\User;
-
+use App\Prescription;
 use Illuminate\Http\Request;
 
 class MedinfoController extends Controller
@@ -86,6 +86,47 @@ class MedinfoController extends Controller
         
         public function delOrientation($id){
             $orient = Orientation::find($id);
+          // dd($orient);
+            $orient->delete();
+            return "success";                   
+
+
+        }  
+        public function delMal($id){
+            $orient = Maladie::find($id);
+          // dd($orient);
+            $orient->delete();
+            return "success";                   
+
+
+        }  
+        public function delAlr($id){
+            $orient = Allergie::find($id);
+          // dd($orient);
+            $orient->delete();
+            return "success";                   
+
+
+        }  
+        public function delCom($id){
+            $orient = Commentaire::find($id);
+          // dd($orient);
+            $orient->delete();
+            return "success";                   
+
+
+        }
+        public function delImg($id){
+            $orient = Media::find($id);
+          // dd($orient);
+            $orient->delete();
+            return "success";                   
+
+
+        }
+
+        public function delPr($id){
+            $orient = Prescription::find($id);
           // dd($orient);
             $orient->delete();
             return "success";                   

@@ -17,7 +17,7 @@
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">Lettre d'Orientation</h6>
-            <a class="btn btn-primary float-right" onclick="printDiv('printableArea')">  <i class="fas fa-print mr-2"></i>Imprimer Orientation</a>
+            <a class="btn btn-primary float-right" href="/printOr/{{$orientation->id}}">  <i class="fas fa-print mr-2"></i>Imprimer Orientation</a>
         </div>
         <div class="card-body">
         

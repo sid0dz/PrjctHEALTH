@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
-
+use App\Rdv;
+use App\Patient;
 class UsersAdminController extends Controller
 {
     
@@ -23,7 +24,17 @@ class UsersAdminController extends Controller
         return view ('layouts.dashboard');
 
     }
+    public function details($id){
+        $user = User::find($id);
+        $rdvs = Rdv::where('medecin_id','=',$id)->get(); 
+    for($x=0;$x<count($rdvs);$x++){
+$rdvs[$x]->medecin = Patient::find($rdvs[$x]->patient_id)->name;
 
+    }
+        return view('layouts.Admin.showUinfo',['user'=>$user,'rdvs'=>$rdvs]);
+
+
+    }
 
 
 }

@@ -73,7 +73,6 @@ Route::resource('rdvs','RdvController');
 
    // add a new route:
    Route::get('/newRDV/{id}','RdvController@newRDV');
-
    Route::get('/newRDV/{id}/{medid}','RdvController@newRDV2');
    Route::get('/newRDV/{id}/{medid}/{date}','RdvController@newRDV3');
    Route::get('/newRDV/{id}/{medid}/{date}/{heure}/{motif}','RdvController@newRDV4');
@@ -84,7 +83,9 @@ Route::resource('rdvs','RdvController');
    Route::get('/{id}/editorientation','OrientationController@edit')->name('editorientation');
    Route::put('/{id}/up','OrientationController@update')->name('orientationupdate');
    Route::delete('/{id}/destroy','OrientationController@destroy')->name('orientationdestroy');
- 
+   Route::get('/printOr/{id}','OrientationController@printOr');
+   Route::get('/printPr/{id}','PrescController@printPr');
+
 
    Route::get('/newRDVm/{id}','RdvController@newRDVm2');
    Route::get('/newRDVm/{id}/{date}','RdvController@newRDVm3');
@@ -101,6 +102,11 @@ Route::resource('rdvs','RdvController');
    Route::post('/set/imagerie','MedinfoController@newImg');
 
     Route::get('/unset/orientation/{id}','MedinfoController@delOrientation');
+    Route::get('/unset/1/{id}','MedinfoController@delMal');
+    Route::get('/unset/2/{id}','MedinfoController@delAlr');
+    Route::get('/unset/3/{id}','MedinfoController@delCom');
+    Route::get('/unset/4/{id}','MedinfoController@delImg');
+    Route::get('/unset/5/{id}','MedinfoController@delPr');
 
 
    //Route::get('/set/maladie/{id}/{maladie}','MedinfoController@newImagerie');
@@ -135,3 +141,8 @@ return view ('dashbord.secretary.genrap');
 
 
 Route::get('/dmrdv','DmController@indrd');
+Route::DELETE('deleteUser/{id}','UserAdmController@destroy')->name('deleteUser');
+Route::get('/{id}/editUser','UserAdmController@edit')->name('editUser');
+Route::put('/{id}/updateUser','UserAdmController@update')->name('updateUser');
+
+Route::get('/user/{id}','UsersAdminController@details');

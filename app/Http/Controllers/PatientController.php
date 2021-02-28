@@ -106,7 +106,7 @@ else if ($op==4){
     $maladies[$i]['type'] = $maladies[$i]['contenu'];
     
   }
-    return view('dashbord.medecin.ajaxcomp.result',['maladies'=>$maladies,'p'=>'true']);
+    return view('dashbord.medecin.ajaxcomp.result',['maladies'=>$maladies,'p'=>'4','op'=>$op]);
   
 
 }
@@ -122,7 +122,9 @@ for($i=0; $i<count($maladies)&&$op!=3 ;$i++){
   $maladies[$i]['type'] = $maladies[$i]['medics'];
   
 }
-  return view('dashbord.medecin.ajaxcomp.result',['maladies'=>$maladies,'p'=>$p]);
+ if($op==3)     return view('dashbord.medecin.ajaxcomp.resultPr',['maladies'=>$maladies,'p'=>'4','op'=>$op]);
+
+  return view('dashbord.medecin.ajaxcomp.result',['maladies'=>$maladies,'p'=>$p,'op'=>$op]);
 
 }
 
@@ -139,7 +141,7 @@ foreach($imgs as $img){
  echo "<td><a href='";
  echo asset($img->link);
  echo "' target='_blank' class='btn btn-primary btn-circle'  ><i class='fas fa-file-import'> </i></a>
-    <a data-toggle='modal' onclick='deleteor(2)' class='btn btn-danger btn-circle'  data-target='#confirmDeleteModel' title='supprimer' > <i class='fas fa-trash'> </i></a>
+    <a data-toggle='modal' onclick='deleteImg(".$img->id.")' class='btn btn-danger btn-circle'  data-target='#confirmDeleteModel' title='supprimer' > <i class='fas fa-trash'> </i></a>
  
  </td></tr>";
 

@@ -33,13 +33,20 @@
     <tr><th colspan="2"><div class="text-center"> Medicaments  </div></th> </tr> 
          
     @for($x=0;$x<count($data['medics']);$x++)
-     <tr> <td>
-        {{($data['medics'][$x])}} </td>
+    @if($data['medics'][$x]!="")
+    <tr> <th>
+        {{($data['medics'][$x])}} </th>
         
-        <td> {{$data['doses'][$x]}} fois par jour 
+        <td><table class="table-borderless"> <tr> <td>Dose:  
+            {{$data['doses'][$x]}} </td> 
+        <td>{{$data['prises'][$x]}} Par jour </td>
+        <td>Pour {{$data['durees'][$x]}} jour </td>
+        </tr>
+        </table>
+  
         </td>
     </tr>
-
+@endif
     
         
     @endfor   

@@ -40,6 +40,14 @@ class OrientationController extends Controller
       ]);
 
     }
+    public function printOr($id){
+
+$orientation= Orientation::find($id);
+      return view('dashbord.medecin.orsuccess',
+      ['or'=>$orientation,
+      'pname'=>Patient::find($orientation->patient_id)->name
+      ]);
+    }
 
     public function create($id = 1){
     $patient= Patient::find($id);

@@ -27,7 +27,7 @@
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
                                             <th>ID</th>
@@ -50,7 +50,7 @@
                                     </tfoot>
                                     <tbody>
       @foreach ($usersData  as $user)
-        <tr>
+        <tr onClick="window.location.href='/user/{{$user->id}}'" style="cursor: pointer">
           <td>{{$user->id}}</td>
 		  <td>{{$user->fname}} {{$user->lname}}</td> 
 		  <td>{{$user->email}}</td>
@@ -58,7 +58,7 @@
           <td>{{$user->specialite}}</td>
           <td>
              
-          <form action="{{route('deleteUser',['id'=>$user->id])}}" method="post">
+          <form action="{{route('deleteUser',['id'=>$user->id])}}" id="user{{$user->id}}" method="post" >
 
               {{csrf_field()}}
 				       {{method_field('DELETE')}}
@@ -68,9 +68,9 @@
               </a>
                
 
-                <button  data-toggle="modal"  data-target="#confirmDeleteModel" title="supprimer" class="btn btn-danger btn-circle " type="submit"  >
+                <a  data-toggle="modal"  onclick="changeModel({{$user->id}})" data-target="#confirmDeleteModel" title="supprimer" class="btn btn-danger btn-circle "  >
                  <i class="fas fa-trash"> </i>
-              </button>
+                </a>
               </form>
           </td>
         </tr>
@@ -82,7 +82,37 @@
                     </div>
 
                 </div>
-	
+                <div class="modal fade" id="confirmDeleteModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Veuillez confirmer : </h5>
+                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">Voulez vous vraiment supprimer ? </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" type="button" id="dssm" data-dismiss="modal">Annuler</button>
+                            <a class="btn btn-danger" id="confirmdeletebutton" onclick="confirm(1)">Supprimer</a>
+                        </div>
+                    </div>
+                </div>
+                </div>    
+
+<script>
+function changeModel(id){
+var btn = document.getElementById('confirmdeletebutton');
+btn.setAttribute("onclick","javascript:$('#user"+id+"').submit();");
+
+}
+
+
+    
+</script>
+
+
     <!-- Page level plugins -->
 	
 
