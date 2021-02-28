@@ -50,12 +50,12 @@
                                     </tfoot>
                                     <tbody>
       @foreach ($usersData  as $user)
-        <tr onClick="window.location.href='/user/{{$user->id}}'" style="cursor: pointer">
-          <td>{{$user->id}}</td>
-		  <td>{{$user->fname}} {{$user->lname}}</td> 
-		  <td>{{$user->email}}</td>
-          <td>{{($user->role==0)?"Admin":(($user->role==1)?"Medecin":"Secretary")}}</td>
-          <td>{{$user->specialite}}</td>
+        <tr >
+          <td onClick="window.location.href='/user/{{$user->id}}'" style="cursor: pointer">{{$user->id}}</td>
+		  <td onClick="window.location.href='/user/{{$user->id}}'" style="cursor: pointer">{{$user->fname}} {{$user->lname}}</td> 
+		  <td onClick="window.location.href='/user/{{$user->id}}'" style="cursor: pointer">{{$user->email}}</td>
+          <td onClick="window.location.href='/user/{{$user->id}}'" style="cursor: pointer">{{($user->role==0)?"Admin":(($user->role==1)?"Medecin":"Secretary")}}</td>
+          <td onClick="window.location.href='/user/{{$user->id}}'" style="cursor: pointer">{{$user->specialite}}</td>
           <td>
              
           <form action="{{route('deleteUser',['id'=>$user->id])}}" id="user{{$user->id}}" method="post" >

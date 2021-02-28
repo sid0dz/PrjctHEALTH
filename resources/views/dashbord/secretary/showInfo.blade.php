@@ -132,8 +132,7 @@
 								</table>
 
 	
-								<a class="btn btn-primary float-right" href="#" data-toggle="modal" data-target="#newMaladie"> <i class="fas fa-plus mr-2"></i>Ajouter une maladie</a>
-								<br>			
+													<br>			
 							</div>
 						</div>
 					</div>		

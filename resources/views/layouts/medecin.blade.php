@@ -87,6 +87,9 @@
                 <div class="table-responsive">
 				<h2 class="ml-2"> </h2>
                 <div class="card-body">
+                    <h4>Select Date</h4><div class="input-group date" data-provide="datepicker">
+                        <span class="glyphicon glyphicon-th"><input type="date" value="{{date('Y-m-d')}}" class="form-control" id="dateP" onchange="doit();">
+                        </div>
                     <div class="table" id="tabledata">
                        
 
@@ -127,21 +130,24 @@
                   </div>
                   </div>    
 <script>
+function doit(){
+var datt = document.getElementById("dateP").value;    
+loadTable();
+}
+function loadTable(){
+date =  document.getElementById("dateP").value;
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+if (this.readyState == 4 && this.status == 200) {
+document.getElementById('tabledata').innerHTML=this.responseText;
 
-    function loadTable(){
+}
+};
+xhttp.open("GET", "{{url('tabledata',[0,Auth::User()->id])}}/"+date, true);
+xhttp.send();
 
-        var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-        document.getElementById('tabledata').innerHTML=this.responseText;
-        
-    }
-  };
-  xhttp.open("GET", "{{ url('tabledata', [ 0,Auth::User()->id,date('Y-m-d')]) }}", true);
-  xhttp.send();
+}
 
-
-    }
     loadTable();
     function changemodel (rdvid){
 var confr = document.getElementById("confirmdeletebutton");

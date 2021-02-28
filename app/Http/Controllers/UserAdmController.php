@@ -105,7 +105,7 @@ class UserAdmController extends Controller
         $newUser->specialite =$request->input('specialite');
         $newUser->role =$request->input('role');
         $newUser->email =$request->input('email');
-        $newUser->password = Hash::make($request->input('password'));
+        if ($request->password!=null)$newUser->password = Hash::make($request->input('password'));
         $newUser->save();
         return view('layouts.admin.newUserSuc',['data'=>$request]);
 

@@ -64,6 +64,7 @@ Route::get('/show_patients','PatientController@index');
 
 Route::post('/show_infos','PatientController@showInfos');
 Route::get('/show_infos/{id}','PatientController@showInfosR');
+Route::get('/show_infosrd/{id}','PatientController@showInfosR');
 
 Route::get('/{id}/edit','PatientController@edit');
 Route::put('/{id}','PatientController@update');

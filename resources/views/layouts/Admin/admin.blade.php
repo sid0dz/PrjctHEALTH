@@ -284,12 +284,14 @@
 var ctx = document.getElementById('myChart').getContext('2d');
 var chart = new Chart(ctx, {
     // The type of chart we want to create
-    type: 'line',
+    type: 'bar',
 
     // The data for our dataset
     data: {
         labels: ['{{date('d',strtotime("-6 days"))}}', '{{date('d',strtotime("-5 days"))}}', '{{date('d',strtotime("-4 days"))}}', '{{date('d',strtotime("-3 days"))}}', '{{date('d',strtotime("-2 days"))}}', '{{date('d',strtotime("-1 days"))}}', '{{date('d')}}'],
         datasets: [{
+          backgroundColor: "#4e73df",
+
             label: 'Rendez-vous cette journée ',
             borderColor: '{{App\Clconfig::first()->debDegr}}',
             data: [5, 10, 5, 0, 20, 30, 10]
